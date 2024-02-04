@@ -1,24 +1,34 @@
-# apt-get install i3-wm lxapperence picom dunst nitrogen gnome-screensaver qt5-style-kvantum qt5ct flameshot blueman volumeicon-alsa xfce4-power-manager
+# apt-get install i3-wm lxappearance picom dunst nitrogen gnome-screensaver qt5-style-kvantum qt5ct flameshot blueman volumeicon-alsa xfce4-power-manager dmenu gnome-settings-daemon
 
 set $mod Mod4
 
-font pango:JetBrains Mono Nerd Font SemiBold 16
+font pango:JetBrains Mono Nerd Font SemiBold 14
 
-# exec_always --no-startup-id xrandr --auto
+exec_always --no-startup-id xrandr --auto
 
-exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
+# exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
 
 exec --no-startup-id dex --autostart --environment i3
 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 exec_always --no-startup-id killall nm-applet; nm-applet
 
 exec_always --no-startup-id killall gnome-screensaver; gnome-screensaver
 
-exec_always  --no-startup-id killall volumeicon; volumeicon
+exec_always --no-startup-id killall volumeicon; volumeicon
 
-exec_always  --no-startup-id killall xfce4-power-manager; xfce4-power-manager
+exec_always --no-startup-id killall xfce4-power-manager; xfce4-power-manager
+
+exec_always --no-startup-id killall blueman-applet; blueman-applet
+
+exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+
+exec_always --no-startup-id /usr/libexec/gsd-xsettings
+exec_always --no-startup-id /usr/libexec/gsd-a11y-settings
+exec_always --no-startup-id /usr/libexec/gsd-disk-utility-notify
+exec_always --no-startup-id /usr/libexec/gsd-usb-protection
+exec_always --no-startup-id /usr/libexec/gsd-wwan
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -50,7 +60,7 @@ bindsym $mod+o exec --no-startup-id obsidian
 
 bindsym $mod+k exec --no-startup-id keepassxc
 
-bindsym  $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#98971a' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=26:style:Bold:antialias=true:autohint=true'"
+bindsym  $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#98971a' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=14:style:Bold:antialias=true:autohint=true'"
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -124,14 +134,14 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 
-workspace $ws1 output eDP-1-0
-workspace $ws2 output eDP-1-0
-workspace $ws3 output eDP-1-0
-workspace $ws4 output eDP-1-0
-workspace $ws5 output eDP-1-0
-workspace $ws6 output eDP-1-0
-workspace $ws7 output eDP-1-0
-workspace $ws8 output eDP-1-0
+workspace $ws1 output eDP-1
+workspace $ws2 output eDP-1
+workspace $ws3 output eDP-1
+workspace $ws4 output eDP-1
+workspace $ws5 output eDP-1
+workspace $ws6 output eDP-1
+workspace $ws7 output eDP-1
+workspace $ws8 output eDP-1
 workspace $ws9 output HDMI-0
 
 assign [class="(?i)firefox"] $ws2
@@ -213,11 +223,11 @@ hide_edge_borders smart
 
 bar {
     position top
-    output eDP-1-0
+    output eDP-1
     strip_workspace_numbers yes
     tray_output primary
     tray_padding 0
-    font pango:JetBrains Mono Nerd Font Bold 24
+    font pango:JetBrains Mono Nerd Font Bold 12
     separator_symbol " "
 
     status_command i3status --config ~/.config/i3/i3status.conf
