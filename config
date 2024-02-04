@@ -1,34 +1,41 @@
+# need to install
 # apt-get install i3-wm lxappearance picom dunst nitrogen gnome-screensaver qt5-style-kvantum qt5ct flameshot blueman volumeicon-alsa xfce4-power-manager dmenu gnome-settings-daemon pavucontrol
 
+# mod4 = Win
 set $mod Mod4
 
+# font
 font pango:JetBrains Mono Nerd Font SemiBold 14
 
+# set screen settings
 exec_always --no-startup-id xrandr --auto
-
 # exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
 
+# start i3
 exec --no-startup-id dex --autostart --environment i3
 
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
+# Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
 exec_always --no-startup-id killall nm-applet; nm-applet
-
 exec_always --no-startup-id killall gnome-screensaver; gnome-screensaver
-
 exec_always --no-startup-id killall volumeicon; volumeicon
-
 exec_always --no-startup-id killall xfce4-power-manager; xfce4-power-manager
-
 exec_always --no-startup-id killall blueman-applet; blueman-applet
 
+# tap on touchpad
 exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 
+# optional gnome-settings-daemons
 exec_always --no-startup-id /usr/libexec/gsd-xsettings
 exec_always --no-startup-id /usr/libexec/gsd-a11y-settings
 exec_always --no-startup-id /usr/libexec/gsd-disk-utility-notify
 exec_always --no-startup-id /usr/libexec/gsd-usb-protection
 exec_always --no-startup-id /usr/libexec/gsd-wwan
+
+# Optional check this daemons
+# ps -eH  | grep system76
+#     562 ?        00:00:00   system76-power
+#     563 ?        00:00:00   system76-schedu
+#    1432 ?        00:00:00     system76-schedu
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -46,29 +53,40 @@ bindsym $mod+Return exec --no-startup-id alacritty --config-file ~/.config/i3/al
 # kill focused window
 bindsym $mod+q kill
 
+# filebrowser
 bindsym $mod+f exec --no-startup-id nautilus -w
 
+# lock screen
 bindsym $mod+l exec --no-startup-id gnome-screensaver-command -l
 
+# settings
 bindsym $mod+s exec --no-startup-id gnome-control-center
 
+# browser
 bindsym $mod+w exec --no-startup-id mercury-browser
 
+# telegram
 bindsym $mod+t exec --no-startup-id Updater
 
+# obsidian
 bindsym $mod+o exec --no-startup-id obsidian
 
+# keepass
 bindsym $mod+k exec --no-startup-id keepassxc
 
+# screenshot
+bindsym Print exec --no-startup-id flameshot gui
+
+# dmenu for start apps
 bindsym  $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#98971a' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=14:style:Bold:antialias=true:autohint=true'"
 
-# alternatively, you can use the cursor keys:
+# choose window
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# alternatively, you can use the cursor keys:
+# move window
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -98,10 +116,9 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+# bindsym $mod+d focus child
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# workspaces
 set $ws1 "1:1 💡"
 set $ws2 "2:2 🌐"
 set $ws3 "3:3 📨"
@@ -134,6 +151,7 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 
+# output workspace on monitor
 workspace $ws1 output eDP-1
 workspace $ws2 output eDP-1
 workspace $ws3 output eDP-1
@@ -144,6 +162,7 @@ workspace $ws7 output eDP-1
 workspace $ws8 output eDP-1
 workspace $ws9 output HDMI-0
 
+# rules for apps and ws
 assign [class="(?i)firefox"] $ws2
 assign [class="mercury-default"] $ws2
 assign [class="Thorium-browser"] $ws2
@@ -159,9 +178,8 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Close i3 and go to X session' -B 'Yes' 'i3-msg exit'"
 
-bindsym Print exec flameshot gui
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -183,18 +201,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec_always --no-startup-id killall dunst; dunst -conf $HOME/.config/i3/dunstrc
+# active window hint
+default_border pixel 1
+default_floating_border pixel 1
+new_window pixel 3
+hide_edge_borders smart
 
-# for_window [class="^.*"] border pixel 0
-
-# bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
-# bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
-
-exec --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
-exec --no-startup-id nitrogen --restore
-# exec_always --no-startup-id syndaemon -i 0.8 -d -k
-exec_always --no-startup-id sleep 5 && picom --experimental-backend --config /home/pps/.config/i3/picom.conf
-
+# pallet gruvbox
 set $bg #282828
 set $fg #ebdbb2
 set $red #cc241d
@@ -206,19 +219,11 @@ set $aqua #689d68
 set $gray #a89984
 set $darkgray #1d2021
 
-# green gruvbox
 # class                 border    backgr    text      indicator child_border
 client.focused          $green    $green    $darkgray $purple   $yellow 
 client.focused_inactive $darkgray $darkgray $yellow   $purple   $gray
 client.unfocused        $darkgray $darkgray $yellow   $purple   $gray
 client.urgent           $red      $red      $white    $red      $red
-
-default_border pixel 1
-default_floating_border pixel 1
-
-new_window pixel 3
-
-hide_edge_borders smart
 
 
 bar {
@@ -229,7 +234,6 @@ bar {
     tray_padding 4
     font pango:JetBrains Mono Nerd Font Bold 12
     separator_symbol " "
-
     status_command i3status --config ~/.config/i3/i3status.conf
 
 #                          border 	 bg		   txt		 indicator
@@ -243,3 +247,20 @@ bar {
     	urgent_workspace   $red      $red      $white    $red      
     }
 }
+
+# language toggle
+exec --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
+# wallpaper
+exec --no-startup-id nitrogen --restore
+# picom compositor for windows
+exec_always --no-startup-id sleep 5 && picom --experimental-backend --config /home/pps/.config/i3/picom.conf
+# alert daemon
+exec_always --no-startup-id killall dunst; dunst -conf $HOME/.config/i3/dunstrc
+
+# optional
+# exec_always --no-startup-id syndaemon -i 0.8 -d -k
+# for_window [class="^.*"] border pixel 0
+# optional if your not use xfce4-power-manager
+# bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+# bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
