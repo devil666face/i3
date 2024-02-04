@@ -278,6 +278,9 @@ exec_always --no-startup-id xinput set-prop "ELAN1200:00 04F3:30BA Touchpad" "li
 #     562 ?        00:00:00   system76-power
 #     563 ?        00:00:00   system76-schedu
 #    1432 ?        00:00:00     system76-schedu
+# Use
+# ❯ system76-power profile performance
+# ❯ system76-power profile balanced
 
 # optional
 # exec_always --no-startup-id syndaemon -i 0.8 -d -k
