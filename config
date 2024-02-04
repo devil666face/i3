@@ -8,34 +8,34 @@ set $mod Mod4
 font pango:JetBrains Mono Nerd Font SemiBold 14
 
 # set screen settings
-exec_always --no-startup-id xrandr --auto
-# exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
+# exec_always --no-startup-id xrandr --auto
+exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
 
 # start i3
 exec --no-startup-id dex --autostart --environment i3
 
-# Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
-exec_always --no-startup-id killall nm-applet; nm-applet
-exec_always --no-startup-id killall gnome-screensaver; gnome-screensaver
-exec_always --no-startup-id killall volumeicon; volumeicon
-exec_always --no-startup-id killall xfce4-power-manager; xfce4-power-manager
-exec_always --no-startup-id killall blueman-applet; blueman-applet
-
-# tap on touchpad
-exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
-
 # optional gnome-settings-daemons
-exec_always --no-startup-id /usr/libexec/gsd-xsettings
-exec_always --no-startup-id /usr/libexec/gsd-a11y-settings
-exec_always --no-startup-id /usr/libexec/gsd-disk-utility-notify
-exec_always --no-startup-id /usr/libexec/gsd-usb-protection
-exec_always --no-startup-id /usr/libexec/gsd-wwan
-
-# Optional check this daemons
-# ps -eH  | grep system76
-#     562 ?        00:00:00   system76-power
-#     563 ?        00:00:00   system76-schedu
-#    1432 ?        00:00:00     system76-schedu
+exec --no-startup-id /usr/libexec/gsd-a11y-settings
+exec --no-startup-id /usr/libexec/gsd-backlight-helper
+exec --no-startup-id /usr/libexec/gsd-color
+exec --no-startup-id /usr/libexec/gsd-datetime
+exec --no-startup-id /usr/libexec/gsd-disk-utility-notify
+exec --no-startup-id /usr/libexec/gsd-housekeeping
+exec --no-startup-id /usr/libexec/gsd-keyboard
+exec --no-startup-id /usr/libexec/gsd-media-keys
+exec --no-startup-id /usr/libexec/gsd-power
+exec --no-startup-id /usr/libexec/gsd-printer
+exec --no-startup-id /usr/libexec/gsd-print-notifications
+exec --no-startup-id /usr/libexec/gsd-rfkill
+exec --no-startup-id /usr/libexec/gsd-screensaver-proxy
+exec --no-startup-id /usr/libexec/gsd-sharing
+exec --no-startup-id /usr/libexec/gsd-smartcard
+exec --no-startup-id /usr/libexec/gsd-sound
+exec --no-startup-id /usr/libexec/gsd-usb-protection
+exec --no-startup-id /usr/libexec/gsd-wacom
+exec --no-startup-id /usr/libexec/gsd-wacom-oled-helper
+exec --no-startup-id /usr/libexec/gsd-wwan
+exec --no-startup-id /usr/libexec/gsd-xsettings
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -152,14 +152,14 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 
 # output workspace on monitor
-workspace $ws1 output eDP-1
-workspace $ws2 output eDP-1
-workspace $ws3 output eDP-1
-workspace $ws4 output eDP-1
-workspace $ws5 output eDP-1
-workspace $ws6 output eDP-1
-workspace $ws7 output eDP-1
-workspace $ws8 output eDP-1
+workspace $ws1 output eDP-1-0
+workspace $ws2 output eDP-1-0
+workspace $ws3 output eDP-1-0
+workspace $ws4 output eDP-1-0
+workspace $ws5 output eDP-1-0
+workspace $ws6 output eDP-1-0
+workspace $ws7 output eDP-1-0
+workspace $ws8 output eDP-1-0
 workspace $ws9 output HDMI-0
 
 # rules for apps and ws
@@ -228,7 +228,7 @@ client.urgent           $red      $red      $white    $red      $red
 
 bar {
     position top
-    output eDP-1
+    output eDP-1-0
     strip_workspace_numbers yes
     tray_output primary
     tray_padding 4
@@ -257,6 +257,23 @@ exec_always --no-startup-id sleep 5 && picom --experimental-backend --config /ho
 # alert daemon
 exec_always --no-startup-id killall dunst; dunst -conf $HOME/.config/i3/dunstrc
 
+# Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
+exec_always --no-startup-id killall nm-applet; nm-applet
+exec_always --no-startup-id killall gnome-screensaver; gnome-screensaver
+exec_always --no-startup-id killall volumeicon; volumeicon
+exec_always --no-startup-id killall xfce4-power-manager; xfce4-power-manager
+exec_always --no-startup-id killall blueman-applet; blueman-applet
+
+# tap on touchpad
+exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+exec_always --no-startup-id xinput set-prop "ELAN1200:00 04F3:30BA Touchpad" "libinput Tapping Enabled" 1
+
+# Optional check this daemons
+# ps -eH  | grep system76
+#     562 ?        00:00:00   system76-power
+#     563 ?        00:00:00   system76-schedu
+#    1432 ?        00:00:00     system76-schedu
+
 # optional
 # exec_always --no-startup-id syndaemon -i 0.8 -d -k
 # for_window [class="^.*"] border pixel 0
@@ -264,3 +281,6 @@ exec_always --no-startup-id killall dunst; dunst -conf $HOME/.config/i3/dunstrc
 # bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 # bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+exec --no-startup-id i3-msg restart
+
