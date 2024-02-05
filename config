@@ -263,11 +263,11 @@ exec_always --no-startup-id sleep 5 && picom --experimental-backend --config /ho
 exec_always --no-startup-id killall dunst; dunst -conf $HOME/.config/i3/dunstrc
 
 # Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
-exec_always --no-startup-id killall nm-applet; nm-applet
-exec_always --no-startup-id killall gnome-screensaver; gnome-screensaver
-exec_always --no-startup-id killall volumeicon; volumeicon
-exec_always --no-startup-id killall xfce4-power-manager; xfce4-power-manager
-exec_always --no-startup-id killall blueman-applet; blueman-applet
+exec --no-startup-id killall nm-applet; nm-applet
+exec --no-startup-id killall gnome-screensaver; gnome-screensaver
+exec --no-startup-id killall volumeicon; volumeicon
+exec --no-startup-id killall xfce4-power-manager; xfce4-power-manager
+exec --no-startup-id killall blueman-applet; blueman-applet
 
 # tap on touchpad
 exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
