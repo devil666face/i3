@@ -273,8 +273,6 @@ bar {
 exec --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
 # picom compositor for windows
 exec_always --no-startup-id sleep 5 && picom --experimental-backend --config /home/pps/.config/i3/picom.conf
-# alert daemon
-exec_always --no-startup-id killall dunst; dunst -conf $HOME/.config/i3/dunstrc
 
 # tap on touchpad
 exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
@@ -296,6 +294,10 @@ exec_always --no-startup-id xinput set-prop "ELAN1200:00 04F3:30BA Touchpad" "li
 # bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 # bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# alert daemon
+exec_always --no-startup-id killall dunst; dunst -conf $HOME/.config/i3/dunstrc
+
 
 exec --no-startup-id i3-msg restart
 
