@@ -38,12 +38,11 @@ exec --no-startup-id /usr/libexec/gsd-wacom-oled-helper
 exec --no-startup-id /usr/libexec/gsd-wwan
 exec --no-startup-id /usr/libexec/gsd-xsettings
 
-# wallpaper
-exec --no-startup-id nitrogen --restore
-
 # start i3
 exec --no-startup-id dex --autostart --environment i3
 
+# wallpaper
+exec --no-startup-id nitrogen --restore
 
 # Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
 exec --no-startup-id killall nm-applet; nm-applet
