@@ -5,6 +5,8 @@
 # 3. Set theme via kvantum
 # 4. Set font via qt5ct
 
+set $wgname kalinkin-ru-tuf
+
 # mod4 = Win
 set $mod Mod4
 
@@ -96,6 +98,10 @@ bindsym $mod+p exec --no-startup-id shutdown now
 
 # reboot
 bindsym $mod+Shift+p exec --no-startup-id reboot
+
+# wg vpn
+bindsym $mod+u exec --no-startup-id wg-quick up $wgname
+bindsym $mod+Shift+u exec --no-startup-id wg-quick down $wgname
 
 # dmenu for start apps
 bindsym  $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#98971a' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=14:style:Bold:antialias=true:autohint=true'"
