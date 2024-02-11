@@ -325,12 +325,10 @@ exec_always --no-startup-id xinput set-prop "ELAN1200:00 04F3:30BA Touchpad" "li
 # alert daemon
 exec_always --no-startup-id dunst -conf $home/.config/i3/dunstrc
 
-# exec --no-startup-id i3-msg restart
+exec --no-startup-id i3-msg restart
 
 # Autostart
 exec --no-startup-id mercury-browser
 exec --no-startup-id Updater
 exec --no-startup-id keepassxc
 exec --no-startup-id obsidian
-
-exec --no-startup-id i3-msg restart
