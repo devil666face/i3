@@ -45,7 +45,7 @@ exec --no-startup-id /usr/libexec/gsd-xsettings
 exec --no-startup-id dex --autostart --environment i3
 
 # wallpaper
-exec --no-startup-id nitrogen --restore
+exec_always --no-startup-id nitrogen --restore
 
 # Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
 exec --no-startup-id killall nm-applet; nm-applet
@@ -212,7 +212,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-mode "exit" {
+mode "power" {
     # exit to xsession
     bindsym e exec --no-startup-id i3-msg exit; mode "default"
     # shutdown
@@ -221,12 +221,16 @@ mode "exit" {
     bindsym r exec --no-startup-id systemctl reboot; mode "default"
 	# lock screen
 	bindsym l exec --no-startup-id gnome-screensaver-command -la; mode "default"
+	# perfomance power
+	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && dunstify "Power" "Производительный профиль"; mode "default"
+	# balanced power
+	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced && dunstify "Power" "Сбалансированный профиль"; mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+p mode "default"
 }
-bindsym $mod+p mode "exit"
+bindsym $mod+p mode "power"
 
 mode "network" {
     # wg vpn
