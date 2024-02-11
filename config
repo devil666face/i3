@@ -1,23 +1,16 @@
 # need to install
-# apt-get install i3-wm lxappearance picom dunst nitrogen gnome-screensaver qt5-style-kvantum qt5ct flameshot blueman volumeicon-alsa xfce4-power-manager dmenu gnome-settings-daemon pavucontrol gnome-tweaks
-# gnome-flashback
+# apt-get install i3-wm lxappearance picom dunst nitrogen gnome-screensaver qt5-style-kvantum qt5ct flameshot blueman volumeicon-alsa xfce4-power-manager dmenu gnome-settings-daemon pavucontrol gnome-tweaks gnome-flashback
 # 1. Set theme via gnome-tweaks
 # 2. Set theme via lxappearance
 # 3. Set theme via kvantum
 # 4. Set font via qt5ct
 
-set $wgname kalinkin-ru-tuf
-set $home /home/pps
-
 # mod4 = Win
 set $mod Mod4
-
+set $wgname kalinkin-ru-tuf
+set $home /home/pps
 # font
 font pango:JetBrains Mono Nerd Font SemiBold 14
-
-# set screen settings
-# exec_always --no-startup-id xrandr --auto
-exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
 
 # optional gnome-settings-daemons
 exec --no-startup-id /usr/libexec/gsd-a11y-settings
@@ -42,18 +35,26 @@ exec --no-startup-id /usr/libexec/gsd-wacom-oled-helper
 exec --no-startup-id /usr/libexec/gsd-wwan
 exec --no-startup-id /usr/libexec/gsd-xsettings
 
+# set screen settings
+# exec_always --no-startup-id xrandr --auto
+exec --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
+
 # start i3
+# gsettings set org.gnome.gnome-flashback desktop false
+# gsettings set org.gnome.gnome-flashback root-background true
+# gsettings set org.gnome.gnome-flashback status-notifier-watcher false
+exec --no-startup-id gnome-flashback
 exec --no-startup-id dex --autostart --environment i3
 
 # wallpaper
 exec_always --no-startup-id nitrogen --restore
 
 # Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
-exec_always --no-startup-id nm-applet
-exec_always --no-startup-id gnome-screensaver
-exec_always --no-startup-id killall volumeicon; volumeicon
-exec_always --no-startup-id xfce4-power-manager
-exec_always --no-startup-id blueman-applet
+exec --no-startup-id nm-applet
+exec --no-startup-id gnome-screensaver
+exec --no-startup-id volumeicon
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id blueman-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -180,6 +181,7 @@ workspace $ws9 output HDMI-0
 # rules for apps and ws
 assign [class="(?i)firefox"] $ws2
 assign [class="mercury-default"] $ws2
+assign [class="Navigator"] $ws2
 assign [class="Thorium-browser"] $ws2
 assign [class="TelegramDesktop"] $ws3
 assign [class="thunderbird"] $ws3
@@ -322,10 +324,12 @@ exec_always --no-startup-id xinput set-prop "ELAN1200:00 04F3:30BA Touchpad" "li
 # alert daemon
 exec_always --no-startup-id dunst -conf $home/.config/i3/dunstrc
 
-exec --no-startup-id i3-msg restart
+# exec --no-startup-id i3-msg restart
 
 # Autostart
 exec --no-startup-id mercury-browser
 exec --no-startup-id Updater
 exec --no-startup-id keepassxc
 exec --no-startup-id obsidian
+
+exec --no-startup-id i3-msg restart
