@@ -229,9 +229,13 @@ mode "power" {
 	# lock screen
 	bindsym l exec --no-startup-id gnome-screensaver-command -la; mode "default"
 	# perfomance power
-	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && dunstify "Power" "Производительный профиль"; mode "default"
+	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
+        echo "perfomance" > /tmp/profile && \
+        dunstify "Power" "Производительный профиль"; mode "default"
 	# balanced power
-	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced && dunstify "Power" "Сбалансированный профиль"; mode "default"
+	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced && \
+        rm /tmp/profile && \
+        dunstify "Power" "Сбалансированный профиль"; mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
