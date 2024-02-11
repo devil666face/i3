@@ -217,6 +217,8 @@ mode "power" {
     bindsym e exec --no-startup-id i3-msg exit; mode "default"
     # shutdown
     bindsym s exec --no-startup-id systemctl poweroff; mode "default"
+    # sleep
+    bindsym Shift+s exec --no-startup-id systemctl suspend; mode "default"
     # reboot
     bindsym r exec --no-startup-id systemctl reboot; mode "default"
 	# lock screen
