@@ -240,8 +240,12 @@ bindsym $mod+p mode "power"
 
 mode "network" {
     # wg vpn
-    bindsym c exec --no-startup-id wg-quick up $wgname && dunstify "VPN" "Подключение к $wgname установлено"; mode "default"
-    bindsym d exec --no-startup-id wg-quick down $wgname && dunstify "VPN" "Подключение с $wgname разорвано"; mode "default"
+    bindsym c exec --no-startup-id wg-quick up $wgname && \
+        echo $wgname > /tmp/vpn && \
+        dunstify "VPN" "Подключение к $wgname установлено"; mode "default"
+    bindsym d exec --no-startup-id wg-quick down $wgname && \
+        rm /tmp/vpn && \
+        dunstify "VPN" "Подключение с $wgname разорвано"; mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
