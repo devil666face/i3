@@ -7,6 +7,7 @@
 # 4. Set font via qt5ct
 
 set $wgname kalinkin-ru-tuf
+set $home /home/pps
 
 # mod4 = Win
 set $mod Mod4
@@ -48,11 +49,11 @@ exec --no-startup-id dex --autostart --environment i3
 exec_always --no-startup-id nitrogen --restore
 
 # Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
-exec --no-startup-id killall nm-applet; nm-applet
-exec --no-startup-id killall gnome-screensaver; gnome-screensaver
-exec --no-startup-id killall volumeicon; volumeicon
-exec --no-startup-id killall xfce4-power-manager; xfce4-power-manager
-exec --no-startup-id killall blueman-applet; blueman-applet
+exec_always --no-startup-id nm-applet
+exec_always --no-startup-id gnome-screensaver
+exec_always --no-startup-id killall volumeicon; volumeicon
+exec_always --no-startup-id xfce4-power-manager
+exec_always --no-startup-id blueman-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -295,7 +296,7 @@ bar {
 # language toggle
 exec --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
 # picom compositor for windows
-exec_always --no-startup-id sleep 5 && picom --experimental-backend --config /home/pps/.config/i3/picom.conf
+exec_always --no-startup-id sleep 5 && picom --experimental-backend --config $home/.config/i3/picom.conf
 
 # tap on touchpad
 exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
@@ -319,7 +320,7 @@ exec_always --no-startup-id xinput set-prop "ELAN1200:00 04F3:30BA Touchpad" "li
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # alert daemon
-exec --no-startup-id killall dunst; dunst -conf $HOME/.config/i3/dunstrc
+exec_always --no-startup-id dunst -conf $home/.config/i3/dunstrc
 
 exec --no-startup-id i3-msg restart
 
