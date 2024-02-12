@@ -142,8 +142,8 @@ set $ws1 "1:1 💡"
 set $ws2 "2:2 🌐"
 set $ws3 "3:3 📨"
 set $ws4 "4:4 🧠"
-set $ws5 "5:5 💻"
-set $ws6 "6:6 🔐"
+set $ws5 "5:5 🔐"
+set $ws6 "6:6 💻"
 set $ws7 "7:7 📦"
 set $ws8 "8:8 ⚙️"
 set $ws9 "9:9 📺"
@@ -189,8 +189,8 @@ assign [class="Thorium-browser"] $ws2
 assign [class="TelegramDesktop"] $ws3
 assign [class="thunderbird"] $ws3
 assign [class="obsidian"] $ws4
-assign [class="org.remmina.Remmina"] $ws5
-assign [class="KeePassXC"] $ws6
+assign [class="KeePassXC"] $ws5
+assign [class="org.remmina.Remmina"] $ws6
 assign [class="Virt-manager"] $ws7
 assign [class="Gnome-control-center"] $ws8
 
