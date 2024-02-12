@@ -38,7 +38,7 @@ exec --no-startup-id /usr/libexec/gsd-xsettings
 
 # set screen settings
 # exec_always --no-startup-id xrandr --auto
-exec --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
+exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
 
 # start i3
 # gsettings set org.gnome.gnome-flashback desktop false
