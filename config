@@ -8,8 +8,9 @@
 
 # mod4 = Win
 set $mod Mod4
-set $wgname kalinkin-ru-tuf
+set $wgname kalinkin-ru-tp
 set $home /home/pps
+set $mon eDP-1
 # font
 font pango:JetBrains Mono Nerd Font SemiBold 14
 
@@ -37,8 +38,8 @@ exec --no-startup-id /usr/libexec/gsd-wwan
 exec --no-startup-id /usr/libexec/gsd-xsettings
 
 # set screen settings
-# exec_always --no-startup-id xrandr --auto
-exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
+exec_always --no-startup-id xrandr --auto
+# exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
 
 # start i3
 # gsettings set org.gnome.gnome-flashback desktop false
@@ -171,14 +172,14 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 
 # output workspace on monitor
-workspace $ws1 output eDP-1-0
-workspace $ws2 output eDP-1-0
-workspace $ws3 output eDP-1-0
-workspace $ws4 output eDP-1-0
-workspace $ws5 output eDP-1-0
-workspace $ws6 output eDP-1-0
-workspace $ws7 output eDP-1-0
-workspace $ws8 output eDP-1-0
+workspace $ws1 output $mon
+workspace $ws2 output $mon
+workspace $ws3 output $mon
+workspace $ws4 output $mon
+workspace $ws5 output $mon
+workspace $ws6 output $mon
+workspace $ws7 output $mon
+workspace $ws8 output $mon
 workspace $ws9 output HDMI-0
 
 # rules for apps and ws
@@ -231,12 +232,16 @@ mode "power" {
 	# bindsym l exec --no-startup-id gnome-screensaver-command -la; mode "default"
 	# perfomance power
 	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
-        echo "perfomance" > /tmp/profile && \
+        echo "⚡️" > /tmp/profile && \
         dunstify "Power" "Производительный профиль"; mode "default"
 	# balanced power
 	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced && \
         rm /tmp/profile && \
         dunstify "Power" "Сбалансированный профиль"; mode "default"
+	# economy power
+	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
+        echo "🐢" > /tmp/profile && \
+        dunstify "Power" "Экономичный профиль"; mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -286,7 +291,7 @@ client.urgent           $red      $red      $white    $red      $red
 
 bar {
     position top
-    output eDP-1-0
+    output $mon
     strip_workspace_numbers yes
     tray_output primary
     tray_padding 4
