@@ -52,7 +52,7 @@ exec_always --no-startup-id nitrogen --restore
 
 # Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
 exec --no-startup-id nm-applet
-exec --no-startup-id gnome-screensaver
+# exec --no-startup-id gnome-screensaver
 exec --no-startup-id volumeicon
 # exec --no-startup-id xfce4-power-manager
 exec --no-startup-id blueman-applet
@@ -228,7 +228,7 @@ mode "power" {
     # reboot
     bindsym r exec --no-startup-id systemctl reboot; mode "default"
 	# lock screen
-	bindsym l exec --no-startup-id gnome-screensaver-command -la; mode "default"
+	# bindsym l exec --no-startup-id gnome-screensaver-command -la; mode "default"
 	# perfomance power
 	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
         echo "perfomance" > /tmp/profile && \
