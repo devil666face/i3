@@ -349,4 +349,4 @@ exec --no-startup-id Updater
 exec --no-startup-id keepassxc
 exec --no-startup-id obsidian
 
-exec_always --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="🇺🇸" ;; "00001000") KBD="🇷🇺" ;; *) KBD="unknown" ;; esac; echo "$KBD" > /tmp/lay; done'
+exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="🇺🇸" ;; "00001000") KBD="🇷🇺" ;; *) KBD="unknown" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
