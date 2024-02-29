@@ -8,11 +8,14 @@
 
 # mod4 = Win
 set $mod Mod4
-set $wgname kalinkin-ru-tp
+set $wgname kalinkin-ru-tuf
 set $home /home/pps
-set $mon eDP-1
+set $mon eDP-1-0
+
 # font
 font pango:JetBrains Mono Nerd Font SemiBold 14
+
+exec --no-startup-id gnome-flashback
 
 # optional gnome-settings-daemons
 exec --no-startup-id /usr/libexec/gsd-a11y-settings
@@ -38,14 +41,13 @@ exec --no-startup-id /usr/libexec/gsd-wwan
 exec --no-startup-id /usr/libexec/gsd-xsettings
 
 # set screen settings
-exec --no-startup-id xrandr --auto
-exec --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
+# exec --no-startup-id xrandr --auto
+exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
 
 # start i3
 # gsettings set org.gnome.gnome-flashback desktop false
 # gsettings set org.gnome.gnome-flashback root-background true
 # gsettings set org.gnome.gnome-flashback status-notifier-watcher false
-exec --no-startup-id gnome-flashback
 exec --no-startup-id dex --autostart --environment i3
 
 # wallpaper
@@ -139,15 +141,26 @@ bindsym $mod+a focus parent
 # bindsym $mod+d focus child
 
 # workspaces
-set $ws1 "1:1 💡"
-set $ws2 "2:2 🌐"
-set $ws3 "3:3 📨"
-set $ws4 "4:4 🧠"
-set $ws5 "5:5 🔐"
-set $ws6 "6:6 💻"
-set $ws7 "7:7 📦"
-set $ws8 "8:8 ⚙️"
-set $ws9 "9:9 📺"
+# set $ws1 "1:1 💡"
+# set $ws2 "2:2 🌐"
+# set $ws3 "3:3 📨"
+# set $ws4 "4:4 🧠"
+# set $ws5 "5:5 🔐"
+# set $ws6 "6:6 💻"
+# set $ws7 "7:7 📦"
+# set $ws8 "8:8 ⚙️"
+# set $ws9 "9:9 📺"
+
+# workspaces
+set $ws1 "1:1  "
+set $ws2 "2:2 󰈹 "
+set $ws3 "3:3  "
+set $ws4 "4:4 󰧑 "
+set $ws5 "5:5 󰯄 "
+set $ws6 "6:6  "
+set $ws7 "7:7  "
+set $ws8 "8:8  "
+set $ws9 "9:9 󰨇 "
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -231,16 +244,22 @@ mode "power" {
 	# lock screen
 	# bindsym l exec --no-startup-id gnome-screensaver-command -la; mode "default"
 	# perfomance power
+	# bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
+    #     echo "⚡️" > /tmp/profile && \
+    #     dunstify "Power" "Производительный профиль"; mode "default"
 	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
-        echo "⚡️" > /tmp/profile && \
+        echo "󰓅" > /tmp/profile && \
         dunstify "Power" "Производительный профиль"; mode "default"
 	# balanced power
 	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced && \
         rm /tmp/profile && \
         dunstify "Power" "Сбалансированный профиль"; mode "default"
 	# economy power
+	# bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
+    #     echo "🐢" > /tmp/profile && \
+    #     dunstify "Power" "Экономичный профиль"; mode "default"
 	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
-        echo "🐢" > /tmp/profile && \
+        echo "󰾆" > /tmp/profile && \
         dunstify "Power" "Экономичный профиль"; mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -350,3 +369,6 @@ exec --no-startup-id keepassxc
 exec --no-startup-id obsidian
 
 exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="unknown" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
+
+for_window [title="Application Finder"] floating enable resize set 640 480
+for_window [title="Nitrogen"] floating enable resize set 640 480
