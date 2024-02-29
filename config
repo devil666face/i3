@@ -1,3 +1,9 @@
+# /usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2023.02.18_all.deb keyring.deb SHA256:a511ac5f10cd811f8a4ca44d665f2fa1add7a9f09bef238cdfad8461f5239cc4
+# sudo apt install ./keyring.deb
+# echo "deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe" | sudo tee /etc/apt/sources.list.d/sur5r-i3.list
+# sudo apt update
+# sudo apt install i3
+
 # need to install
 # apt-get install i3-wm lxappearance picom dunst nitrogen gnome-screensaver qt5-style-kvantum qt5ct flameshot blueman volumeicon-alsa dmenu gnome-settings-daemon pavucontrol gnome-tweaks gnome-flashback
 # xfce4-power-manager 
@@ -284,10 +290,15 @@ mode "network" {
 bindsym $mod+n mode "network"
 
 # active window hint
-default_border pixel 1
+default_border pixel 4
 default_floating_border pixel 1
-new_window pixel 3
+new_window pixel 4
+smart_borders on
 hide_edge_borders smart
+gaps inner 9
+gaps outer 1
+smart_gaps on
+# smart_gaps inverse_outer
 
 # pallet gruvbox
 set $bg #282828
