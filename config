@@ -314,7 +314,7 @@ bar {
     strip_workspace_numbers yes
     tray_output primary
     tray_padding 4
-    font pango:JetBrains Mono Nerd Font Bold 12
+    font pango:JetBrains Mono Nerd Font Bold 12.5
     separator_symbol " "
     status_command i3status --config ~/.config/i3/i3status.conf
 
