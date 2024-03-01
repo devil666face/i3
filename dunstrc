@@ -1,5 +1,6 @@
 [global]
 monitor = 0
+transparency = 10
 follow = mouse
 width = 480
 height = 80
