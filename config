@@ -383,3 +383,6 @@ exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{p
 
 for_window [title="Application Finder"] floating enable resize set 640 480
 for_window [title="Nitrogen"] floating enable resize set 640 480
+
+# for add borders in gtk apps
+for_window [class=.*] border pixel 4
