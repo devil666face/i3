@@ -369,7 +369,7 @@ exec_always --no-startup-id xinput set-prop "ELAN1200:00 04F3:30BA Touchpad" "li
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # alert daemon
-# exec --no-startup-id dunst -conf $home/.config/i3/dunstrc
+exec --no-startup-id dunst -conf $home/.config/i3/dunstrc
 
 exec --no-startup-id i3-msg restart
 
@@ -386,3 +386,6 @@ for_window [title="Nitrogen"] floating enable resize set 640 480
 
 # for add borders in gtk apps
 for_window [class=.*] border pixel 4
+
+# for_window [class="gnome-flashback"] floating enable, move absolute position 25 px 520 px
+# for_window [class="Gnome-flashback"] floating enable, move absolute position 25 px 520 px
