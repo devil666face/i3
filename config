@@ -369,7 +369,7 @@ exec_always --no-startup-id xinput set-prop "ELAN1200:00 04F3:30BA Touchpad" "li
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # alert daemon
-exec --no-startup-id dunst -conf $home/.config/i3/dunstrc
+# exec --no-startup-id dunst -conf $home/.config/i3/dunstrc
 
 exec --no-startup-id i3-msg restart
 
