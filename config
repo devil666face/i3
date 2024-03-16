@@ -14,9 +14,9 @@
 
 # mod4 = Win
 set $mod Mod4
-set $wgname kalinkin-ru-tuf
-set $home /home/pps
-set $mon eDP-1-0
+set $wgname kalinkin-ru-tp
+set $home /home/d6f
+set $mon eDP-1
 
 # font
 font pango:JetBrains Mono Nerd Font SemiBold 14
@@ -47,8 +47,8 @@ exec --no-startup-id /usr/libexec/gsd-wwan
 exec --no-startup-id /usr/libexec/gsd-xsettings
 
 # set screen settings
-# exec --no-startup-id xrandr --auto
-exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
+exec --no-startup-id xrandr --auto
+# exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
 
 # start i3
 # gsettings set org.gnome.gnome-flashback desktop false
@@ -62,7 +62,7 @@ exec_always --no-startup-id nitrogen --restore
 # Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
 exec --no-startup-id nm-applet
 # exec --no-startup-id gnome-screensaver
-exec --no-startup-id volumeicon
+# exec --no-startup-id volumeicon
 # exec --no-startup-id xfce4-power-manager
 exec --no-startup-id blueman-applet
 
@@ -104,8 +104,8 @@ bindsym $mod+k exec --no-startup-id keepassxc
 bindsym Print exec --no-startup-id flameshot gui
 
 # dmenu for start apps
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#98971a' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=14:style:Bold:antialias=true:autohint=true'"
-bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --entry-type command --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#98971a' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=14:style:Bold:antialias=true:autohint=true'"
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
+bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --entry-type command --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
 
 # choose window
 bindsym $mod+Left focus left
@@ -313,9 +313,9 @@ set $gray #a89984
 set $darkgray #1d2021
 
 # class                 border    backgr    text      indicator child_border
-client.focused          $green    $green    $darkgray $purple   $yellow 
-client.focused_inactive $darkgray $darkgray $yellow   $purple   $gray
-client.unfocused        $darkgray $darkgray $yellow   $purple   $gray
+client.focused          $green    $green    $darkgray $fg       $yellow 
+client.focused_inactive $darkgray $darkgray $yellow   $fg       $gray
+client.unfocused        $darkgray $darkgray $yellow   $fg       $gray
 client.urgent           $red      $red      $white    $red      $red
 
 
@@ -331,13 +331,13 @@ bar {
 
 #                          border 	 bg		   txt		 indicator
     colors {
-        separator          $ebdbb2
+        separator          $fg
         background         $darkgray 
         statusline         $fg
-    	focused_workspace  $green    $green    $darkgray $purple   
+    	focused_workspace  $darkgray $fg       $darkgray $purple   
     	active_workspace   $darkgray $darkgray $yellow   $purple   
     	inactive_workspace $darkgray $darkgray $yellow   $purple   
-    	urgent_workspace   $red      $red      $white    $red      
+    	urgent_workspace   $darkgray $red      $fg       $red      
     }
 }
 
@@ -374,15 +374,16 @@ exec --no-startup-id dunst -conf $home/.config/i3/dunstrc
 exec --no-startup-id i3-msg restart
 
 # Autostart
-exec --no-startup-id mercury-browser
+exec --no-startup-id sleep 5 && mercury-browser
 exec --no-startup-id Updater
 exec --no-startup-id keepassxc
 exec --no-startup-id obsidian
 
-exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="unknown" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
+exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="cl" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
 
 for_window [title="Application Finder"] floating enable resize set 640 480
 for_window [title="Nitrogen"] floating enable resize set 640 480
+for_window [class="Gnome-calculator"] floating enable
 
 # for add borders in gtk apps
 for_window [class=.*] border pixel 4
