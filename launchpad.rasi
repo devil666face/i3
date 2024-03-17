@@ -7,8 +7,9 @@ configuration {
 
 * {
     font: "JetBrains Mono Nerd Font 13";
+    highlight: bold;
 
-    bg0:  #282828d0;
+    bg0:  #282828D0;
     bg1:  #32302f;
     bg2:  #665c5420;
     bg3:  #665c5440;
@@ -35,7 +36,6 @@ mainbox {
 
 inputbar {
   background-color: transparent;
-
   margin:   0px calc( 50% - 120px );
   padding:  2px 4px;
   spacing:  4px;
@@ -59,7 +59,6 @@ element, element-text, element-icon {
 element {
   padding:      8px;
   spacing:      4px;
-
   orientation:    vertical;
   border-radius:  16px;
 }

@@ -105,28 +105,26 @@ bindsym $mod+k exec --no-startup-id keepassxc
 bindsym Print exec --no-startup-id flameshot gui
 
 # dmenu for start apps
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
-bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --entry-type command --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
-# bindsym $mod+a exec --no-startup-id \
-#                                "rofi \
-#                                -sidebar-mode \
-#                                -modi drun,ssh,filebrowser \
-#                                -show drun \
-#                                -drun-match-fields name,generic,exec,categories \
-#                                -drun-display-format {name} \
-#                                -window-match-fields title,class,name,desktop \
-#                                -font 'JetBrains Mono Nerd Font 13' \
-#                                -matching normal \
-#                                -show-icons \
-#                                -location 0 \
-#                                -display-ssh 'Ssh' \
-#                                -display-drun 'Run' \
-#                                -display-filebrowser 'File' \
-#                                -kb-mode-next Tab \
-#                                -kb-row-tab Control+Tab \
-#                                -click-to-exit \
-#                                -theme ~/.config/i3/gruvbox-dark.rasi \
-#                                "
+bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
+# bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --entry-type command --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
+bindsym $mod+d exec --no-startup-id \
+                               "rofi \
+                               -modi drun,ssh,filebrowser,run \
+                               -show drun \
+                               -drun-match-fields name,generic,exec,categories \
+                               -drun-display-format {name} \
+                               -window-match-fields title,class,name,desktop \
+                               -matching normal \
+                               -location 0 \
+                               -display-ssh 'Ssh' \
+                               -display-drun 'App' \
+                               -display-filebrowser 'File' \
+                               -display-run 'Run' \
+                               -kb-mode-next Tab \
+                               -kb-row-tab Control+Tab \
+                               -click-to-exit \
+                               -theme ~/.config/i3/gruvbox-dark.rasi \
+                               "
 
 bindsym $mod+a exec --no-startup-id \
                                 "rofi \
