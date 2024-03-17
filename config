@@ -277,7 +277,6 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # lock screen
-bindsym $mod+Shift+l exec --no-startup-id gnome-screensaver-command -la && xset dpms force off
 
 mode "power" {
     # exit to xsession
@@ -418,7 +417,11 @@ exec --no-startup-id Updater
 exec --no-startup-id keepassxc
 exec --no-startup-id obsidian
 
+# kb layout on bar
 exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="cl" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
+
+# poweroff in 5 sec when screen is lock
+exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') xset dpms 5;; *'\''boolean false'\'') xset dpms 0;; esac; sleep 1; done'
 
 for_window [title="Application Finder"] floating enable resize set 640 480
 for_window [title="Nitrogen"] floating enable resize set 640 480
