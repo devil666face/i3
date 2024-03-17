@@ -5,7 +5,8 @@
 # sudo apt install i3
 
 # need to install
-# apt-get install i3-wm lxappearance picom dunst nitrogen gnome-screensaver qt5-style-kvantum qt5ct flameshot blueman volumeicon-alsa dmenu gnome-settings-daemon pavucontrol gnome-tweaks gnome-flashback gnome-color-manager
+# apt-get install i3-wm lxappearance picom dunst nitrogen gnome-screensaver qt5-style-kvantum qt5ct flameshot blueman dmenu gnome-settings-daemon pavucontrol gnome-tweaks gnome-flashback gnome-color-manager rofi
+# volumeicon-alsa 
 # xfce4-power-manager 
 # 1. Set theme via gnome-tweaks
 # 2. Set theme via lxappearance
@@ -106,6 +107,45 @@ bindsym Print exec --no-startup-id flameshot gui
 # dmenu for start apps
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
 bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --entry-type command --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
+# bindsym $mod+a exec --no-startup-id \
+#                                "rofi \
+#                                -sidebar-mode \
+#                                -modi drun,ssh,filebrowser \
+#                                -show drun \
+#                                -drun-match-fields name,generic,exec,categories \
+#                                -drun-display-format {name} \
+#                                -window-match-fields title,class,name,desktop \
+#                                -font 'JetBrains Mono Nerd Font 13' \
+#                                -matching normal \
+#                                -show-icons \
+#                                -location 0 \
+#                                -display-ssh 'Ssh' \
+#                                -display-drun 'Run' \
+#                                -display-filebrowser 'File' \
+#                                -kb-mode-next Tab \
+#                                -kb-row-tab Control+Tab \
+#                                -click-to-exit \
+#                                -theme ~/.config/i3/gruvbox-dark.rasi \
+#                                "
+
+bindsym $mod+a exec --no-startup-id \
+                                "rofi \
+                                -modi drun \
+                                -show drun \
+                                -drun-match-fields name,generic,exec,categories \
+                                -drun-display-format {name} \
+                                -window-match-fields title,class,name,desktop \
+                                -matching normal \
+                                -location 0 \
+                                -display-ssh 'Ssh' \
+                                -display-drun 'Run' \
+                                -display-filebrowser 'File' \
+                                -kb-mode-next Tab \
+                                -kb-row-tab Control+Tab \
+                                -click-to-exit \
+                                -theme ~/.config/i3/launchpad.rasi \
+                                "
+
 
 # choose window
 bindsym $mod+Left focus left
@@ -141,7 +181,7 @@ bindsym $mod+space floating toggle
 # bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus parent
 
 # focus the child container
 # bindsym $mod+d focus child
@@ -384,6 +424,7 @@ exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{p
 for_window [title="Application Finder"] floating enable resize set 640 480
 for_window [title="Nitrogen"] floating enable resize set 640 480
 for_window [class="Gnome-calculator"] floating enable
+for_window [class="Rofi"] floating enable, resize set 640 480, move absolute position 640 px 300 px
 
 # for add borders in gtk apps
 for_window [class=.*] border pixel 4
