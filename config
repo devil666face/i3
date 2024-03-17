@@ -276,6 +276,9 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# lock screen
+bindsym $mod+Shift+l exec --no-startup-id gnome-screensaver-command -la && xset dpms force off
+
 mode "power" {
     # exit to xsession
     bindsym e exec --no-startup-id i3-msg exit; mode "default"
@@ -285,8 +288,6 @@ mode "power" {
     bindsym Shift+s exec --no-startup-id systemctl suspend; mode "default"
     # reboot
     bindsym r exec --no-startup-id systemctl reboot; mode "default"
-	# lock screen
-	# bindsym l exec --no-startup-id gnome-screensaver-command -la; mode "default"
 	# perfomance power
 	# bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
     #     echo "⚡️" > /tmp/profile && \
