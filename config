@@ -116,10 +116,10 @@ bindsym $mod+d exec --no-startup-id \
                                -window-match-fields title,class,name,desktop \
                                -matching normal \
                                -location 0 \
-                               -display-ssh 'Ssh' \
-                               -display-drun 'App' \
-                               -display-filebrowser 'File' \
-                               -display-run 'Run' \
+                               -display-ssh '󰢹' \
+                               -display-drun '󰣆' \
+                               -display-filebrowser '󰉖' \
+                               -display-run '' \
                                -kb-mode-next Tab \
                                -kb-row-tab Control+Tab \
                                -click-to-exit \

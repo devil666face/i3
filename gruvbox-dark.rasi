@@ -38,15 +38,15 @@ element-icon, element-text, scrollbar {
 }
 
 window {
-	location : northwest;
-	width    : 280px;
-	x-offset : 10px;
-	y-offset : 38px;
+  location : northwest;
+  width    : 280px;
+  x-offset : 10px;
+  y-offset : 38px;
 
-	background-color: @bg1;
-	border-color: @yellow;
-	border-radius: 4;
-	border: 4;
+  background-color: @bg1;
+  border-color: @yellow;
+  border-radius: 4;
+  border: 4;
 }
 
 inputbar {
