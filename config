@@ -245,6 +245,7 @@ assign [class="mercury-default"] $ws2
 assign [class="Navigator"] $ws2
 assign [class="Thorium-browser"] $ws2
 assign [class="TelegramDesktop"] $ws3
+assign [class="Element"] $ws3
 assign [class="thunderbird"] $ws3
 assign [class="obsidian"] $ws4
 assign [class="KeePassXC"] $ws5
