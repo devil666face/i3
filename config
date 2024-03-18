@@ -5,9 +5,10 @@
 # sudo apt install i3
 
 # need to install
-# apt-get install i3-wm lxappearance picom dunst nitrogen gnome-screensaver qt5-style-kvantum qt5ct flameshot blueman dmenu gnome-settings-daemon pavucontrol gnome-tweaks gnome-flashback gnome-color-manager rofi parcellite
+# apt-get install i3-wm lxappearance picom dunst nitrogen gnome-screensaver qt5-style-kvantum qt5ct flameshot blueman gnome-settings-daemon pavucontrol gnome-tweaks gnome-flashback gnome-color-manager rofi diodon
 # volumeicon-alsa 
 # xfce4-power-manager 
+# dmenu 
 # 1. Set theme via gnome-tweaks
 # 2. Set theme via lxappearance
 # 3. Set theme via kvantum
@@ -411,7 +412,7 @@ exec_always --no-startup-id xinput set-prop "ELAN1200:00 04F3:30BA Touchpad" "li
 exec --no-startup-id dunst -conf $home/.config/i3/dunstrc
 
 # clipboard daemon
-exec --no-startup-id parcellite -n
+exec --no-startup-id diodon
 
 exec --no-startup-id i3-msg restart
 
