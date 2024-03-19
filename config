@@ -106,7 +106,7 @@ bindsym $mod+k exec --no-startup-id keepassxc
 bindsym Print exec --no-startup-id flameshot gui
 
 # dmenu for start apps
-bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
+# bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
 # bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --entry-type command --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
 bindsym $mod+d exec --no-startup-id \
                                "rofi \
@@ -136,11 +136,6 @@ bindsym $mod+a exec --no-startup-id \
                                 -window-match-fields title,class,name,desktop \
                                 -matching normal \
                                 -location 0 \
-                                -display-ssh 'Ssh' \
-                                -display-drun 'Run' \
-                                -display-filebrowser 'File' \
-                                -kb-mode-next Tab \
-                                -kb-row-tab Control+Tab \
                                 -click-to-exit \
                                 -theme ~/.config/i3/launchpad.rasi \
                                 "
@@ -290,9 +285,6 @@ mode "power" {
     # reboot
     bindsym r exec --no-startup-id systemctl reboot; mode "default"
 	# perfomance power
-	# bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
-    #     echo "⚡️" > /tmp/profile && \
-    #     dunstify "Power" "Производительный профиль"; mode "default"
 	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
         echo "󰓅" > /tmp/profile && \
         dunstify "Power" "Производительный профиль"; mode "default"
@@ -301,9 +293,6 @@ mode "power" {
         rm /tmp/profile && \
         dunstify "Power" "Сбалансированный профиль"; mode "default"
 	# economy power
-	# bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
-    #     echo "🐢" > /tmp/profile && \
-    #     dunstify "Power" "Экономичный профиль"; mode "default"
 	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
         echo "󰾆" > /tmp/profile && \
         dunstify "Power" "Экономичный профиль"; mode "default"
