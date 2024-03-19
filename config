@@ -288,15 +288,15 @@ mode "power" {
 	# perfomance power
 	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
         echo "󰓅" > /tmp/profile && \
-        dunstify "Power" "Производительный профиль"; mode "default"
+        notify-send --icon=power "Power" "Производительный профиль"; mode "default"
 	# balanced power
 	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced && \
         rm /tmp/profile && \
-        dunstify "Power" "Сбалансированный профиль"; mode "default"
+        notify-send --icon=power "Power" "Сбалансированный профиль"; mode "default"
 	# economy power
 	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
         echo "󰾆" > /tmp/profile && \
-        dunstify "Power" "Экономичный профиль"; mode "default"
+        notify-send --icon=power "Power" "Экономичный профиль"; mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -308,10 +308,10 @@ mode "network" {
     # wg vpn
     bindsym c exec --no-startup-id wg-quick up $wgname && \
         echo $wgname > /tmp/vpn && \
-        dunstify "VPN" "Подключение к $wgname установлено"; mode "default"
+        notify-send --icon=vpn "VPN" "Подключение к $wgname установлено"; mode "default"
     bindsym d exec --no-startup-id wg-quick down $wgname && \
         rm /tmp/vpn && \
-        dunstify "VPN" "Подключение с $wgname разорвано"; mode "default"
+        notify-send --icon=vpn "VPN" "Подключение с $wgname разорвано"; mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
