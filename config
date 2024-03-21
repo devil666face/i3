@@ -14,6 +14,10 @@
 # 2. Set theme via lxappearance
 # 3. Set theme via kvantum
 # 4. Set font via qt5ct
+# set this settings
+# gsettings set org.gnome.gnome-flashback desktop false
+# gsettings set org.gnome.gnome-flashback root-background true
+# gsettings set org.gnome.gnome-flashback status-notifier-watcher false
 
 # mod4 = Win
 set $mod Mod4
@@ -24,6 +28,7 @@ set $mon eDP-1
 # font
 font pango:JetBrains Mono Nerd Font SemiBold 14
 
+# gnome alternative session
 exec --no-startup-id gnome-flashback
 
 # optional gnome-settings-daemons
@@ -54,9 +59,6 @@ exec --no-startup-id xrandr --auto
 # exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
 
 # start i3
-# gsettings set org.gnome.gnome-flashback desktop false
-# gsettings set org.gnome.gnome-flashback root-background true
-# gsettings set org.gnome.gnome-flashback status-notifier-watcher false
 exec --no-startup-id dex --autostart --environment i3
 
 # wallpaper
@@ -64,10 +66,10 @@ exec_always --no-startup-id nitrogen --restore
 
 # Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
 # exec --no-startup-id gnome-screensaver
 # exec --no-startup-id volumeicon
 # exec --no-startup-id xfce4-power-manager
-exec --no-startup-id blueman-applet
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
@@ -85,23 +87,9 @@ bindsym $mod+Return exec --no-startup-id alacritty --config-file ~/.config/i3/al
 # kill focused window
 bindsym $mod+q kill
 
+# start binds in default layer
 # filebrowser
 bindsym $mod+f exec --no-startup-id nautilus -w
-
-# settings
-bindsym $mod+s exec --no-startup-id gnome-control-center
-
-# browser
-bindsym $mod+w exec --no-startup-id mercury-browser
-
-# telegram
-bindsym $mod+t exec --no-startup-id Updater
-
-# obsidian
-bindsym $mod+o exec --no-startup-id obsidian
-
-# keepass
-bindsym $mod+k exec --no-startup-id keepassxc
 
 # screenshot
 bindsym Print exec --no-startup-id flameshot gui
@@ -140,7 +128,6 @@ bindsym $mod+a exec --no-startup-id \
                                 -click-to-exit \
                                 -theme ~/.config/i3/launchpad.rasi \
                                 "
-
 
 # choose window
 bindsym $mod+Left focus left
@@ -318,6 +305,41 @@ mode "network" {
     bindsym $mod+n mode "default"
 }
 bindsym $mod+n mode "network"
+
+# start binds in start mode
+mode "start" {
+    # settings
+    bindsym c exec --no-startup-id gnome-control-center; mode "default"
+    # browser
+    bindsym w exec --no-startup-id mercury-browser; mode "default"
+    # another browser
+    bindsym h exec --no-startup-id thorium-browser; mode "default"
+    # another browser private
+    bindsym Shift+h exec --no-startup-id thorium-browser --incognito; mode "default"
+    # telegram
+    bindsym t exec --no-startup-id Updater; mode "default"
+    # obsidian
+    bindsym o exec --no-startup-id obsidian; mode "default"
+    # keepass
+    bindsym k exec --no-startup-id keepassxc; mode "default"
+    # remmina
+    bindsym r exec --no-startup-id remmina; mode "default"
+    # calculator
+    bindsym l exec --no-startup-id gnome-calculator; mode "default"
+    # geany
+    bindsym g exec --no-startup-id geany; mode "default"
+    # virt-manager
+    bindsym v exec --no-startup-id virt-manager; mode "default"
+    # pulseaudio
+    bindsym p exec --no-startup-id pavucontrol; mode "default"
+    # bluetooth
+    bindsym b exec --no-startup-id blueman-manager; mode "default"
+    
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+s mode "default"
+}
+bindsym $mod+s mode "start"
 
 # active window hint
 default_border pixel 4
