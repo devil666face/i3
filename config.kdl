@@ -1,10 +1,14 @@
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
-// mouse_mode false
-copy_on_select false
+mouse_mode true
+copy_on_select true
 copy_command "xclip -selection clipboard"
 copy_clipboard "primary"
 theme "gruvbox-dark"
-default_layout "compact"
+// default_layout "compact"
+env {
+    EDITOR "/opt/helix/hx"
+    VISUAL "/opt/helix/hx"
+}
 keybinds {
     normal {
         unbind "Alt h" "Alt l" "Alt j" "Alt k"
