@@ -57,10 +57,6 @@ exec --no-startup-id /usr/libexec/gsd-wacom-oled-helper
 exec --no-startup-id /usr/libexec/gsd-wwan
 exec --no-startup-id /usr/libexec/gsd-xsettings
 
-# set screen settings
-# exec --no-startup-id xrandr --auto
-exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
-
 # start i3
 exec --no-startup-id dex --autostart --environment i3
 
@@ -432,7 +428,7 @@ exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
 # clipboard daemon
 exec --no-startup-id diodon
 
-exec --no-startup-id i3-msg restart
+# exec --no-startup-id i3-msg restart
 
 # Autostart
 exec --no-startup-id sleep 5 && mercury-browser
@@ -456,3 +452,7 @@ for_window [class=.*] border pixel 4
 
 # for_window [class="gnome-flashback"] floating enable, move absolute position 25 px 520 px
 # for_window [class="Gnome-flashback"] floating enable, move absolute position 25 px 520 px
+
+# set screen settings
+# exec --no-startup-id xrandr --auto
+exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
