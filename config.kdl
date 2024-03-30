@@ -1,4 +1,3 @@
-// If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
 mouse_mode true
 copy_on_select true
 copy_command "xclip -selection clipboard"
@@ -22,6 +21,7 @@ keybinds {
         bind "Alt 8" { GoToTab 8; SwitchToMode "Normal"; }
         bind "Alt 9" { GoToTab 9; SwitchToMode "Normal"; }
         bind "Alt c" { Copy; }
+        bind "Alt t" { NewTab; SwitchToMode "Normal"; }
     }
     locked {
         bind "Ctrl g" { SwitchToMode "Normal"; }
