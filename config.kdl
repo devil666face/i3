@@ -2,7 +2,8 @@ mouse_mode true
 copy_on_select true
 copy_command "xclip -selection clipboard"
 copy_clipboard "primary"
-theme "gruvbox-dark"
+// theme "gruvbox-dark"
+theme "catppuccin-latte"
 // default_layout "compact"
 env {
     EDITOR "/opt/helix/hx"

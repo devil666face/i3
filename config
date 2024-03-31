@@ -114,7 +114,7 @@ bindsym $mod+d exec --no-startup-id \
                                -kb-mode-next Tab \
                                -kb-row-tab Control+Tab \
                                -click-to-exit \
-                               -theme ~/.config/i3/gruvbox-dark.rasi \
+                               -theme ~/.config/i3/menu.rasi \
                                "
 
 bindsym $mod+a exec --no-startup-id \
@@ -354,16 +354,29 @@ smart_gaps on
 # smart_gaps inverse_outer
 
 # pallet gruvbox
+# set $bg #282828
+# set $fg #ebdbb2
+# set $red #cc241d
+# set $green #98971a
+# set $yellow #d79921
+# set $blue #458588
+# set $purple #b16286
+# set $aqua #689d68
+# set $gray #a89984
+# set $darkgray #1d2021
+
+# pallet catppuccin
 set $bg #282828
-set $fg #ebdbb2
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
+set $fg #4c4f69
+set $red #d20f39
+set $green #40a02b
+set $yellow #cba6f7
+set $blue #1e66f5
+set $purple #ea76cb
 set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
+set $gray #4c4f69
+set $darkgray #eff1f5
+
 
 # class                 border    backgr    text      indicator child_border
 client.focused          $green    $green    $darkgray $fg       $yellow 
@@ -380,7 +393,8 @@ bar {
     tray_padding 4
     font pango:JetBrains Mono Nerd Font Bold 12.5
     separator_symbol " "
-    status_command i3status --config ~/.config/i3/i3status.conf
+    # status_command i3status --config ~/.config/i3/i3status.conf
+    status_command i3status --config ~/.config/i3/i3status-catppuccin.conf
 
 #                          border 	 bg		   txt		 indicator
     colors {
