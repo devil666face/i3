@@ -622,23 +622,23 @@ schemes:
 
     # Normal colors
     normal:
+      yellow: "0xd2b67b"
+      blue: "#1E66F5" # blue
+      magenta: "0xa00095"
       black: "#45475A" # surface1
-      red: "#F38BA8" # red
-      green: "#A6E3A1" # green
-      yellow: "#F9E2AF" # yellow
-      blue: "#89B4FA" # blue
-      magenta: "#F5C2E7" # pink
-      cyan: "#94E2D5" # teal
+      red: "#D20F39" # red
+      green: "#40A02B" # green
+      cyan: "#179299" # teal
       white: "#BAC2DE" # subtext1
 
     # Bright colors
     bright:
+      yellow: "0xd2b67b"
+      magenta: "0xa00095"
       black: "#6C6F85" # subtext0
       red: "#D20F39" # red
       green: "#40A02B" # green
-      yellow: "#DF8E1D" # yellow
       blue: "#1E66F5" # blue
-      magenta: "#EA76CB" # pink
       cyan: "#179299" # teal
       white: "#BCC0CC" # surface1
 
@@ -672,7 +672,7 @@ schemes:
     # *SolarizedDark
     # *TomorrowNight
 
-colors: *OneLight
+colors: *Catppuccin-Latte
 
 # Visual Bell
 #
