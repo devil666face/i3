@@ -404,7 +404,8 @@ bar {
     	focused_workspace  $darkgray $fg       $darkgray $purple   
     	active_workspace   $darkgray $darkgray $yellow   $purple   
     	inactive_workspace $darkgray $darkgray $yellow   $purple   
-    	urgent_workspace   $darkgray $red      $fg       $red      
+    	# urgent_workspace   $darkgray $red      $fg       $red      
+    	urgent_workspace   $darkgray $red      $darkgray $red      
     }
 }
 
