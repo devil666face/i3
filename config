@@ -366,17 +366,28 @@ smart_gaps on
 # set $darkgray #1d2021
 
 # pallet catppuccin
-set $bg #282828
-set $fg #4c4f69
-set $red #d20f39
-set $green #40a02b
-set $yellow #cba6f7
-set $blue #1e66f5
-set $purple #ea76cb
-set $aqua #689d68
-set $gray #4c4f69
-set $darkgray #eff1f5
+# set $bg #282828
+# set $fg #4c4f69
+# set $red #d20f39
+# set $green #40a02b
+# set $yellow #cba6f7
+# set $blue #1e66f5
+# set $purple #ea76cb
+# set $aqua #689d68
+# set $gray #4c4f69
+# set $darkgray #eff1f5
 
+# pallet dracula
+set $bg #44475A
+set $fg #F8F8F2
+set $red #FF5555
+set $green #50FA7B
+set $yellow #BD93F9
+set $blue #8BE9FD
+set $purple #FF79C6
+set $aqua #689d68
+set $gray #6272A4
+set $darkgray #282A36
 
 # class                 border    backgr    text      indicator child_border
 client.focused          $green    $green    $darkgray $fg       $yellow 
@@ -394,7 +405,8 @@ bar {
     font pango:JetBrains Mono Nerd Font Bold 12.5
     separator_symbol " "
     # status_command i3status --config ~/.config/i3/i3status.conf
-    status_command i3status --config ~/.config/i3/i3status-catppuccin.conf
+    # status_command i3status --config ~/.config/i3/i3status-catppuccin.conf
+    status_command i3status --config ~/.config/i3/i3status-dracula.conf
 
 #                          border 	 bg		   txt		 indicator
     colors {
