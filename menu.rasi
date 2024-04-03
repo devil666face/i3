@@ -11,24 +11,27 @@ configuration {
     highlight: bold;
     scrollbar: false;
 
+    // gruvbox
     // bg0:     #282828D0;
     // bg1:     #32302fD0;
     // bg2:     #665c54D0;
-    // bg3:     #665c5440;
     // fg0:     #fbf1c7;
-    // fg1:     #ebdbb2;
-    // fg2:     #ebdbb2;
     // yellow:  #d79921;
 
-    bg0:     #eff1f5D0;
-    bg1:     #eff1f5D0;
-    bg2:     #eff1f5D0;
-    bg3:     #eff1f540;
-    fg0:     #4c4f69;
-    fg1:     #d20f39;
-	fg2:     #d20f39;
-	yellow:  #cba6f7;
+    // cattpucin-latte
+    // bg0:     #eff1f5D0;
+    // bg1:     #eff1f5D0;
+    // bg2:     #eff1f5D0;
+    // fg0:     #4c4f69;
+	// yellow:  #cba6f7;
 
+    // dracula
+    bg0:     #282A36D0;
+    bg1:     #282A36D0;
+    bg2:     #282A36D0;
+    fg0:     #F8F8F2;
+	yellow:  #BD93F9;
+    
 	// accent: @yellow;
 	accent: @fg0;
 
