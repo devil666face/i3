@@ -19,14 +19,23 @@
 # gsettings set org.gnome.gnome-flashback root-background true
 # gsettings set org.gnome.gnome-flashback status-notifier-watcher false
 
-# mod4 = Win
 set $mod Mod4
 set $wgname kalinkin-ru-tuf
 set $home /home/pps
 set $mon eDP-1-0
+
 # set $wgname kalinkin-ru-tp
 # set $home /home/d6f
 # set $mon eDP-1
+
+# set $wgname kalinkin-ru-tp
+# set $home /home/a.kalinkin
+# set $mon DP-3
+
+set $chrome thorium-browser
+set $firefox mercury-browser
+set $telegram Updater
+set $usa-ssh host02.d6f.ru
 
 # font
 font pango:JetBrains Mono Nerd Font SemiBold 14
@@ -69,13 +78,6 @@ exec --no-startup-id blueman-applet
 # exec --no-startup-id gnome-screensaver
 # exec --no-startup-id volumeicon
 # exec --no-startup-id xfce4-power-manager
-
-# Use pactl to adjust volume in PulseAudio.
-# set $refresh_i3status killall -SIGUSR1 i3status
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -168,17 +170,6 @@ bindsym $mod+Shift+a focus parent
 
 # focus the child container
 # bindsym $mod+d focus child
-
-# workspaces
-# set $ws1 "1:1 💡"
-# set $ws2 "2:2 🌐"
-# set $ws3 "3:3 📨"
-# set $ws4 "4:4 🧠"
-# set $ws5 "5:5 🔐"
-# set $ws6 "6:6 💻"
-# set $ws7 "7:7 📦"
-# set $ws8 "8:8 ⚙️"
-# set $ws9 "9:9 📺"
 
 # workspaces
 set $ws1 "1:1  "
@@ -312,13 +303,13 @@ mode "start" {
     # settings
     bindsym c exec --no-startup-id gnome-control-center; mode "default"
     # browser
-    bindsym w exec --no-startup-id mercury-browser; mode "default"
+    bindsym w exec --no-startup-id $firefox; mode "default"
     # another browser
-    bindsym h exec --no-startup-id thorium-browser; mode "default"
+    bindsym h exec --no-startup-id $chrome; mode "default"
     # another browser private
-    bindsym Shift+h exec --no-startup-id thorium-browser --incognito; mode "default"
+    bindsym Shift+h exec --no-startup-id $chrome --incognito; mode "default"
     # telegram
-    bindsym t exec --no-startup-id Updater; mode "default"
+    bindsym t exec --no-startup-id $telegram; mode "default"
     # obsidian
     bindsym o exec --no-startup-id obsidian; mode "default"
     # keepass
@@ -335,6 +326,8 @@ mode "start" {
     bindsym p exec --no-startup-id pavucontrol; mode "default"
     # bluetooth
     bindsym b exec --no-startup-id blueman-manager; mode "default"
+    # chrome with proxy an ai
+    bindsym a exec --no-startup-id ssh -f -C -D 1337 $usa-ssh -N && $chrome --proxy-server="socks5://127.0.0.1:1337" https://chat.openai.com https://gemini.google.com https://phind.com https://www.bing.com/chat; mode "default"
     
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -431,31 +424,12 @@ exec_always --no-startup-id sleep 5 && picom --experimental-backend --config $ho
 exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 exec_always --no-startup-id xinput set-prop "ELAN1200:00 04F3:30BA Touchpad" "libinput Tapping Enabled" 1
 
-# Optional check this daemons
-# ps -eH  | grep system76
-#     562 ?        00:00:00   system76-power
-#     563 ?        00:00:00   system76-schedu
-#    1432 ?        00:00:00     system76-schedu
-# Use
-# ❯ system76-power profile performance
-# ❯ system76-power profile balanced
-
-# optional
-# exec_always --no-startup-id syndaemon -i 0.8 -d -k
-# for_window [class="^.*"] border pixel 0
-# optional if your not use xfce4-power-manager
-# bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
-# bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
 # alert daemon
 # exec --no-startup-id dunst -conf $home/.config/i3/dunstrc
 exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
 
 # clipboard daemon
 exec --no-startup-id diodon
-
-# exec --no-startup-id i3-msg restart
 
 # Autostart
 exec --no-startup-id sleep 5 && mercury-browser
@@ -477,9 +451,33 @@ for_window [class="Rofi"] floating enable, resize set 640 480, move absolute pos
 # for add borders in gtk apps
 for_window [class=.*] border pixel 4
 
-# for_window [class="gnome-flashback"] floating enable, move absolute position 25 px 520 px
-# for_window [class="Gnome-flashback"] floating enable, move absolute position 25 px 520 px
-
 # set screen settings
 # exec --no-startup-id xrandr --auto
 exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
+
+# for_window [class="gnome-flashback"] floating enable, move absolute position 25 px 520 px
+# for_window [class="Gnome-flashback"] floating enable, move absolute position 25 px 520 px
+
+# Optional check this daemons
+# ps -eH  | grep system76
+#     562 ?        00:00:00   system76-power
+#     563 ?        00:00:00   system76-schedu
+#    1432 ?        00:00:00     system76-schedu
+# Use
+# ❯ system76-power profile performance
+# ❯ system76-power profile balanced
+
+# optional
+# exec_always --no-startup-id syndaemon -i 0.8 -d -k
+# for_window [class="^.*"] border pixel 0
+# optional if your not use xfce4-power-manager
+# bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+# bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# Use pactl to adjust volume in PulseAudio.
+# set $refresh_i3status killall -SIGUSR1 i3status
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
