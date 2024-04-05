@@ -238,15 +238,10 @@ bindsym $mod+Shift+r restart
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-    # Pressing left will shrink the window’s width.
-    # Pressing right will grow the window’s width.
-    # Pressing up will shrink the window’s height.
-    # Pressing down will grow the window’s height.
     bindsym Left resize shrink width 10 px or 10 ppt
     bindsym Down resize grow height 10 px or 10 ppt
     bindsym Up resize shrink height 10 px or 10 ppt
     bindsym Right resize grow width 10 px or 10 ppt
-    # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+r mode "default"
@@ -281,7 +276,16 @@ mode "power" {
     bindsym Escape mode "default"
     bindsym $mod+p mode "default"
 }
-bindsym $mod+p mode "power"
+bindsym $mod+p exec --no-startup-id notify-send --icon=power "power" "\
+1. E       exit from i3\n\
+2. S       shutdown\n\
+3. Shift+S sleep\n\
+4. R       reboot\n\
+5. F       power mode fast\n\
+6. B       power mode balanced\n\
+7. L       power mode low\n\
+"; mode "power"
+
 
 mode "network" {
     # wg vpn
@@ -296,7 +300,11 @@ mode "network" {
     bindsym Escape mode "default"
     bindsym $mod+n mode "default"
 }
-bindsym $mod+n mode "network"
+bindsym $mod+n exec --no-startup-id notify-send --icon=network "network" "\
+1. C connect $wgname\n\
+2. D disonnect $wgname\n\
+"; mode "network"
+
 
 # start binds in start mode
 mode "start" {
@@ -333,7 +341,22 @@ mode "start" {
     bindsym Escape mode "default"
     bindsym $mod+s mode "default"
 }
-bindsym $mod+s mode "start"
+bindsym $mod+s exec --no-startup-id notify-send --icon=terminal "start" "\
+1.  C       gnome-control-center\n\
+2.  W       $firefox\n\
+3.  H       $chrome\n\
+4.  Shift+H $chrome-private\n\
+5.  T       telegram\n\
+6.  O       obsidian\n\
+7.  K       keepassxc\n\
+8.  R       remmina\n\
+9.  L       calculator\n\
+10. G       geany\n\
+11. V       virt-manager\n\
+12. P       sound\n\
+13. B       bluetooth\n\
+14. A       ai+proxy\n\
+"; mode "start"
 
 # active window hint
 default_border pixel 4
