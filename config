@@ -20,17 +20,14 @@
 # gsettings set org.gnome.gnome-flashback status-notifier-watcher false
 
 set $mod Mod4
-# set $wgname kalinkin-ru-tuf
-# set $home /home/pps
-# set $mon eDP-1-0
-
-# set $wgname kalinkin-ru-tp
-# set $home /home/d6f
+set $wgname kalinkin-ru
+set $home /home/d6f
+set $mon eDP-1-0
 # set $mon eDP-1
 
-set $wgname 
-set $home /home/a.kalinkin
-set $mon DP-3
+# set $wgname 
+# set $home /home/a.kalinkin
+# set $mon DP-3
 
 set $chrome thorium-browser
 set $firefox mercury-browser
@@ -476,8 +473,8 @@ for_window [class=.*] border pixel 4
 
 # set screen settings
 # exec --no-startup-id xrandr --auto
-# exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
-exec_always --no-startup-id xrandr --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI-4 --off
+exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
+# exec_always --no-startup-id xrandr --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI-4 --off
 exec --no-startup-id i3-msg restart
 
 # for_window [class="gnome-flashback"] floating enable, move absolute position 25 px 520 px
