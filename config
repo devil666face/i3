@@ -461,7 +461,7 @@ exec --no-startup-id obsidian
 exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="cl" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
 
 # poweroff in 5 sec when screen is lock
-exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') xset dpms 5;; *'\''boolean false'\'') xset dpms 0;; esac; sleep 1; done'
+exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') xset dpms 10;; *'\''boolean false'\'') xset dpms 0;; esac; sleep 1; done'
 
 for_window [title="Application Finder"] floating enable resize set 640 480
 for_window [title="Nitrogen"] floating enable resize set 640 480
