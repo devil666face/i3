@@ -6,6 +6,7 @@
 
 # need to install
 # apt-get install i3-wm lxappearance picom nitrogen gnome-screensaver qt5-style-kvantum qt5ct flameshot blueman gnome-settings-daemon pavucontrol gnome-tweaks gnome-flashback gnome-color-manager rofi diodon xfce4-notifyd alacritty 
+# freerdp2-x11
 # volumeicon-alsa 
 # xfce4-power-manager 
 # dmenu 
@@ -20,14 +21,14 @@
 # gsettings set org.gnome.gnome-flashback status-notifier-watcher false
 
 set $mod Mod4
-# set $wgname kalinkin-ru
-# set $home /home/d6f
-# set $mon eDP-1-0
+set $wgname kalinkin-ru
+set $home /home/d6f
+set $mon eDP-1-0
 # set $mon eDP-1
 
-set $wgname 
-set $home /home/a.kalinkin
-set $mon DP-3
+# set $wgname 
+# set $home /home/a.kalinkin
+# set $mon DP-3
 
 set $chrome thorium-browser
 set $firefox mercury-browser
@@ -178,6 +179,7 @@ set $ws6 "6:6  "
 set $ws7 "7:7  "
 set $ws8 "8:8  "
 set $ws9 "9:9 󰨇 "
+set $ws10 "10:10  "
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -189,6 +191,7 @@ bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -200,6 +203,7 @@ bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # output workspace on monitor
 workspace $ws1 output $mon
@@ -211,6 +215,7 @@ workspace $ws6 output $mon
 workspace $ws7 output $mon
 workspace $ws8 output $mon
 workspace $ws9 output HDMI-0
+workspace $ws10 output $mon
 
 # rules for apps and ws
 assign [class="(?i)firefox"] $ws2
@@ -225,9 +230,11 @@ assign [class="KeePassXC"] $ws5
 assign [class="org.remmina.Remmina"] $ws6
 assign [class="Virt-manager"] $ws7
 assign [class="Gnome-control-center"] $ws8
+assign [class="xfreerdp"] $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+bindsym $mod+Tab reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -292,7 +299,10 @@ mode "network" {
     bindsym d exec --no-startup-id wg-quick down $wgname && \
         rm /tmp/vpn && \
         notify-send --icon=vpn "VPN" "Подключение с $wgname разорвано"; mode "default"
-    # back to normal: Enter or Escape
+    # docker rdp windows
+    bindsym r exec --no-startup-id notify-send --icon=remmina "RDP" "Подключение к windows" && \
+        xfreerdp /u:Docker /dynamic-resolution /v:172.17.0.2 /p:602488; mode "default"
+        
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+n mode "default"
@@ -300,6 +310,7 @@ mode "network" {
 bindsym $mod+n exec --no-startup-id notify-send --icon=network "network" "\
 1. C connect $wgname\n\
 2. D disonnect $wgname\n\
+3. R connect to docker windows\n\
 "; mode "network"
 
 
@@ -475,8 +486,8 @@ for_window [class=.*] border pixel 4
 
 # set screen settings
 # exec --no-startup-id xrandr --auto
-# exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
-exec_always --no-startup-id xrandr --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI-4 --off
+exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
+# exec_always --no-startup-id xrandr --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI-4 --off
 exec --no-startup-id i3-msg restart
 
 # for_window [class="gnome-flashback"] floating enable, move absolute position 25 px 520 px
