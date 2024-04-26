@@ -5,7 +5,8 @@
 # sudo apt install i3
 
 # need to install
-# apt-get install i3-wm lxappearance picom nitrogen gnome-screensaver qt5-style-kvantum qt5ct flameshot blueman gnome-settings-daemon pavucontrol gnome-tweaks gnome-flashback gnome-color-manager rofi diodon xfce4-notifyd alacritty 
+# apt-get install i3-wm lxappearance picom nitrogen gnome-screensaver qt5-style-kvantum qt5ct flameshot blueman gnome-settings-daemon pavucontrol gnome-tweaks gnome-flashback gnome-color-manager rofi diodon xfce4-notifyd
+# alacritty 
 # freerdp2-x11
 # volumeicon-alsa 
 # xfce4-power-manager 
@@ -84,7 +85,7 @@ floating_modifier $mod
 # bindsym $mod+Return exec --no-startup-id alacritty --config-file ~/.config/i3/alacritty.yml
 bindsym $mod+Return exec --no-startup-id gnome-terminal
 # start a terminal with forever one session
-bindsym $mod+Shift+Return exec --no-startup-id alacritty --config-file ~/.config/i3/alacritty.yml -e bash -c "zellij attach main || zellij --session main --config ~/.config/i3/config.kdl"
+# bindsym $mod+Shift+Return exec --no-startup-id alacritty --config-file ~/.config/i3/alacritty.yml -e bash -c "zellij attach main || zellij --session main --config ~/.config/i3/config.kdl"
 
 # kill focused window
 bindsym $mod+q kill
