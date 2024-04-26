@@ -81,7 +81,8 @@ exec --no-startup-id blueman-applet
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty --config-file ~/.config/i3/alacritty.yml
+# bindsym $mod+Return exec --no-startup-id alacritty --config-file ~/.config/i3/alacritty.yml
+bindsym $mod+Return exec --no-startup-id gnome-terminal
 # start a terminal with forever one session
 bindsym $mod+Shift+Return exec --no-startup-id alacritty --config-file ~/.config/i3/alacritty.yml -e bash -c "zellij attach main || zellij --session main --config ~/.config/i3/config.kdl"
 
