@@ -12,6 +12,7 @@
 # xfce4-power-manager 
 # dmenu 
 # dunst 
+# network-manager-openconnect-gnome openconnect
 # 1. Set theme via gnome-tweaks
 # 2. Set theme via lxappearance
 # 3. Set theme via kvantum
@@ -22,14 +23,14 @@
 # gsettings set org.gnome.gnome-flashback status-notifier-watcher false
 
 set $mod Mod4
-# set $wgname kalinkin-ru
-# set $home /home/d6f
-# set $mon eDP-1-0
+set $wgname kalinkin-ru
+set $home /home/d6f
+set $mon eDP-1-0
 # set $mon eDP-1
 
-set $wgname 
-set $home /home/a.kalinkin
-set $mon DP-3
+# set $wgname 
+# set $home /home/a.kalinkin
+# set $mon DP-3
 
 set $chrome thorium-browser
 set $firefox mercury-browser
@@ -301,7 +302,15 @@ mode "network" {
     bindsym d exec --no-startup-id wg-quick down $wgname && \
         rm /tmp/vpn && \
         notify-send --icon=vpn "VPN" "Подключение с $wgname разорвано"; mode "default"
+    # openconnect vpn
+    bindsym Shift+c exec --no-startup-id notify-send --icon=vpn "VPN" "Подключение к Openconnect установлено" && \
+        echo Openconnect > /tmp/vpn && \
+        echo "$OPENCONNECT_PASSWORD" | sudo openconnect -d "https://ocserv.d6f.ru/?devil666face" --user d6f --passwd-on-stdin; mode "default"
+    bindsym Shift+d exec --no-startup-id notify-send --icon=vpn "VPN" "Подключение с Openconnect разорвано" && \
+        rm /tmp/vpn && \
+        sudo pkill openconnect; mode "default"
     # docker rdp windows
+
     bindsym r exec --no-startup-id notify-send --icon=remmina "RDP" "Подключение к windows" && \
         xfreerdp /u:Docker /dynamic-resolution /v:172.17.0.2 /p:602488; mode "default"
         
@@ -310,9 +319,11 @@ mode "network" {
     bindsym $mod+n mode "default"
 }
 bindsym $mod+n exec --no-startup-id notify-send --icon=network "network" "\
-1. C connect $wgname\n\
-2. D disonnect $wgname\n\
-3. R connect to docker windows\n\
+1. C       connect $wgname\n\
+2. D       disonnect $wgname\n\
+3. R       connect to docker windows\n\
+4. Shift+C connect Openconnect\n\
+5. Shift+D disonnect Openconnect\n\
 "; mode "network"
 
 
@@ -488,8 +499,8 @@ for_window [class=.*] border pixel 4
 
 # set screen settings
 # exec --no-startup-id xrandr --auto
-# exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
-exec_always --no-startup-id xrandr --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI-4 --off
+exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
+# exec_always --no-startup-id xrandr --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI-4 --off
 exec --no-startup-id i3-msg restart
 
 # for_window [class="gnome-flashback"] floating enable, move absolute position 25 px 520 px
