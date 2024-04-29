@@ -22,7 +22,7 @@
 # gsettings set org.gnome.gnome-flashback root-background true
 # gsettings set org.gnome.gnome-flashback status-notifier-watcher false
 
-# gsettings set org.gnome.Terminal.Legacy.Settings confirm-close true
+# gsettings set org.gnome.Terminal.Legacy.Settings confirm-close false
 
 set $mod Mod4
 set $wgname kalinkin-ru
