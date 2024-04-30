@@ -239,9 +239,8 @@ assign [class="xfreerdp"] $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
-bindsym $mod+Tab reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Tab restart
 # exit i3 (logs you out of your X session)
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Close i3 and go to X session' -B 'Yes' 'i3-msg exit'"
 
