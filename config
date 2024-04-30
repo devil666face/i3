@@ -27,8 +27,8 @@
 set $mod Mod4
 set $wgname kalinkin-ru
 set $home /home/d6f
-set $mon eDP-1-0
-# set $mon eDP-1
+# set $mon eDP-1-0
+set $mon eDP-1
 
 # set $wgname 
 # set $home /home/a.kalinkin
@@ -485,7 +485,8 @@ exec --no-startup-id keepassxc
 exec --no-startup-id obsidian
 
 # brightness
-exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 2) * 100 / (255 - 2) ))%" > /tmp/bright; sleep 1; done'
+# exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 2) * 100 / (255 - 2) ))%" > /tmp/bright; sleep 1; done'
+exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 68) * 100 / (6818 - 68) ))%" > /tmp/bright; sleep 1; done'
 
 # kb layout on bar
 exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="cl" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
@@ -511,8 +512,8 @@ for_window [class="Rofi"] floating enable, resize set 640 480, move absolute pos
 # for_window [class="Gnome-flashback"] floating enable, move absolute position 25 px 520 px
 
 # set screen settings
-# exec --no-startup-id xrandr --auto
-exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
+exec --no-startup-id xrandr --auto
+# exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
 # exec_always --no-startup-id xrandr --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI-4 --off
 exec --no-startup-id i3-msg restart
 
