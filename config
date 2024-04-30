@@ -484,6 +484,9 @@ exec --no-startup-id Updater
 exec --no-startup-id keepassxc
 exec --no-startup-id obsidian
 
+# brightness
+exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 2) * 100 / (255 - 2) ))%" > /tmp/bright; sleep 1; done'
+
 # kb layout on bar
 exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="cl" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
 
