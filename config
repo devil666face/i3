@@ -189,10 +189,10 @@ bindsym $mod+Shift+a focus parent
 set $ws1 "1:1  "
 set $ws2 "2:2  "
 set $ws3 "3:3 󰈹 "
-set $ws4 "4:4 󰖟 "
-set $ws5 "5:5  "
-set $ws6 "6:6 󰧑 "
-set $ws7 "7:7  "
+set $ws4 "4:4  "
+set $ws5 "5:5 󰧑 "
+set $ws6 "6:6  "
+set $ws7 "7:7 󰖟 "
 set $ws8 "8:8  "
 set $ws9 "9:9 󰨇 "
 set $ws10 "10:10  "
@@ -236,14 +236,14 @@ workspace $ws10 output $mon
 # rules for apps and ws
 assign [class="(?i)firefox"] $ws3
 assign [class="mercury-default"] $ws3
-assign [class="Thorium-browser"] $ws4
-assign [class="TelegramDesktop"] $ws5
-assign [class="Element"] $ws5
-assign [class="thunderbird"] $ws4
-assign [class="obsidian"] $ws6
-assign [class="KeePassXC"] $ws6
-assign [class="org.remmina.Remmina"] $ws7
-assign [class="Virt-manager"] $ws7
+assign [class="Thorium-browser"] $ws7
+assign [class="TelegramDesktop"] $ws4
+assign [class="Element"] $ws4
+assign [class="thunderbird"] $ws7
+assign [class="obsidian"] $ws5
+assign [class="KeePassXC"] $ws5
+assign [class="org.remmina.Remmina"] $ws6
+assign [class="Virt-manager"] $ws6
 assign [class="Gnome-control-center"] $ws8
 assign [title="Nitrogen"] $ws8
 assign [class="Arandr"] $ws8
