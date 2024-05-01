@@ -89,6 +89,7 @@ floating_modifier $mod
 bindsym $mod+Return exec --no-startup-id gnome-terminal
 # start a terminal with forever one session
 # bindsym $mod+Shift+Return exec --no-startup-id alacritty --config-file ~/.config/i3/alacritty.yml -e bash -c "zellij attach main || zellij --session main --config ~/.config/i3/config.kdl"
+bindsym $mod+Shift+Return exec --no-startup-id gnome-terminal --class=floating
 
 # kill focused window
 bindsym $mod+q kill
@@ -516,6 +517,8 @@ exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interf
 for_window [class=.*] border pixel 4
 
 # application size rules
+for_window [class="floating"] floating enable, resize set 840 640
+for_window [class="Org.gnome.Nautilus"] floating enable, resize set 840 640
 for_window [title="Application Finder"] floating enable, resize set 640 480
 for_window [title="Nitrogen"] floating enable, resize set 640 480
 for_window [class="Arandr"] floating enable, resize set 640 480
@@ -523,7 +526,6 @@ for_window [class="Nm-connection-editor"] floating enable, resize set 640 480
 for_window [class="Pavucontrol"] floating enable, resize set 840 480
 for_window [class="Blueman-manager"] floating enable, resize set 640 480
 for_window [class="Gnome-tweaks"] floating enable, resize set 640 480
-for_window [class="Org.gnome.Nautilus"] floating enable, resize set 840 640
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="Rofi"] floating enable, resize set 640 480, move absolute position 640 px 300 px
 # for_window [class="gnome-flashback"] floating enable, move absolute position 25 px 520 px
