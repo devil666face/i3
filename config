@@ -187,18 +187,20 @@ bindsym $mod+Shift+a focus parent
 # set $ws9 "9:9 󰨇 "
 # set $ws10 "10:10  "
 
-set $ws1 "1:1  "
-set $ws2 "2:2  "
-set $ws3 "3:3 󰈹 "
-set $ws4 "4:4  "
-set $ws5 "5:5 󰧑 "
-set $ws6 "6:6  "
-set $ws7 "7:7 󰖟 "
-set $ws8 "8:8  "
+set $ws0 "0:0  "
+set $ws1 "1:1  "
+set $ws2 "2:2 󰈹 "
+set $ws3 "3:3  "
+set $ws4 "4:4 󰧑 "
+set $ws5 "5:5 󰖟 "
+set $ws6 "6:6 󰯄 "
+set $ws7 "7:7  "
+set $ws8 "8:8  "
 set $ws9 "9:9 󰨇 "
-set $ws10 "10:10  "
+set $ws10 "10:10  "
 
 # switch to workspace
+bindsym $mod+grave workspace number $ws0
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
@@ -211,6 +213,7 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # move focused container to workspace
+bindsym $mod+Shift+grave move container to workspace number $ws0
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
@@ -223,6 +226,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # output workspace on monitor
+workspace $ws0 output $mon
 workspace $ws1 output $mon
 workspace $ws2 output $mon
 workspace $ws3 output $mon
@@ -235,25 +239,25 @@ workspace $ws9 output HDMI-0
 workspace $ws10 output $mon
 
 # rules for apps and ws
-assign [class="(?i)firefox"] $ws3
-assign [class="mercury-default"] $ws3
-assign [class="Thorium-browser"] $ws7
-assign [class="TelegramDesktop"] $ws4
-assign [class="Element"] $ws4
-assign [class="thunderbird"] $ws7
-assign [class="obsidian"] $ws5
-assign [class="KeePassXC"] $ws5
-assign [class="org.remmina.Remmina"] $ws6
-assign [class="Virt-manager"] $ws6
-assign [class="Gnome-control-center"] $ws8
-assign [title="Nitrogen"] $ws8
-assign [class="Arandr"] $ws8
-assign [class="Nm-connection-editor"] $ws8
-assign [class="Pavucontrol"] $ws8
-assign [class="Blueman-manager"] $ws8
-assign [class="Gnome-tweaks"] $ws8
-assign [class="Gnome-calculator"] $ws8
-assign [class="xfreerdp"] $ws10
+assign [class="(?i)firefox"] $ws2
+assign [class="mercury-default"] $ws2
+assign [class="Thorium-browser"] $ws5
+assign [class="TelegramDesktop"] $ws3
+assign [class="Element"] $ws3
+assign [class="thunderbird"] $ws5
+assign [class="obsidian"] $ws4
+assign [class="KeePassXC"] $ws6
+assign [class="org.remmina.Remmina"] $ws7
+assign [class="Virt-manager"] $ws7
+assign [class="Gnome-control-center"] $ws10
+assign [title="Nitrogen"] $ws10
+assign [class="Arandr"] $ws10
+assign [class="Nm-connection-editor"] $ws10
+assign [class="Pavucontrol"] $ws10
+assign [class="Blueman-manager"] $ws10
+assign [class="Gnome-tweaks"] $ws10
+assign [class="Gnome-calculator"] $ws10
+assign [class="xfreerdp"] $ws8
 
 
 # reload the configuration file
@@ -497,12 +501,6 @@ exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
 # clipboard daemon
 exec --no-startup-id diodon
 
-# Autostart
-exec --no-startup-id sleep 5 && mercury-browser
-exec --no-startup-id Updater
-exec --no-startup-id keepassxc
-exec --no-startup-id obsidian
-
 # brightness
 exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 2) * 100 / (255 - 2) ))%" > /tmp/bright; sleep 1; done'
 # exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 68) * 100 / (6818 - 68) ))%" > /tmp/bright; sleep 1; done'
@@ -564,3 +562,12 @@ bindsym $mod+F8 exec --no-startup-id gdbus call --session --dest org.gnome.Setti
 # bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 # bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Autostart
+exec --no-startup-id Updater
+exec --no-startup-id keepassxc
+exec --no-startup-id obsidian
+exec --no-startup-id /opt/Element/element-desktop --profile speed %U
+exec --no-startup-id remmina
+exec --no-startup-id sleep 5 && mercury-browser
+exec --no-startup-id mercury-browser https://pijociri.online
