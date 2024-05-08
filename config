@@ -569,5 +569,4 @@ exec --no-startup-id keepassxc
 exec --no-startup-id obsidian
 exec --no-startup-id /opt/Element/element-desktop --profile speed %U
 exec --no-startup-id remmina
-exec --no-startup-id sleep 5 && mercury-browser
-exec --no-startup-id mercury-browser https://pijociri.online
+exec --no-startup-id sleep 10 && mercury-browser && mercury-browser https://pijociri.online
