@@ -187,17 +187,29 @@ bindsym $mod+Shift+a focus parent
 # set $ws9 "9:9 󰨇 "
 # set $ws10 "10:10  "
 
-set $ws0 "0:0  "
-set $ws1 "1:1  "
-set $ws2 "2:2 󰈹 "
-set $ws3 "3:3  "
-set $ws4 "4:4 󰧑 "
-set $ws5 "5:5 󰖟 "
-set $ws6 "6:6 󰯄 "
-set $ws7 "7:7  "
-set $ws8 "8:8  "
-set $ws9 "9:9 󰨇 "
-set $ws10 "10:10  "
+# set $ws0 "0:0  "
+# set $ws1 "1:1  "
+# set $ws2 "2:2 󰈹 "
+# set $ws3 "3:3  "
+# set $ws4 "4:4 󰧑 "
+# set $ws5 "5:5 󰖟 "
+# set $ws6 "6:6 󰯄 "
+# set $ws7 "7:7  "
+# set $ws8 "8:8  "
+# set $ws9 "9:9 󰨇 "
+# set $ws10 "10:10  "
+
+set $ws0 "0:0️⃣"
+set $ws1 "1:1️⃣"
+set $ws2 "2:2️⃣"
+set $ws3 "3:3️⃣"
+set $ws4 "4:4️⃣"
+set $ws5 "5:5️⃣"
+set $ws6 "6:6️⃣"
+set $ws7 "7:7️⃣"
+set $ws8 "8:8️⃣"
+set $ws9 "9:9️⃣"
+set $ws10 "10:🔟"
 
 # switch to workspace
 bindsym $mod+grave workspace number $ws0
@@ -268,7 +280,8 @@ bindsym $mod+Tab restart
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Close i3 and go to X session' -B 'Yes' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
-mode " 󰩨 resize " {
+# mode " 󰩨 resize " {
+mode "✂️" {
     bindsym Left resize shrink width 10 px or 10 ppt
     bindsym Down resize grow height 10 px or 10 ppt
     bindsym Up resize shrink height 10 px or 10 ppt
@@ -277,11 +290,13 @@ mode " 󰩨 resize " {
     bindsym Escape mode "default"
     bindsym $mod+r mode "default"
 }
-bindsym $mod+r mode " 󰩨 resize "
+# bindsym $mod+r mode " 󰩨 resize "
+bindsym $mod+r mode "✂️"
 
 # lock screen
 
-mode "  power " {
+# mode "  power " {
+mode "⚡️" {
     # exit to xsession
     bindsym e exec --no-startup-id i3-msg exit; mode "default"
     # shutdown
@@ -291,8 +306,19 @@ mode "  power " {
     # reboot
     bindsym r exec --no-startup-id systemctl reboot; mode "default"
 	# perfomance power
+#	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
+#        echo "󰓅" > /tmp/profile && \
+#        notify-send --icon=power "Power" "Производительный профиль"; mode "default"
+#	# balanced power
+#	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced && \
+#        rm /tmp/profile && \
+#        notify-send --icon=power "Power" "Сбалансированный профиль"; mode "default"
+#	# economy power
+#	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
+#        echo "󰾆" > /tmp/profile && \
+#        notify-send --icon=power "Power" "Экономичный профиль"; mode "default"
 	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
-        echo "󰓅" > /tmp/profile && \
+        echo "💥" > /tmp/profile && \
         notify-send --icon=power "Power" "Производительный профиль"; mode "default"
 	# balanced power
 	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced && \
@@ -300,25 +326,28 @@ mode "  power " {
         notify-send --icon=power "Power" "Сбалансированный профиль"; mode "default"
 	# economy power
 	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
-        echo "󰾆" > /tmp/profile && \
+        echo "🐌" > /tmp/profile && \
         notify-send --icon=power "Power" "Экономичный профиль"; mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+p mode "default"
 }
-bindsym $mod+p exec --no-startup-id notify-send --icon=power "power" "\
-1. E       exit from i3\n\
-2. S       shutdown\n\
-3. Shift+S sleep\n\
-4. R       reboot\n\
-5. F       power mode fast\n\
-6. B       power mode balanced\n\
-7. L       power mode low\n\
-"; mode "  power "
+# bindsym $mod+p exec --no-startup-id notify-send --icon=power "power" "\
+# 1. E       exit from i3\n\
+# 2. S       shutdown\n\
+# 3. Shift+S sleep\n\
+# 4. R       reboot\n\
+# 5. F       power mode fast\n\
+# 6. B       power mode balanced\n\
+# 7. L       power mode low\n\
+# "; mode "  power "
+bindsym $mod+p mode "⚡️"
+
 
 # echo 'OPENCONNECT_PASSWORD="YOUR_PASSWORD"' | sudo tee -a /etc/environment
-mode " 󰖟 network " {
+# mode " 󰖟 network " {
+mode "📡" {
     # wg vpn
     bindsym c exec --no-startup-id wg-quick up $wgname && \
         echo $wgname > /tmp/vpn && \
@@ -342,17 +371,20 @@ mode " 󰖟 network " {
     bindsym Escape mode "default"
     bindsym $mod+n mode "default"
 }
-bindsym $mod+n exec --no-startup-id notify-send --icon=network "network" "\
-1. C       connect $wgname\n\
-2. D       disonnect $wgname\n\
-3. R       connect to docker windows\n\
-4. Shift+C connect Openconnect\n\
-5. Shift+D disonnect Openconnect\n\
-"; mode " 󰖟 network "
+# bindsym $mod+n exec --no-startup-id notify-send --icon=network "network" "\
+# 1. C       connect $wgname\n\
+# 2. D       disonnect $wgname\n\
+# 3. R       connect to docker windows\n\
+# 4. Shift+C connect Openconnect\n\
+# 5. Shift+D disonnect Openconnect\n\
+# "; mode " 󰖟 network "
+bindsym $mod+n mode "📡"
+
 
 
 # start binds in start mode
-mode "  start " {
+# mode "  start " {
+mode "🆕" {
     # settings
     bindsym c exec --no-startup-id gnome-control-center; mode "default"
     # browser
@@ -386,22 +418,24 @@ mode "  start " {
     bindsym Escape mode "default"
     bindsym $mod+s mode "default"
 }
-bindsym $mod+s exec --no-startup-id notify-send --icon=terminal "start" "\
-1.  C       gnome-control-center\n\
-2.  W       $firefox\n\
-3.  H       $chrome\n\
-4.  Shift+H $chrome-private\n\
-5.  T       telegram\n\
-6.  O       obsidian\n\
-7.  K       keepassxc\n\
-8.  R       remmina\n\
-9.  L       calculator\n\
-10. G       geany\n\
-11. V       virt-manager\n\
-12. P       sound\n\
-13. B       bluetooth\n\
-14. A       ai+proxy\n\
-"; mode "  start "
+# bindsym $mod+s exec --no-startup-id notify-send --icon=terminal "start" "\
+# 1.  C       gnome-control-center\n\
+# 2.  W       $firefox\n\
+# 3.  H       $chrome\n\
+# 4.  Shift+H $chrome-private\n\
+# 5.  T       telegram\n\
+# 6.  O       obsidian\n\
+# 7.  K       keepassxc\n\
+# 8.  R       remmina\n\
+# 9.  L       calculator\n\
+# 10. G       geany\n\
+# 11. V       virt-manager\n\
+# 12. P       sound\n\
+# 13. B       bluetooth\n\
+# 14. A       ai+proxy\n\
+# "; mode "  start "
+bindsym $mod+s mode "🆕"
+
 
 # active window hint
 default_border pixel 4
@@ -410,7 +444,8 @@ new_window pixel 4
 smart_borders on
 hide_edge_borders smart
 gaps inner 9
-gaps outer 1
+# gaps outer 1
+gaps outer 0
 smart_gaps on
 # smart_gaps inverse_outer
 
@@ -465,7 +500,8 @@ bar {
     # tray_padding 4
     tray_padding 6
     # font pango:JetBrains Mono Nerd Font Bold 12.5
-    font pango:JetBrains Mono Nerd Font SemiBold 13.5
+    font pango:JetBrains Mono Nerd Font Bold 13.5
+    # font pango:JetBrains Mono Nerd Font SemiBold 13.5
     separator_symbol " "
     # status_command i3status --config ~/.config/i3/i3status.conf
     # status_command i3status --config ~/.config/i3/i3status-catppuccin.conf
@@ -506,13 +542,15 @@ exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlig
 # exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 68) * 100 / (6818 - 68) ))%" > /tmp/bright; sleep 1; done'
 
 # kb layout on bar
-exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="cl" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
+exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="🇺🇸" ;; "00001000") KBD="🇷🇺" ;; *) KBD="" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
+# exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="cl" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
 
 # poweroff in 5 sec when screen is lock
 exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') xset dpms 10;; *'\''boolean false'\'') xset dpms 0;; esac; sleep 1; done'
 
 # for add borders in gtk apps
-for_window [class=.*] border pixel 4
+# for_window [class=.*] border pixel 4
+for_window [class=.*] border pixel 5
 
 # application size rules
 for_window [class="floating"] floating enable, resize set 840 640

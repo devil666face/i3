@@ -62,15 +62,20 @@ element-icon, element-text, scrollbar {
 }
 
 window {
-  location : northwest;
-  width    : 280px;
-  x-offset : 10px;
-  y-offset : 38px;
+  // location : northwest;
+  location : center;
+  // width    : 280px;
+  width    : 680px;
+  height   : 400px;
+  // x-offset : 10px;
+  // y-offset : 38px;
+  y-offset : -200px;
 
   background-color: @bg1;
   border-color: @yellow;
   border-radius: 4;
-  border: 4;
+  // border: 4;
+  border: 5;
 }
 
 inputbar {
@@ -98,7 +103,8 @@ textbox {
 listview {
   padding      : 4px 0px;
   lines        : 12;
-  columns      : 1;
+  // columns      : 1;
+  columns      : 2;
   fixed-height : false;
   dynamic      : true;
 }
