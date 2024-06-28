@@ -443,7 +443,8 @@ default_floating_border pixel 1
 new_window pixel 4
 smart_borders on
 hide_edge_borders smart
-gaps inner 9
+# gaps inner 9
+gaps inner 5
 # gaps outer 1
 gaps outer 0
 smart_gaps on
@@ -542,7 +543,7 @@ exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlig
 # exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 68) * 100 / (6818 - 68) ))%" > /tmp/bright; sleep 1; done'
 
 # kb layout on bar
-exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="🇺🇸" ;; "00001000") KBD="🇷🇺" ;; *) KBD="" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
+exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="" ;; "00001000") KBD="🇷🇺" ;; *) KBD="" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
 # exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="cl" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
 
 # poweroff in 5 sec when screen is lock
