@@ -73,7 +73,7 @@ window {
 
   background-color: @bg1;
   border-color: @yellow;
-  border-radius: 4;
+  border-radius: 1;
   // border: 4;
   border: 5;
 }
