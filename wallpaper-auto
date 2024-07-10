@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 import argparse
 from glob import glob
-from os import system
-from os.path import expanduser
+from os import system, remove
 from random import randint
 from time import sleep
+from os.path import expanduser
 
-PATH = expanduser("~/Изображения/Обои")
+IMAGES_PATH = expanduser("~/Изображения/Обои")
 INDEX_FILE = "/tmp/wallpaper"
 SECOND_SWITCH = 60
 
@@ -33,9 +33,12 @@ def main():
     parser.add_argument(
         "-p", "--previous", action="store_true", help="Set previous wallpaper"
     )
+    parser.add_argument(
+        "-d", "--delete", action="store_true", help="Delete current image"
+    )
     args = parser.parse_args()
 
-    files = glob(PATH + "/*")
+    files = glob(IMAGES_PATH + "/*")
     files.sort()
     current_index: int = randint(0, len(files))
     iter_count: int = 0
@@ -48,6 +51,10 @@ def main():
     if args.previous:
         prev = get_index() - 1
         set_index(prev if prev >= 0 else len(files) - 1)
+        return
+
+    if args.delete:
+        remove(files[get_index()])
         return
 
     set_index(randint(0, len(files)))
