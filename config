@@ -73,7 +73,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # wallpaper
 # exec_always --no-startup-id nitrogen --restore
-exec wallpaper-auto
+# exec wallpaper-auto
 
 # Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
 exec --no-startup-id nm-applet
