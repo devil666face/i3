@@ -286,7 +286,7 @@ assign [class="Nm-connection-editor"] $ws10
 assign [class="Pavucontrol"] $ws10
 assign [class="Blueman-manager"] $ws10
 assign [class="Gnome-tweaks"] $ws10
-assign [class="Gnome-calculator"] $ws10
+# assign [class="Gnome-calculator"] $ws10
 assign [class="xfreerdp"] $ws8
 
 
@@ -454,6 +454,16 @@ mode "🆕" {
 # "; mode "  start "
 bindsym $mod+s mode "🆕"
 
+mode "📺" {
+    bindsym n exec --no-startup-id ~/.config/i3/wallpaper.py -n; mode "default"
+    bindsym p exec --no-startup-id ~/.config/i3/wallpaper.py -p; mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+i mode "default"
+}
+bindsym $mod+i mode "📺"
+
+
 
 # active window hint
 default_border pixel 4
@@ -469,16 +479,16 @@ smart_gaps on
 # smart_gaps inverse_outer
 
 # pallet gruvbox
-# set $bg #282828
-# set $fg #ebdbb2
-# set $red #cc241d
-# set $green #98971a
-# set $yellow #d79921
-# set $blue #458588
-# set $purple #b16286
-# set $aqua #689d68
-# set $gray #a89984
-# set $darkgray #1d2021
+set $bg #282828
+set $fg #ebdbb2
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
 
 # pallet catppuccin
 # set $bg #282828
@@ -493,16 +503,16 @@ smart_gaps on
 # set $darkgray #eff1f5
 
 # pallet dracula
-set $bg #44475A
-set $fg #F8F8F2
-set $red #FF5555
-set $green #50FA7B
-set $yellow #BD93F9
-set $blue #8BE9FD
-set $purple #FF79C6
-set $aqua #689d68
-set $gray #6272A4
-set $darkgray #282A36
+# set $bg #44475A
+# set $fg #F8F8F2
+# set $red #FF5555
+# set $green #50FA7B
+# set $yellow #BD93F9
+# set $blue #8BE9FD
+# set $purple #FF79C6
+# set $aqua #689d68
+# set $gray #6272A4
+# set $darkgray #282A36
 
 # class                 border    backgr    text      indicator child_border
 client.focused          $green    $green    $darkgray $fg       $yellow 
@@ -522,21 +532,28 @@ bar {
     font pango:JetBrains Mono Nerd Font Bold 13.5
     # font pango:JetBrains Mono Nerd Font SemiBold 13.5
     separator_symbol " "
-    # status_command i3status --config ~/.config/i3/i3status.conf
-    # status_command i3status --config ~/.config/i3/i3status-catppuccin.conf
-    status_command i3status --config ~/.config/i3/i3status-dracula.conf
-
+    status_command i3status --config ~/.config/i3/i3status.conf
 #                          border 	 bg		   txt		 indicator
+    # colors {
+    #     separator          $fg
+    #     background         $darkgray 
+    #     statusline         $fg
+    #     focused_workspace  $darkgray $fg       $darkgray $purple   
+    #     active_workspace   $darkgray $darkgray $yellow   $purple   
+    #     inactive_workspace $darkgray $darkgray $yellow   $purple   
+    #     urgent_workspace   $darkgray $red      $fg       $red      
+    #     urgent_workspace   $darkgray $red      $darkgray $red      
+    # }
     colors {
         separator          $fg
-        background         $darkgray 
+        background         $bg 
         statusline         $fg
-    	focused_workspace  $darkgray $fg       $darkgray $purple   
-    	active_workspace   $darkgray $darkgray $yellow   $purple   
-    	inactive_workspace $darkgray $darkgray $yellow   $purple   
-    	# urgent_workspace   $darkgray $red      $fg       $red      
-    	urgent_workspace   $darkgray $red      $darkgray $red      
+    	focused_workspace  $bg $fg       $bg $purple   
+    	active_workspace   $bg $bg $yellow   $purple   
+    	inactive_workspace $bg $bg $yellow   $purple   
+    	urgent_workspace   $bg $red      $bg $red      
     }
+
 }
 
 # language toggle
@@ -624,4 +641,4 @@ exec --no-startup-id Updater
 exec --no-startup-id keepassxc
 exec --no-startup-id obsidian
 exec --no-startup-id /opt/Element/element-desktop --profile speed %U
-# exec python3 ~/.config/i3/i3status.py
+exec --no-statrup-id ~/.config/i3/wallpaper.py
