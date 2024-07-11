@@ -313,9 +313,9 @@ mode "✂️" {
 bindsym $mod+r mode "✂️"
 
 # lock screen
-# bindsym $mod+l exec --no-startup-id gsettings set org.gnome.desktop.input-sources current 0 && gnome-screensaver-command -l
-bindsym $mod+l exec --no-startup-id gsettings set org.gnome.desktop.input-sources current 0 && \
-    ~/.config/i3/i3lock -i ~/Изображения/lock.png -c '#b16268' -o '#b8bb26' -w '#fb4934' -l '#ebdbb2' --ignore-empty-password --show-failed-attempts --24 --tiling 0
+bindsym $mod+l exec --no-startup-id gsettings set org.gnome.desktop.input-sources current 0 && gnome-screensaver-command -l
+# bindsym $mod+l exec --no-startup-id gsettings set org.gnome.desktop.input-sources current 0 && \
+#    ~/.config/i3/i3lock -i ~/Изображения/lock.png -c '#b16268' -o '#b8bb26' -w '#fb4934' -l '#ebdbb2' --ignore-empty-password --show-failed-attempts --24 -t
 
 # mode "  power " {
 mode "⚡️" {
