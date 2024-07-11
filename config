@@ -5,8 +5,7 @@
 # sudo apt install i3
 
 # need to install
-# apt-get install i3-wm lxappearance picom nitrogen gnome-screensaver qt5-style-kvantum qt5ct flameshot blueman gnome-settings-daemon pavucontrol gnome-tweaks gnome-flashback gnome-color-manager rofi diodon mate-notification-daemon
-# xfce4-notifyd 
+# apt-get install i3-wm lxappearance picom nitrogen gnome-screensaver qt5-style-kvantum qt5ct flameshot blueman gnome-settings-daemon pavucontrol gnome-tweaks gnome-flashback gnome-color-manager rofi diodon xfce4-notifyd
 # alacritty 
 # freerdp2-x11
 # volumeicon-alsa 
@@ -574,7 +573,7 @@ exec_always --no-startup-id xinput set-prop "ELAN1200:00 04F3:30BA Touchpad" "li
 
 # alert daemon
 # exec --no-startup-id dunst -conf $home/.config/i3/dunstrc
-# exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
 
 # clipboard daemon
 exec --no-startup-id diodon
