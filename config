@@ -26,14 +26,14 @@
 # gsettings set org.gnome.Terminal.Legacy.Settings confirm-close false
 
 set $mod Mod4
-# set $wgname kalinkin-ru
-# set $home /home/d6f
-# set $mon eDP-1-0
+set $wgname kalinkin-ru
+set $home /home/d6f
+set $mon eDP-1-0
 # set $mon eDP-1
 
-set $wgname 
-set $home /home/a.kalinkin
-set $mon DP-3
+# set $wgname 
+# set $home /home/a.kalinkin
+# set $mon DP-3
 
 set $chrome thorium-browser
 set $firefox mercury-browser
@@ -574,13 +574,13 @@ exec_always --no-startup-id xinput set-prop "ELAN1200:00 04F3:30BA Touchpad" "li
 
 # alert daemon
 # exec --no-startup-id dunst -conf $home/.config/i3/dunstrc
-exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
+# exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
 
 # clipboard daemon
 exec --no-startup-id diodon
 
 # brightness
-# exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 2) * 100 / (255 - 2) ))%" > /tmp/bright; sleep 1; done'
+exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 2) * 100 / (255 - 2) ))%" > /tmp/bright; sleep 1; done'
 # exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 68) * 100 / (6818 - 68) ))%" > /tmp/bright; sleep 1; done'
 
 # kb layout on bar
@@ -609,8 +609,8 @@ for_window [class="Rofi"] floating enable, resize set 640 480, move absolute pos
 
 # set screen settings
 # exec --no-startup-id xrandr --auto
-# exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
-exec_always --no-startup-id xrandr --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI-4 --off
+exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
+# exec_always --no-startup-id xrandr --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI-4 --off
 exec --no-startup-id i3-msg restart
 
 # Optional check this daemons
@@ -625,7 +625,7 @@ exec --no-startup-id i3-msg restart
 # optional
 # exec_always --no-startup-id syndaemon -i 0.8 -d -k
 # for_window [class="^.*"] border pixel 0
-# optional if your not use xfce4-power-manager
+# # optional if your not use xfce4-power-manager
 # bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 # bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
