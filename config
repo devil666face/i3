@@ -72,7 +72,7 @@ exec --no-startup-id /usr/libexec/gsd-xsettings
 exec --no-startup-id dex --autostart --environment i3
 
 # wallpaper
-# exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id nitrogen --restore
 # exec wallpaper-auto
 
 # Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
