@@ -590,7 +590,7 @@ exec --no-startup-id diodon
 exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="⬆️" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
 
 # active window in /tmp/title
-exec --no-startup-id ~/.config/i3/bin/title.sh
+exec --no-startup-id ~/.config/i3/bin/title
 
 # for add borders in gtk apps
 # for_window [class=.*] border pixel 4
