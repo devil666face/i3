@@ -40,7 +40,7 @@ set $telegram Updater
 set $usa-ssh host02.d6f.ru
 
 # font
-font pango:JetBrains Mono Nerd Font SemiBold 14
+font pango:JetBrains Mono Nerd Font SemiBold 13
 
 # gnome alternative session
 exec --no-startup-id gnome-flashback
