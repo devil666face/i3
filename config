@@ -315,7 +315,7 @@ bindsym $mod+r mode "✂️"
 # lock screen
 bindsym $mod+Shift+l exec --no-startup-id gsettings set org.gnome.desktop.input-sources current 0 && gnome-screensaver-command -l
 bindsym $mod+l exec --no-startup-id gsettings set org.gnome.desktop.input-sources current 0 && \
-    ~/.config/i3/i3lock -i ~/Изображения/lock.png -c '#b16268' -o '#b8bb26' -w '#fb4934' -l '#ebdbb2' --ignore-empty-password --show-failed-attempts --24 -t
+    ~/.config/i3/bin/i3lock -i ~/Изображения/lock.png -c '#b16268' -o '#b8bb26' -w '#fb4934' -l '#ebdbb2' --ignore-empty-password --show-failed-attempts --24 -t
 
 # poweroff in 5 sec when screen is lock
 exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') xset dpms 10;; *'\''boolean false'\'') xset dpms 0;; esac; sleep 1; done'
@@ -471,8 +471,6 @@ mode "📺" {
 }
 bindsym $mod+i mode "📺"
 
-
-
 # active window hint
 default_border pixel 4
 default_floating_border pixel 1
@@ -530,11 +528,11 @@ client.urgent           $red      $red      $white    $red      $red
 
 
 bar {
-    mode hide
-    modifier $mod
-    hidden_state hide
-    # position top
-    position bottom
+    # mode hide
+    # modifier $mod
+    # hidden_state hide
+    position top
+    # position bottom
     output $mon
     strip_workspace_numbers yes
     tray_output primary
@@ -591,6 +589,9 @@ exec --no-startup-id diodon
 # kb layout on bar
 exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="⬆️" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
 
+# active window in /tmp/title
+exec --no-startup-id ~/.config/i3/bin/title.sh
+
 # for add borders in gtk apps
 # for_window [class=.*] border pixel 4
 for_window [class=.*] border pixel 5
@@ -634,7 +635,7 @@ exec --no-startup-id i3-msg restart
 bindsym $mod+F7 exec --no-startup-id gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.gnome.SettingsDaemon.Power.Screen.StepDown
 bindsym $mod+F8 exec --no-startup-id gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.gnome.SettingsDaemon.Power.Screen.StepUp
 
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- bin/i3lock --nofork
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
