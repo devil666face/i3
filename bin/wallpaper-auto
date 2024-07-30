@@ -7,7 +7,7 @@ from random import randint
 from time import sleep
 from typing import List
 
-IMAGES_PATH = expanduser("~/Изображения/Обои")
+IMAGES_PATH = expanduser("~/Изображения/Wallpapers")
 INDEX_FILE = "/tmp/wallpaper"
 SECOND_SWITCH = 60
 
