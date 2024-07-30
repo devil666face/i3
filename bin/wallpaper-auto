@@ -9,7 +9,7 @@ from typing import List
 
 IMAGES_PATH = expanduser("~/Изображения/Wallpapers")
 INDEX_FILE = "/tmp/wallpaper"
-SECOND_SWITCH = 60
+SECOND_SWITCH = 30
 
 
 def set_index(index: int):
@@ -74,7 +74,7 @@ def main():
     while True:
         sleep(0.1)
 
-        if iter_count == SECOND_SWITCH:
+        if int(iter_count) == SECOND_SWITCH:
             set_index(current_index + 1)
             iter_count = 0.0
 
@@ -82,6 +82,7 @@ def main():
         if number != current_index:
             current_index = number
             set_wallpaper(files[current_index])
+            files = get_files(IMAGES_PATH)
         iter_count = iter_count + 0.1
 
 
