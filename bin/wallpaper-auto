@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 import argparse
 from glob import glob
-from os import system, remove
+from os import remove, system
+from os.path import expanduser
 from random import randint
 from time import sleep
-from os.path import expanduser
+from typing import List
 
 IMAGES_PATH = expanduser("~/Изображения/Обои")
 INDEX_FILE = "/tmp/wallpaper"
@@ -27,6 +28,16 @@ def set_wallpaper(file_name: str):
     )
 
 
+def get_files(path: str) -> List[str]:
+    files = glob(path + "/*")
+    files.sort()
+    return files
+
+
+def get_random_index(files: List[str]) -> int:
+    return randint(0, len(files))
+
+
 def main():
     parser = argparse.ArgumentParser(description="A simple CLI example with flags.")
     parser.add_argument("-n", "--next", action="store_true", help="Set next wallpaper")
@@ -38,10 +49,9 @@ def main():
     )
     args = parser.parse_args()
 
-    files = glob(IMAGES_PATH + "/*")
-    files.sort()
-    current_index: int = randint(0, len(files))
-    iter_count: int = 0
+    files = get_files(IMAGES_PATH)
+    current_index: int = get_random_index(files)
+    iter_count: float = 0.0
 
     if args.next:
         next = get_index() + 1
@@ -55,24 +65,24 @@ def main():
 
     if args.delete:
         remove(files[get_index()])
-        next = get_index() + 1
-        set_index(next if next <= len(files) - 1 else 0)
+        files = get_files(IMAGES_PATH)
+        set_index(get_random_index(files))
         return
 
     set_index(randint(0, len(files)))
 
     while True:
-        sleep(1)
+        sleep(0.1)
 
         if iter_count == SECOND_SWITCH:
             set_index(current_index + 1)
-            iter_count = 0
+            iter_count = 0.0
 
         number = get_index()
         if number != current_index:
             current_index = number
             set_wallpaper(files[current_index])
-        iter_count = iter_count + 1
+        iter_count = iter_count + 0.1
 
 
 if __name__ == "__main__":
