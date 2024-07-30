@@ -25,14 +25,14 @@
 # gsettings set org.gnome.Terminal.Legacy.Settings confirm-close false
 
 set $mod Mod4
-set $wgname kalinkin-ru
-set $home /home/d6f
-set $mon eDP-1-0
+# set $wgname kalinkin-ru
+# set $home /home/d6f
+# set $mon eDP-1-0
 # set $mon eDP-1
 
-# set $wgname 
-# set $home /home/a.kalinkin
-# set $mon DP-3
+set $wgname 
+set $home /home/a.kalinkin
+set $mon DP-3
 
 set $chrome thorium-browser
 set $firefox mercury-browser
@@ -74,6 +74,7 @@ exec --no-startup-id dex --autostart --environment i3
 # wallpaper
 exec_always --no-startup-id nitrogen --restore
 # exec wallpaper-auto
+exec_always --no-startup-id ~/.config/i3/bin/wallpaper-auto
 
 # Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
 exec --no-startup-id nm-applet
@@ -464,9 +465,9 @@ mode "🆕" {
 bindsym $mod+s mode "🆕"
 
 mode "📺" {
-    bindsym n exec --no-startup-id wallpaper-auto -n; mode "default"
-    bindsym p exec --no-startup-id wallpaper-auto -p; mode "default"
-    bindsym d exec --no-startup-id wallpaper-auto -d; mode "default"
+    bindsym n exec --no-startup-id ~/.config/i3/bin/wallpaper-auto -n; mode "default"
+    bindsym p exec --no-startup-id ~/.config/i3/bin/wallpaper-auto -p; mode "default"
+    bindsym d exec --no-startup-id ~/.config/i3/bin/wallpaper-auto -d; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+i mode "default"
@@ -585,7 +586,7 @@ exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id diodon
 
 # brightness
-exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 2) * 100 / (255 - 2) ))%" > /tmp/bright; sleep 1; done'
+# exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 2) * 100 / (255 - 2) ))%" > /tmp/bright; sleep 1; done'
 # exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 68) * 100 / (6818 - 68) ))%" > /tmp/bright; sleep 1; done'
 
 # kb layout on bar
@@ -614,8 +615,8 @@ for_window [class="Rofi"] floating enable, resize set 640 480, move absolute pos
 
 # set screen settings
 # exec --no-startup-id xrandr --auto
-exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
-# exec_always --no-startup-id xrandr --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI-4 --off
+# exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
+exec_always --no-startup-id xrandr --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI-4 --off
 exec --no-startup-id i3-msg restart
 
 # Optional check this daemons
