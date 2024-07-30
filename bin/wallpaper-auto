@@ -55,6 +55,8 @@ def main():
 
     if args.delete:
         remove(files[get_index()])
+        next = get_index() + 1
+        set_index(next if next <= len(files) - 1 else 0)
         return
 
     set_index(randint(0, len(files)))
