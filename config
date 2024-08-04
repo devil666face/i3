@@ -645,7 +645,7 @@ bindsym $mod+F8 exec --no-startup-id gdbus call --session --dest org.gnome.Setti
 # exec_always --no-statrup-id wallpaper-auto
 # wallpaper
 # exec --no-startup-id gsettings set org.gnome.desktop.background picture-uri ~/images/wallpaper.png
-exec --no-startup-id nitrogen --restore
+exec_always --no-startup-id nitrogen --restore
 
 # Autostart
 exec --no-startup-id Updater
