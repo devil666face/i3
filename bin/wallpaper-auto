@@ -7,7 +7,7 @@ from random import randint
 from time import sleep
 from typing import List
 
-IMAGES_PATH = expanduser("~/Изображения/Wallpapers")
+IMAGES_PATH = expanduser("~/images/wallpapers")
 INDEX_FILE = "/tmp/wallpaper"
 SECOND_SWITCH = 30
 
@@ -81,7 +81,9 @@ def main():
         number = get_index()
         if number != current_index:
             current_index = number
-            set_wallpaper(files[current_index])
+            set_wallpaper(
+                files[current_index if current_index <= len(files) - 1 else 0]
+            )
             files = get_files(IMAGES_PATH)
         iter_count = iter_count + 0.1
 
