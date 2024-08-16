@@ -25,14 +25,14 @@
 # gsettings set org.gnome.Terminal.Legacy.Settings confirm-close false
 
 set $mod Mod4
-# set $wgname kalinkin-ru
-# set $home /home/d6f
-# set $mon eDP-1-0
+set $wgname kalinkin-ru
+set $home /home/d6f
+set $mon eDP-1-0
 # set $mon eDP-1
 
-set $wgname 
-set $home /home/a.kalinkin
-set $mon DP-3
+# set $wgname 
+# set $home /home/a.kalinkin
+# set $mon DP-3
 
 set $chrome thorium-browser
 set $firefox mercury-browser
@@ -581,7 +581,7 @@ exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id diodon
 
 # brightness
-# exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 2) * 100 / (255 - 2) ))%" > /tmp/bright; sleep 1; done'
+exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 2) * 100 / (255 - 2) ))%" > /tmp/bright; sleep 1; done'
 # exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 68) * 100 / (6818 - 68) ))%" > /tmp/bright; sleep 1; done'
 
 # kb layout on bar
@@ -630,6 +630,8 @@ exec --no-startup-id i3-msg restart
 # bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 # bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
+bindsym $mod+F5 exec --no-startup-id xset dpms 0 && echo "" > /tmp/light
+bindsym $mod+F6 exec --no-startup-id xset dpms 10 && echo "🔦" > /tmp/light
 bindsym $mod+F7 exec --no-startup-id gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.gnome.SettingsDaemon.Power.Screen.StepDown
 bindsym $mod+F8 exec --no-startup-id gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.gnome.SettingsDaemon.Power.Screen.StepUp
 
@@ -644,8 +646,9 @@ bindsym $mod+F8 exec --no-startup-id gdbus call --session --dest org.gnome.Setti
 
 # wallpaper
 # exec --no-startup-id gsettings set org.gnome.desktop.background picture-uri ~/images/wallpaper.png
-# exec_always --no-startup-id nitrogen --restore
 exec_always --no-statrup-id ~/.config/i3/bin/wallpaper-auto
+exec_always --no-startup-id nitrogen --restore
+exec --no-startup-id nitrogen --restore
 
 # Autostart
 exec --no-startup-id Updater
