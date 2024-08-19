@@ -1,4 +1,5 @@
 #!/bin/bash
+# https://www.opendesktop.org/u/marianarlt/
 sudo apt-get install libqscintilla2-qt5-15 \
 libqscintilla2-qt5-l10n \
 libqt5charts5 \
