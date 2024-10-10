@@ -268,9 +268,6 @@ workspace $ws10 output $mon
 # rules for apps and ws
 assign [class="(?i)firefox"] $ws2
 assign [class="mercury-default"] $ws2
-assign [class="zen-alpha"] $ws2
-assign [class="Navigator"] $ws2
-# assign [window_role="browser"] $ws2
 assign [class="TelegramDesktop"] $ws3
 assign [class="Element"] $ws3
 assign [class="Thorium-browser"] $ws5
@@ -312,14 +309,24 @@ mode "✂️" {
 bindsym $mod+r mode "✂️"
 
 # lock screen
-bindsym $mod+Shift+l exec --no-startup-id gsettings set org.gnome.desktop.input-sources current 0 && gnome-screensaver-command -l
+bindsym $mod+Escape exec --no-startup-id gsettings set org.gnome.desktop.input-sources current 0 && gnome-screensaver-command -l
 
-# (xset dpms 10)& 
-bindsym $mod+l exec --no-startup-id gsettings set org.gnome.desktop.input-sources current 0 && \
-    ~/.config/i3/bin/i3lock -i ~/images/lock.png -c '#b16268' -o '#b8bb26' -w '#fb4934' -l '#ebdbb2' --ignore-empty-password --show-failed-attempts --24 -t
+bindsym $mod+l exec --no-startup-id \
+    pkill -STOP xfce4-notifyd && \
+    xset dpms 5 && \
+    gsettings set org.gnome.desktop.input-sources current 0 && \
+    ~/.config/i3/bin/i3lock -i ~/images/lock.png -c '#b16268' -o '#b8bb26' -w '#fb4934' -l '#ebdbb2' --ignore-empty-password --show-failed-attempts --24 -t -n && \
+    pkill -CONT xfce4-notifyd && \
+    xset dpms 0
+
+bindsym $mod+Shift+l exec --no-startup-id \
+    pkill -STOP xfce4-notifyd && \
+    gsettings set org.gnome.desktop.input-sources current 0 && \
+    ~/.config/i3/bin/i3lock -i ~/images/lock.png -c '#b16268' -o '#b8bb26' -w '#fb4934' -l '#ebdbb2' --ignore-empty-password --show-failed-attempts --24 -t -n && \
+    pkill -CONT xfce4-notifyd
 
 # poweroff in 5 sec when screen is lock
-exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') xset dpms 10;; *'\''boolean false'\'') xset dpms 0;; esac; sleep 1; done'
+# exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') xset dpms 10;; *'\''boolean false'\'') xset dpms 0;; esac; sleep 1; done'
 
 # mode "  power " {
 mode "⚡️" {
