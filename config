@@ -268,14 +268,19 @@ workspace $ws10 output $mon
 # rules for apps and ws
 assign [class="(?i)firefox"] $ws2
 assign [class="mercury-default"] $ws2
-assign [class="Thorium-browser"] $ws5
+assign [class="zen-alpha"] $ws2
+assign [class="Navigator"] $ws2
+# assign [window_role="browser"] $ws2
 assign [class="TelegramDesktop"] $ws3
 assign [class="Element"] $ws3
-assign [class="thunderbird"] $ws5
+assign [class="Thorium-browser"] $ws5
 assign [class="obsidian"] $ws4
 assign [class="KeePassXC"] $ws6
+assign [class="thunderbird"] $ws5
 assign [class="org.remmina.Remmina"] $ws7
 assign [class="Virt-manager"] $ws7
+assign [class="Pidgin"] $ws8
+assign [class="xfreerdp"] $ws8
 assign [class="Gnome-control-center"] $ws10
 assign [title="Nitrogen"] $ws10
 assign [class="Arandr"] $ws10
@@ -283,8 +288,6 @@ assign [class="Nm-connection-editor"] $ws10
 assign [class="Pavucontrol"] $ws10
 assign [class="Blueman-manager"] $ws10
 assign [class="Gnome-tweaks"] $ws10
-# assign [class="Gnome-calculator"] $ws10
-assign [class="xfreerdp"] $ws8
 
 
 # reload the configuration file
@@ -340,15 +343,15 @@ mode "⚡️" {
 #	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
 #        echo "󰾆" > /tmp/profile && \
 #        notify-send --icon=power "Power" "Экономичный профиль"; mode "default"
-	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
+	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance || \
         echo "💥" > /tmp/profile && \
         notify-send --icon=power "Power" "Производительный профиль"; mode "default"
 	# balanced power
-	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced && \
+	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced || \
         rm /tmp/profile && \
         notify-send --icon=power "Power" "Сбалансированный профиль"; mode "default"
 	# economy power
-	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
+	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery || \
         echo "🐌" > /tmp/profile && \
         notify-send --icon=power "Power" "Экономичный профиль"; mode "default"
     # back to normal: Enter or Escape
@@ -583,7 +586,7 @@ exec --no-startup-id diodon
 
 # brightness
 # exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 2) * 100 / (255 - 2) ))%" > /tmp/bright; sleep 1; done'
-exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 68) * 100 / (6818 - 68) ))%" > /tmp/bright; sleep 1; done'
+exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 15) * 100 / (1515 - 15) ))%" > /tmp/bright; sleep 1; done'
 
 # kb layout on bar
 exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="⬆️" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
@@ -604,13 +607,14 @@ for_window [class="Arandr"] floating enable, resize set 640 480
 for_window [class="Nm-connection-editor"] floating enable, resize set 640 480
 for_window [class="Pavucontrol"] floating enable, resize set 840 480
 for_window [class="Blueman-manager"] floating enable, resize set 640 480
+for_window [class="Gnome-calculator"] floating enable, resize set 640 480
 for_window [class="Gnome-tweaks"] floating enable, resize set 640 480
 for_window [class="Rofi"] floating enable, resize set 640 480, move absolute position 640 px 300 px
 # for_window [class="gnome-flashback"] floating enable, move absolute position 25 px 520 px
 # for_window [class="Gnome-flashback"] floating enable, move absolute position 25 px 520 px
 
 # set screen settings
-exec_always --no-startup-id xrandr --auto
+# exec_always --no-startup-id xrandr --auto
 # exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
 # exec_always --no-startup-id xrandr --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI-4 --off
 exec --no-startup-id i3-msg restart
@@ -647,13 +651,11 @@ bindsym $mod+F8 exec --no-startup-id gdbus call --session --dest org.gnome.Setti
 
 # wallpaper
 # exec --no-startup-id gsettings set org.gnome.desktop.background picture-uri ~/images/wallpaper.png
-exec_always --no-statrup-id ~/.config/i3/bin/wallpaper-auto
-exec_always --no-startup-id nitrogen --restore
-exec --no-startup-id nitrogen --restore
+# exec_always --no-statrup-id ~/.config/i3/bin/wallpaper-auto
+# exec_always --no-startup-id nitrogen --restore
+# exec --no-startup-id nitrogen --restore
 
 # Autostart
 exec --no-startup-id Updater
 exec --no-startup-id keepassxc
 exec --no-startup-id obsidian
-exec --no-startup-id /opt/Element/element-desktop --profile speed %U
-
