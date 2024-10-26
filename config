@@ -27,8 +27,8 @@
 set $mod Mod4
 set $wgname kalinkin-ru
 set $home /home/d6f
-# set $mon eDP-1-0
-set $mon eDP-1
+set $mon eDP-1-0
+# set $mon eDP-1
 
 # set $wgname 
 # set $home /home/a.kalinkin
@@ -38,6 +38,8 @@ set $chrome thorium-browser
 set $firefox mercury-browser
 set $telegram Updater
 set $usa-ssh host02.d6f.ru
+set $term ~/.local/kitty.app/bin/kitty
+# set $term gnome-terminal
 
 # font
 font pango:JetBrains Mono Nerd Font SemiBold 13
@@ -83,10 +85,10 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec --no-startup-id alacritty --config-file ~/.config/i3/alacritty.yml
-bindsym $mod+Return exec --no-startup-id gnome-terminal
+bindsym $mod+Return exec --no-startup-id $term
 # start a terminal with forever one session
 # bindsym $mod+Shift+Return exec --no-startup-id alacritty --config-file ~/.config/i3/alacritty.yml -e bash -c "zellij attach main || zellij --session main --config ~/.config/i3/config.kdl"
-bindsym $mod+Shift+Return exec --no-startup-id gnome-terminal --class=floating
+bindsym $mod+Shift+Return exec --no-startup-id $term --class=floating
 
 # kill focused window
 bindsym $mod+q kill
@@ -622,7 +624,7 @@ for_window [class="Rofi"] floating enable, resize set 640 480, move absolute pos
 
 # set screen settings
 # exec_always --no-startup-id xrandr --auto
-# exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
+exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
 # exec_always --no-startup-id xrandr --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI-4 --off
 exec --no-startup-id i3-msg restart
 
