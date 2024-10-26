@@ -315,6 +315,7 @@ bindsym $mod+r mode "󰩨 resize"
 # lock screen
 bindsym $mod+Escape exec --no-startup-id gsettings set org.gnome.desktop.input-sources current 0 && gnome-screensaver-command -l
 
+# https://github.com/Lixxia/i3lock
 bindsym $mod+l exec --no-startup-id \
     pkill -STOP xfce4-notifyd && \
     xset dpms 5 && \
