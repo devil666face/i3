@@ -6,7 +6,8 @@ configuration {
 }
 
 * {
-    font: "JetBrains Mono Nerd Font 14";
+    // font: "JetBrains Mono Nerd Font 14";
+    font: "CaskaydiaCove Nerd Font 14";
 	
     highlight: bold;
     scrollbar: false;
