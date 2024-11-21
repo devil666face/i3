@@ -48,6 +48,9 @@ font pango:CaskaydiaCove Nerd Font 13
 # gnome alternative session
 exec --no-startup-id gnome-flashback
 
+# start i3
+exec --no-startup-id dex --autostart --environment i3
+
 # optional gnome-settings-daemons
 exec --no-startup-id /usr/libexec/gsd-a11y-settings
 exec --no-startup-id /usr/libexec/gsd-backlight-helper
@@ -70,9 +73,6 @@ exec --no-startup-id /usr/libexec/gsd-wacom
 exec --no-startup-id /usr/libexec/gsd-wacom-oled-helper
 exec --no-startup-id /usr/libexec/gsd-wwan
 exec --no-startup-id /usr/libexec/gsd-xsettings
-
-# start i3
-exec --no-startup-id dex --autostart --environment i3
 
 # Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
 exec --no-startup-id nm-applet
@@ -278,9 +278,12 @@ assign [class="Element"] $ws3
 assign [class="Thorium-browser"] $ws5
 assign [class="obsidian"] $ws4
 assign [class="KeePassXC"] $ws6
+assign [class="Thorium-browser"] $ws5
 assign [class="thunderbird"] $ws5
+assign [class="KeePassXC"] $ws6
 assign [class="org.remmina.Remmina"] $ws7
 assign [class="Virt-manager"] $ws7
+assign [class="Virt-manager"] $ws8
 assign [class="Pidgin"] $ws8
 assign [class="xfreerdp"] $ws8
 assign [class="Gnome-control-center"] $ws10
