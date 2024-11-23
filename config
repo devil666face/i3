@@ -550,8 +550,8 @@ client.urgent           $red      $red      $white    $red      $red
 
 
 bar {
-    mode hide
-    modifier $mod
+    # mode hide
+    # modifier $mod
     # hidden_state hide
     # position top
     position bottom
