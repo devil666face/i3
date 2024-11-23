@@ -506,28 +506,28 @@ gaps outer 5
 # smart_gaps inverse_outer
 
 # pallet gruvbox
-# set $bg #282828
-# set $fg #ebdbb2
-# set $red #cc241d
-# set $green #98971a
-# set $yellow #d79921
-# set $blue #458588
-# set $purple #b16286
-# set $aqua #689d68
-# set $gray #a89984
-# set $darkgray #1d2021
+set $bg #282828
+set $fg #ebdbb2
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
 
 # pallet catppuccin-mocha
-set $bg #1e1e2e
-set $fg #cdd6f4
-set $red #f38ba8
-set $green #a6e3a1
-set $yellow #cba6f7
-set $blue #89b4fa
-set $purple #f5c2e7
-set $aqua #89dceb
-set $gray #313244
-set $darkgray #181825
+# set $bg #1e1e2e
+# set $fg #cdd6f4
+# set $red #f38ba8
+# set $green #a6e3a1
+# set $yellow #cba6f7
+# set $blue #89b4fa
+# set $purple #f5c2e7
+# set $aqua #89dceb
+# set $gray #313244
+# set $darkgray #181825
 
 # pallet dracula
 # set $bg #44475A
@@ -619,7 +619,7 @@ exec --no-startup-id ~/.config/i3/bin/title
 exec --no-startup-id bash -c 'while true; do curl "wttr.in/Moscow?format=1" | tr -d '\'' '\'' > /tmp/weather; sleep 360; done'
 
 # for add borders in gtk apps
-for_window [class=.*] border pixel 1
+for_window [class=.*] border pixel 0
 # for_window [class=.*] border pixel 5
 
 # application size rules
