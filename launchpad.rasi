@@ -12,10 +12,10 @@ configuration {
     highlight: bold;
 
     // gruvbox
-    bg0:  #282828D0;
-    bg1:  #665c54E6;
-    fg0:  #f5f5f5;
-    fg1:  #f5f5f580;
+    // bg0:  #282828D0;
+    // bg1:  #665c54E6;
+    // fg0:  #f5f5f5;
+    // fg1:  #f5f5f580;
 
     // cattpucin-latte
     // bg0:  #eff1f5D0;
@@ -23,6 +23,12 @@ configuration {
     // fg0:  #4c4f69;
     // fg1:  #4c4f6980;
 
+    // cattpucin-mocha
+    bg0:  #1e1e2eD0;
+    bg1:  #cba6f7E6;
+    fg0:  #cdd6f4;
+    fg1:  #cdd6f480;
+    
     // dracula
     // bg0:  #282A36D0;
     // bg1:  #BD93F9E6;

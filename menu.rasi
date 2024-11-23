@@ -13,11 +13,11 @@ configuration {
     scrollbar: false;
 
     // gruvbox
-    bg0:     #282828D0;
-    bg1:     #32302fD0;
-    bg2:     #665c54D0;
-    fg0:     #fbf1c7;
-    yellow:  #d79921;
+    // bg0:     #282828D0;
+    // bg1:     #32302fD0;
+    // bg2:     #665c54D0;
+    // fg0:     #fbf1c7;
+    // yellow:  #d79921;
 
     // cattpucin-latte
     // bg0:     #eff1f5D0;
@@ -25,6 +25,13 @@ configuration {
     // bg2:     #eff1f5D0;
     // fg0:     #4c4f69;
 	// yellow:  #cba6f7;
+
+    // cattpucin-mocha
+    bg0:     #1e1e2eD0;
+    bg1:     #1e1e2eD0;
+    bg2:     #1e1e2eD0;
+    fg0:     #cdd6f4;
+    yellow:  #cba6f7;
 
     // dracula
     // bg0:     #282A36D0;
@@ -74,9 +81,10 @@ window {
 
   background-color: @bg1;
   border-color: @yellow;
-  border-radius: 1;
+  // border-radius: 2;
+  border-radius: 20;
   // border: 4;
-  border: 5;
+  border: 1;
 }
 
 inputbar {
