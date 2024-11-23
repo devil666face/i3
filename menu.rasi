@@ -1,7 +1,7 @@
 configuration {
     show-icons:      true;
-    // icon-theme:      "Gruvbox-Plus-Dark";
-    icon-theme:      "Catppuccin-Mocha-Alt2";
+    icon-theme:      "Gruvbox-Plus-Dark";
+    // icon-theme:      "Catppuccin-Mocha-Alt2";
 	sidebar-mode:    true;
 }
 
@@ -13,11 +13,11 @@ configuration {
     scrollbar: false;
 
     // gruvbox
-    // bg0:     #282828D0;
-    // bg1:     #32302fD0;
-    // bg2:     #665c54D0;
-    // fg0:     #fbf1c7;
-    // yellow:  #d79921;
+    bg0:     #282828D0;
+    bg1:     #32302fD0;
+    bg2:     #665c54D0;
+    fg0:     #fbf1c7;
+    yellow:  #d79921;
 
     // cattpucin-latte
     // bg0:     #eff1f5D0;
@@ -27,11 +27,11 @@ configuration {
 	// yellow:  #cba6f7;
 
     // cattpucin-mocha
-    bg0:     #1e1e2eD0;
-    bg1:     #1e1e2eD0;
-    bg2:     #7f849cD0;
-    fg0:     #7f849c;
-    yellow:  #cba6f7;
+    // bg0:     #1e1e2eD0;
+    // bg1:     #1e1e2eD0;
+    // bg2:     #7f849cD0;
+    // fg0:     #7f849c;
+    // yellow:  #cba6f7;
 
     // dracula
     // bg0:     #282A36D0;
