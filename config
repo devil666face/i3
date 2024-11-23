@@ -542,7 +542,8 @@ set $darkgray #181825
 # set $darkgray #282A36
 
 # class                 border    backgr    text      indicator child_border
-client.focused          $green    $green    $darkgray $fg       $yellow 
+# client.focused          $green    $green    $darkgray $fg       $yellow 
+client.focused          $green    $green    $darkgray $fg       $bg 
 client.focused_inactive $darkgray $darkgray $yellow   $fg       $gray
 client.unfocused        $darkgray $darkgray $yellow   $fg       $gray
 client.urgent           $red      $red      $white    $red      $red
@@ -618,7 +619,7 @@ exec --no-startup-id ~/.config/i3/bin/title
 exec --no-startup-id bash -c 'while true; do curl "wttr.in/Moscow?format=1" | tr -d '\'' '\'' > /tmp/weather; sleep 360; done'
 
 # for add borders in gtk apps
-for_window [class=.*] border pixel 0
+for_window [class=.*] border pixel 1
 # for_window [class=.*] border pixel 5
 
 # application size rules
