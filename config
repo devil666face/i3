@@ -543,7 +543,7 @@ set $darkgray #181825
 
 # class                 border    backgr    text      indicator child_border
 # client.focused          $green    $green    $darkgray $fg       $yellow 
-client.focused          $green    $green    $darkgray $fg       $bg 
+client.focused          $green    $green    $darkgray $bg       $bg 
 client.focused_inactive $darkgray $darkgray $yellow   $fg       $gray
 client.unfocused        $darkgray $darkgray $yellow   $fg       $gray
 client.urgent           $red      $red      $white    $red      $red
