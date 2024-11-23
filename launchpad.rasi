@@ -2,8 +2,8 @@
 
 configuration {
     show-icons:      true;
-    icon-theme:      "Gruvbox-Plus-Dark";
-    // icon-theme:      "Catppuccin-Mocha";
+    // icon-theme:      "Gruvbox-Plus-Dark";
+    icon-theme:      "Catppuccin-Mocha-Alt2";
 }
 
 * {
@@ -25,8 +25,8 @@ configuration {
 
     // cattpucin-mocha
     bg0:  #1e1e2eD0;
-    bg1:  #cba6f7E6;
-    fg0:  #cdd6f4;
+    bg1:  #45475aE6;
+    fg0:  #a6adc8;
     fg1:  #cdd6f480;
     
     // dracula
