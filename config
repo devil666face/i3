@@ -45,11 +45,11 @@ set $term ~/.local/kitty.app/bin/kitty
 # font pango:JetBrains Mono Nerd Font SemiBold 13
 font pango:CaskaydiaCove Nerd Font 13
 
-# gnome alternative session
-exec --no-startup-id gnome-flashback
-
 # start i3
 exec --no-startup-id dex --autostart --environment i3
+
+# gnome alternative session
+exec --no-startup-id gnome-flashback
 
 # optional gnome-settings-daemons
 exec --no-startup-id /usr/libexec/gsd-a11y-settings
@@ -495,38 +495,39 @@ bindsym $mod+i mode "📺"
 default_border pixel 4
 default_floating_border pixel 1
 new_window pixel 4
-smart_borders on
-hide_edge_borders smart
+# smart_borders on
+# hide_edge_borders smart
 # gaps inner 9
-gaps inner 5
-# gaps outer 1
-gaps outer 0
-smart_gaps on
+# gaps inner 5
+gaps inner 10
+gaps outer 5
+# gaps outer 0
+# smart_gaps on
 # smart_gaps inverse_outer
 
 # pallet gruvbox
-set $bg #282828
-set $fg #ebdbb2
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
-
-# pallet catppuccin
 # set $bg #282828
-# set $fg #4c4f69
-# set $red #d20f39
-# set $green #40a02b
-# set $yellow #cba6f7
-# set $blue #1e66f5
-# set $purple #ea76cb
+# set $fg #ebdbb2
+# set $red #cc241d
+# set $green #98971a
+# set $yellow #d79921
+# set $blue #458588
+# set $purple #b16286
 # set $aqua #689d68
-# set $gray #4c4f69
-# set $darkgray #eff1f5
+# set $gray #a89984
+# set $darkgray #1d2021
+
+# pallet catppuccin-mocha
+set $bg #1e1e2e
+set $fg #cdd6f4
+set $red #f38ba8
+set $green #a6e3a1
+set $yellow #cba6f7
+set $blue #89b4fa
+set $purple #f5c2e7
+set $aqua #89dceb
+set $gray #313244
+set $darkgray #181825
 
 # pallet dracula
 # set $bg #44475A
@@ -548,11 +549,11 @@ client.urgent           $red      $red      $white    $red      $red
 
 
 bar {
-    # mode hide
-    # modifier $mod
+    mode hide
+    modifier $mod
     # hidden_state hide
-    position top
-    # position bottom
+    # position top
+    position bottom
     output $mon
     strip_workspace_numbers yes
     tray_output primary
@@ -617,8 +618,8 @@ exec --no-startup-id ~/.config/i3/bin/title
 exec --no-startup-id bash -c 'while true; do curl "wttr.in/Moscow?format=1" | tr -d '\'' '\'' > /tmp/weather; sleep 360; done'
 
 # for add borders in gtk apps
-# for_window [class=.*] border pixel 4
-for_window [class=.*] border pixel 5
+for_window [class=.*] border pixel 0
+# for_window [class=.*] border pixel 5
 
 # application size rules
 for_window [class="floating"] floating enable, resize set 840 640
