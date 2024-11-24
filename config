@@ -554,8 +554,8 @@ bar {
     mode hide
     modifier $mod+Shift
     # hidden_state hide
-    # position top
-    position bottom
+    position top
+    # position bottom
     output $mon
     strip_workspace_numbers yes
     tray_output primary
