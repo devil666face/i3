@@ -589,6 +589,7 @@ bar {
 
 # Hide/show bar
 bindsym $mod+b exec --no-startup-id bash -c '[ -e /tmp/bar ] && (i3-msg "bar mode dock bar-0" && rm /tmp/bar) || (i3-msg "bar mode hide bar-0" && touch /tmp/bar)'
+bindsym Menu exec --no-startup-id bash -c '[ -e /tmp/bar ] && (i3-msg "bar mode dock bar-0" && rm /tmp/bar) || (i3-msg "bar mode hide bar-0" && touch /tmp/bar)'
 
 # language toggle
 exec --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
@@ -627,15 +628,13 @@ for_window [class=.*] border pixel 0
 
 # application size rules
 for_window [class="floating"] floating enable, resize set 840 640, move position center
-for_window [class="Org.gnome.Nautilus"] floating enable, resize set 840 640
+for_window [class="Org.gnome.Nautilus"] floating enable, resize set 840 640, move position center
 for_window [title="Application Finder"] floating enable, resize set 640 480
 for_window [title="Nitrogen"] floating enable, resize set 640 480
 for_window [class="Arandr"] floating enable, resize set 640 480
 for_window [class="Nm-connection-editor"] floating enable, resize set 640 480
 for_window [class="Pavucontrol"] floating enable, resize set 840 480
-for_window [class="Blueman-manager"] floating enable, resize set 640 480
 for_window [class="Gnome-calculator"] floating enable, resize set 640 480
-for_window [class="Gnome-tweaks"] floating enable, resize set 640 480
 for_window [class="Rofi"] floating enable, resize set 640 480, move absolute position 640 px 300 px
 # for_window [class="gnome-flashback"] floating enable, move absolute position 25 px 520 px
 # for_window [class="Gnome-flashback"] floating enable, move absolute position 25 px 520 px
