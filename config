@@ -550,8 +550,9 @@ client.urgent           $red      $red      $white    $red      $red
 
 
 bar {
+    id bar-0
     mode hide
-    modifier $mod
+    modifier $mod+Shift
     # hidden_state hide
     # position top
     position bottom
@@ -584,8 +585,10 @@ bar {
     	inactive_workspace $bg $bg $yellow   $purple   
     	urgent_workspace   $bg $red      $bg $red      
     }
-
 }
+
+# Hide/show bar
+bindsym $mod+b exec --no-startup-id bash -c '[ -e /tmp/bar ] && (i3-msg "bar mode dock bar-0" && rm /tmp/bar) || (i3-msg "bar mode hide bar-0" && touch /tmp/bar)'
 
 # language toggle
 exec --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
