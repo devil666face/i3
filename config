@@ -550,8 +550,8 @@ client.urgent           $red      $red      $white    $red      $red
 
 
 bar {
-    # mode hide
-    # modifier $mod
+    mode hide
+    modifier $mod
     # hidden_state hide
     # position top
     position bottom
@@ -592,7 +592,7 @@ exec --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
 exec_always --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
 
 # picom compositor for windows
-exec_always --no-startup-id sleep 5 && picom --experimental-backend --config $home/.config/i3/picom.conf
+exec_always --no-startup-id sleep 5 && ~/.config/i3/bin/picom --config $home/.config/i3/picom.conf
 
 # tap on touchpad
 exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
