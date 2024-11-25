@@ -282,7 +282,6 @@ assign [class="Thorium-browser"] $ws5
 assign [class="thunderbird"] $ws5
 assign [class="KeePassXC"] $ws6
 assign [class="org.remmina.Remmina"] $ws7
-assign [class="Virt-manager"] $ws7
 assign [class="Virt-manager"] $ws8
 assign [class="Pidgin"] $ws8
 assign [class="xfreerdp"] $ws8
