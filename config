@@ -75,8 +75,6 @@ exec --no-startup-id /usr/libexec/gsd-wwan
 exec --no-startup-id /usr/libexec/gsd-xsettings
 
 # Applets: network; lock-screen; volume in bar; power and brightness; bluetooth
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
 # exec --no-startup-id nm-applet
 # exec --no-startup-id blueman-applet
 # exec --no-startup-id gnome-screensaver
@@ -284,6 +282,7 @@ assign [class="Thorium-browser"] $ws5
 assign [class="thunderbird"] $ws5
 assign [class="KeePassXC"] $ws6
 assign [class="org.remmina.Remmina"] $ws7
+assign [class="Virt-manager"] $ws7
 assign [class="Virt-manager"] $ws8
 assign [class="Pidgin"] $ws8
 assign [class="xfreerdp"] $ws8
