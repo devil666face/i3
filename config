@@ -587,8 +587,8 @@ bar {
 }
 
 # Hide/show bar
-bindsym $mod+b exec --no-startup-id bash -c '[ -e /tmp/bar ] && (i3-msg "bar mode dock bar-0" && rm /tmp/bar) || (i3-msg "bar mode hide bar-0" && touch /tmp/bar) '
-bindsym Menu exec --no-startup-id bash -c '[ -e /tmp/bar ] && (i3-msg "bar mode dock bar-0" && rm /tmp/bar) || (i3-msg "bar mode hide bar-0" && touch /tmp/bar) '
+bindsym $mod+b bar mode toggle 
+bindsym Menu bar mode toggle 
 
 # language toggle
 exec --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
