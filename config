@@ -316,22 +316,30 @@ bindsym $mod+r mode "󰩨 resize"
 # bindsym $mod+r mode "✂️"
 
 # lock screen
-bindsym $mod+Escape exec --no-startup-id gsettings set org.gnome.desktop.input-sources current 0 && gnome-screensaver-command -l
+bindsym $mod+Escape exec --no-startup-id \
+    gsettings set org.gnome.desktop.input-sources current 0 && \
+    pkill -STOP i3bar && \
+    gnome-screensaver-command -l && \
+    pkill -CONT i3bar
 
 # https://github.com/Lixxia/i3lock
 bindsym $mod+l exec --no-startup-id \
     pkill -STOP xfce4-notifyd && \
+    pkill -STOP i3bar && \
     xset dpms 5 && \
     gsettings set org.gnome.desktop.input-sources current 0 && \
     ~/.config/i3/bin/i3lock -i ~/images/lock.png -c '#b16268' -o '#b8bb26' -w '#fb4934' -l '#ebdbb2' --ignore-empty-password --show-failed-attempts --24 -t -n && \
     pkill -CONT xfce4-notifyd && \
+    pkill -CONT i3bar && \
     xset dpms 0
 
 bindsym $mod+Shift+l exec --no-startup-id \
     pkill -STOP xfce4-notifyd && \
+    pkill -STOP i3bar && \
     gsettings set org.gnome.desktop.input-sources current 0 && \
     ~/.config/i3/bin/i3lock -i ~/images/lock.png -c '#b16268' -o '#b8bb26' -w '#fb4934' -l '#ebdbb2' --ignore-empty-password --show-failed-attempts --24 -t -n && \
-    pkill -CONT xfce4-notifyd
+    pkill -CONT xfce4-notifyd && \
+    pkill -CONT i3bar
 
 # poweroff in 5 sec when screen is lock
 # exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') xset dpms 10;; *'\''boolean false'\'') xset dpms 0;; esac; sleep 1; done'
@@ -343,7 +351,10 @@ mode " power" {
     # shutdown
     bindsym s exec --no-startup-id systemctl poweroff; mode "default"
     # sleep
-    bindsym Shift+s exec --no-startup-id systemctl suspend; mode "default"
+    bindsym Shift+s exec --no-startup-id \
+        gsettings set org.gnome.desktop.input-sources current 0 && \
+        ~/.config/i3/bin/i3lock -i ~/images/lock.png -c '#b16268' -o '#b8bb26' -w '#fb4934' -l '#ebdbb2' --ignore-empty-password --show-failed-attempts --24 -t && \
+        systemctl suspend; mode "default"
     # reboot
     bindsym r exec --no-startup-id systemctl reboot; mode "default"
 	# perfomance power
