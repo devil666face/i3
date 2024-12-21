@@ -26,16 +26,16 @@
 
 set $mod Mod4
 set $wgname kalinkin-ru
-set $home /home/x
-set $mon LVDS-1
-# set $mon eDP-1
+set $home /home/d6f
+# set $mon eDP-1-0
+set $mon eDP-1
 
 # set $wgname 
 # set $home /home/a.kalinkin
 # set $mon DP-3
 
 set $chrome thorium-browser
-set $firefox firefox
+set $firefox mercury-browser
 set $telegram Updater
 set $usa-ssh host02.d6f.ru
 set $term ~/.local/kitty.app/bin/kitty
@@ -43,7 +43,7 @@ set $term ~/.local/kitty.app/bin/kitty
 
 # font
 # font pango:JetBrains Mono Nerd Font SemiBold 13
-font pango:CaskaydiaCove Nerd Font 12
+font pango:CaskaydiaCove Nerd Font 15
 
 # start i3
 exec --no-startup-id dex --autostart --environment i3
@@ -343,28 +343,28 @@ mode "⚡️" {
     # reboot
     bindsym r exec --no-startup-id systemctl reboot; mode "default"
 	# perfomance power
-	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
-        echo "󰓅" > /tmp/profile && \
-        notify-send --icon=power "Power" "Производительный профиль"; mode "default"
-	# balanced power
-	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced && \
-        rm /tmp/profile && \
-        notify-send --icon=power "Power" "Сбалансированный профиль"; mode "default"
-	# economy power
-	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
-        echo "󰾆" > /tmp/profile && \
-        notify-send --icon=power "Power" "Экономичный профиль"; mode "default"
-#	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance || \
-#        echo "💥" > /tmp/profile && \
+#	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
+#        echo "󰓅" > /tmp/profile && \
 #        notify-send --icon=power "Power" "Производительный профиль"; mode "default"
 #	# balanced power
-#	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced || \
+#	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced && \
 #        rm /tmp/profile && \
 #        notify-send --icon=power "Power" "Сбалансированный профиль"; mode "default"
 #	# economy power
-#	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery || \
-#        echo "🐌" > /tmp/profile && \
+#	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
+#        echo "󰾆" > /tmp/profile && \
 #        notify-send --icon=power "Power" "Экономичный профиль"; mode "default"
+	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance || \
+        echo "💥" > /tmp/profile && \
+        notify-send --icon=battery "Power" "Производительный профиль"; mode "default"
+	# balanced power
+	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced || \
+        rm /tmp/profile && \
+        notify-send --icon=battery "Power" "Сбалансированный профиль"; mode "default"
+	# economy power
+	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery || \
+        echo "🐌" > /tmp/profile && \
+        notify-send --icon=battery "Power" "Экономичный профиль"; mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -552,7 +552,7 @@ bar {
     tray_padding 4
     #tray_padding 6
     # font pango:JetBrains Mono Nerd Font SemiBold 14.0
-    font pango:CaskaydiaCove Nerd Font SemiBold 12.0
+    font pango:CaskaydiaCove Nerd Font SemiBold 15.5
     separator_symbol " "
     status_command i3status --config ~/.config/i3/i3status.conf
 #                          border 	 bg		   txt		 indicator
@@ -601,7 +601,7 @@ exec --no-startup-id diodon
 
 # brightness
 # exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 2) * 100 / (255 - 2) ))%" > /tmp/bright; sleep 1; done'
-exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 46) * 100 / (4648 - 15) ))%" > /tmp/bright; sleep 1; done'
+exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 15) * 100 / (1515 - 15) ))%" > /tmp/bright; sleep 1; done'
 
 # kb layout on bar
 exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="⬆️" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
@@ -664,7 +664,7 @@ bindsym $mod+F8 exec --no-startup-id gdbus call --session --dest org.gnome.Setti
 # bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # wallpaper
-# exec --no-startup-id gsettings set org.gnome.desktop.background picture-uri ~/Pictures/wallpaper.png
+# exec --no-startup-id gsettings set org.gnome.desktop.background picture-uri ~/images/wallpaper.png
 # exec_always --no-statrup-id ~/.config/i3/bin/wallpaper-auto
 # exec_always --no-startup-id nitrogen --restore
 # exec --no-startup-id nitrogen --restore
