@@ -282,6 +282,7 @@ assign [class="Thorium-browser"] $ws5
 assign [class="thunderbird"] $ws5
 assign [class="KeePassXC"] $ws6
 assign [class="org.remmina.Remmina"] $ws7
+assign [class="Virt-manager"] $ws7
 assign [class="Virt-manager"] $ws8
 assign [class="Pidgin"] $ws8
 assign [class="xfreerdp"] $ws8
@@ -620,8 +621,8 @@ exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id diodon
 
 # brightness
-# exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 2) * 100 / (255 - 2) ))%" > /tmp/bright; sleep 1; done'
-exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 15) * 100 / (1515 - 15) ))%" > /tmp/bright; sleep 1; done'
+exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 2) * 100 / (255 - 2) ))%" > /tmp/bright; sleep 1; done'
+# exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 15) * 100 / (1515 - 15) ))%" > /tmp/bright; sleep 1; done'
 
 # kb layout on bar
 exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="⬆️" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
