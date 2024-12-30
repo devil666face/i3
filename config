@@ -631,7 +631,7 @@ exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{p
 exec --no-startup-id ~/.config/i3/bin/title
 
 # weather
-exec --no-startup-id bash -c 'while true; do curl "wttr.in/Moscow?format=1" | tr -d '\'' '\'' > /tmp/weather; sleep 360; done'
+exec --no-startup-id ~/.config/i3/bin/weather
 
 # for add borders in gtk apps
 for_window [class=.*] border pixel 0
