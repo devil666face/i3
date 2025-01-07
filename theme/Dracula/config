@@ -97,6 +97,15 @@ bindsym $mod+q kill
 # start binds in default layer
 # filebrowser
 bindsym $mod+f exec --no-startup-id nautilus -w
+# function y() {
+#   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+#   yazi "$@" --cwd-file="$tmp"
+#   if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+#     builtin cd -- "$cwd"
+#   fi
+#   rm -f -- "$tmp"
+# }
+bindsym $mod+y exec --no-startup-id $term zsh -c "source ~/.zshrc && y && zsh"
 
 # screenshot
 bindsym Print exec --no-startup-id flameshot gui
@@ -382,6 +391,8 @@ mode "⚡️" {
 bindsym $mod+p mode "⚡️"
 
 
+# echo 'OPENCONNECT_HOST="OPENCONNECT_HOST"' | sudo tee -a /etc/environment
+# echo 'OPENCONNECT_USER="OPENCONNECT_USER"' | sudo tee -a /etc/environment
 # echo 'OPENCONNECT_PASSWORD="YOUR_PASSWORD"' | sudo tee -a /etc/environment
 mode "📡" {
     # wg vpn
@@ -394,7 +405,7 @@ mode "📡" {
     # openconnect vpn
     bindsym Shift+c exec --no-startup-id notify-send --icon=gtk-network "VPN" "Подключение к Openconnect установлено" && \
         echo Openconnect > /tmp/vpn && \
-        echo "$OPENCONNECT_PASSWORD" | sudo openconnect -d "https://ocserv.d6f.ru/?devil666face" --user e2a+PEoLgImG+9+34Skp1spxnyQyUkZA/7FtiSlXe4w= --passwd-on-stdin; mode "default"
+        echo "$OPENCONNECT_PASSWORD" | sudo openconnect -d $OPENCONNECT_HOST --user $OPENCONNECT_USER --passwd-on-stdin; mode "default"
     bindsym Shift+d exec --no-startup-id notify-send --icon=gtk-network "VPN" "Подключение с Openconnect разорвано" && \
         rm /tmp/vpn && \
         sudo pkill openconnect; mode "default"
@@ -668,3 +679,5 @@ bindsym $mod+F8 exec --no-startup-id gdbus call --session --dest org.gnome.Setti
 # exec_always --no-statrup-id ~/.config/i3/bin/wallpaper-auto
 # exec_always --no-startup-id nitrogen --restore
 # exec --no-startup-id nitrogen --restore
+
+exec --no-startup-id i3-msg restart && sleep infinity
