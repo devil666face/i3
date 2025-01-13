@@ -1,0 +1,31 @@
+#!/bin/bash
+dbus-monitor --session "type='signal',interface='org.gnome.ScreenSaver'" | while read x; do
+    case "$x" in
+        *'boolean true')
+            gsettings set org.gnome.desktop.input-sources current 0
+            pkill -STOP xfce4-notifyd
+            pkill -STOP i3bar
+            xset dpms 10
+            ~/.config/i3/bin/i3lock \
+              -i ~/images/lock.png \
+              -c '#BD93F9' \
+              -o '#50FA7B' \
+              -w '#FF5555' \
+              -l '#F8F8F2' \
+              --ignore-empty-password \
+              --show-failed-attempts \
+              --24 \
+              -t \
+              -n && \
+              pkill -CONT xfce4-notifyd && \
+              pkill -CONT i3bar && \
+              xset dpms 0
+            ;;
+        *'boolean false')
+            pkill -CONT xfce4-notifyd
+            pkill -CONT i3bar
+            xset dpms 0
+            ;;
+    esac
+    sleep 1
+done
