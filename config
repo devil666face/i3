@@ -27,8 +27,8 @@
 set $mod Mod4
 set $wgname kalinkin-ru
 set $home /home/d6f
-set $mon eDP-1-0
-# set $mon eDP-1
+# set $mon eDP-1-0
+set $mon eDP-1
 
 # set $wgname 
 # set $home /home/a.kalinkin
@@ -43,7 +43,7 @@ set $term ~/.local/kitty.app/bin/kitty
 
 # font
 # font pango:JetBrains Mono Nerd Font SemiBold 13
-font pango:CaskaydiaCove Nerd Font 13
+font pango:CaskaydiaCove Nerd Font 15
 
 # start i3
 exec --no-startup-id dex --autostart --environment i3
@@ -97,6 +97,7 @@ bindsym $mod+q kill
 # start binds in default layer
 # filebrowser
 bindsym $mod+f exec --no-startup-id nautilus -w
+bindsym $mod+y exec --no-startup-id $term zsh -c "source ~/.zshrc && y && zsh"
 
 # screenshot
 bindsym Print exec --no-startup-id flameshot gui
@@ -207,29 +208,17 @@ bindsym $mod+Shift+a focus parent
 # set $ws9 "9:9 󰨇 "
 # set $ws10 "10:10  "
 
-# set $ws0 "0:0️⃣"
-# set $ws1 "1:1️⃣"
-# set $ws2 "2:2️⃣"
-# set $ws3 "3:3️⃣"
-# set $ws4 "4:4️⃣"
-# set $ws5 "5:5️⃣"
-# set $ws6 "6:6️⃣"
-# set $ws7 "7:7️⃣"
-# set $ws8 "8:8️⃣"
-# set $ws9 "9:9️⃣"
-# set $ws10 "10:🔟"
-
-set $ws0 "0:0"
-set $ws1 "1:1"
-set $ws2 "2:2"
-set $ws3 "3:3"
-set $ws4 "4:4"
-set $ws5 "5:5"
-set $ws6 "6:6"
-set $ws7 "7:7"
-set $ws8 "8:8"
-set $ws9 "9:9"
-set $ws10 "10:10"
+set $ws0 "0:0️⃣"
+set $ws1 "1:1️⃣"
+set $ws2 "2:2️⃣"
+set $ws3 "3:3️⃣"
+set $ws4 "4:4️⃣"
+set $ws5 "5:5️⃣"
+set $ws6 "6:6️⃣"
+set $ws7 "7:7️⃣"
+set $ws8 "8:8️⃣"
+set $ws9 "9:9️⃣"
+set $ws10 "10:🔟"
 
 # switch to workspace
 bindsym $mod+grave workspace number $ws0
@@ -303,8 +292,7 @@ bindsym $mod+Tab restart
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Close i3 and go to X session' -B 'Yes' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
-mode "󰩨 resize" {
-# mode "✂️" {
+mode "✂️" {
     bindsym Left resize shrink width 10 px or 10 ppt
     bindsym Down resize grow height 10 px or 10 ppt
     bindsym Up resize shrink height 10 px or 10 ppt
@@ -313,8 +301,7 @@ mode "󰩨 resize" {
     bindsym Escape mode "default"
     bindsym $mod+r mode "default"
 }
-bindsym $mod+r mode "󰩨 resize"
-# bindsym $mod+r mode "✂️"
+bindsym $mod+r mode "✂️"
 
 # lock screen
 bindsym $mod+Escape exec --no-startup-id \
@@ -329,7 +316,7 @@ bindsym $mod+l exec --no-startup-id \
     pkill -STOP i3bar && \
     xset dpms 5 && \
     gsettings set org.gnome.desktop.input-sources current 0 && \
-    ~/.config/i3/bin/i3lock -i ~/images/lock.png -c '#b16268' -o '#b8bb26' -w '#fb4934' -l '#ebdbb2' --ignore-empty-password --show-failed-attempts --24 -t -n && \
+    ~/.config/i3/bin/i3lock -i ~/images/lock.png -c '#BD93F9' -o '#50FA7B' -w '#FF5555' -l '#F8F8F2' --ignore-empty-password --show-failed-attempts --24 -t -n && \
     pkill -CONT xfce4-notifyd && \
     pkill -CONT i3bar && \
     xset dpms 0
@@ -338,55 +325,54 @@ bindsym $mod+Shift+l exec --no-startup-id \
     pkill -STOP xfce4-notifyd && \
     pkill -STOP i3bar && \
     gsettings set org.gnome.desktop.input-sources current 0 && \
-    ~/.config/i3/bin/i3lock -i ~/images/lock.png -c '#b16268' -o '#b8bb26' -w '#fb4934' -l '#ebdbb2' --ignore-empty-password --show-failed-attempts --24 -t -n && \
+    ~/.config/i3/bin/i3lock -i ~/images/lock.png -c '#BD93F9' -o '#50FA7B' -w '#FF5555' -l '#F8F8F2' --ignore-empty-password --show-failed-attempts --24 -t -n && \
     pkill -CONT xfce4-notifyd && \
     pkill -CONT i3bar
 
 # poweroff in 5 sec when screen is lock
 # exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') xset dpms 10;; *'\''boolean false'\'') xset dpms 0;; esac; sleep 1; done'
 
-mode " power" {
-# mode "⚡️" {
+mode "⚡️" {
     # exit to xsession
     bindsym e exec --no-startup-id i3-msg exit; mode "default"
     # shutdown
     bindsym s exec --no-startup-id systemctl poweroff; mode "default"
     # sleep
-    bindsym Shift+s exec --no-startup-id \
-        gsettings set org.gnome.desktop.input-sources current 0 && \
-        ~/.config/i3/bin/i3lock -i ~/images/lock.png -c '#b16268' -o '#b8bb26' -w '#fb4934' -l '#ebdbb2' --ignore-empty-password --show-failed-attempts --24 -t && \
+    bindsym w exec --no-startup-id \
         systemctl suspend; mode "default"
+        # gsettings set org.gnome.desktop.input-sources current 0 && \
+        # ~/.config/i3/bin/i3lock -i ~/images/lock.png -c '#BD93F9' -o '#50FA7B' -w '#FF5555' -l '#F8F8F2' --ignore-empty-password --show-failed-attempts --24 -t && \
     # reboot
     bindsym r exec --no-startup-id systemctl reboot; mode "default"
 	# perfomance power
-	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
-        echo "󰓅" > /tmp/profile && \
-        notify-send --icon=power "Power" "Производительный профиль"; mode "default"
-	# balanced power
-	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced && \
-        rm /tmp/profile && \
-        notify-send --icon=power "Power" "Сбалансированный профиль"; mode "default"
-	# economy power
-	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
-        echo "󰾆" > /tmp/profile && \
-        notify-send --icon=power "Power" "Экономичный профиль"; mode "default"
-#	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance || \
-#        echo "💥" > /tmp/profile && \
-#        notify-send --icon=power "Power" "Производительный профиль"; mode "default"
+#	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
+#        echo "󰓅" > /tmp/profile && \
+#        notify-send --icon=gnome-power-manager "Power" "Производительный профиль"; mode "default"
 #	# balanced power
-#	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced || \
+#	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced && \
 #        rm /tmp/profile && \
-#        notify-send --icon=power "Power" "Сбалансированный профиль"; mode "default"
+#        notify-send --icon=gnome-power-manager "Power" "Сбалансированный профиль"; mode "default"
 #	# economy power
-#	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery || \
-#        echo "🐌" > /tmp/profile && \
-#        notify-send --icon=power "Power" "Экономичный профиль"; mode "default"
+#	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
+#        echo "󰾆" > /tmp/profile && \
+#        notify-send --icon=gnome-power-manager "Power" "Экономичный профиль"; mode "default"
+	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance || \
+        echo "💥" > /tmp/profile && \
+        notify-send --icon=gnome-power-manager "Power" "Производительный профиль"; mode "default"
+	# balanced power
+	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced || \
+        rm /tmp/profile && \
+        notify-send --icon=gnome-power-manager "Power" "Сбалансированный профиль"; mode "default"
+	# economy power
+	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery || \
+        echo "🐌" > /tmp/profile && \
+        notify-send --icon=gnome-power-manager "Power" "Экономичный профиль"; mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+p mode "default"
 }
-# bindsym $mod+p exec --no-startup-id notify-send --icon=power "power" "\
+# bindsym $mod+p exec --no-startup-id notify-send --icon=gnome-power-manager "power" "\
 # 1. E       exit from i3\n\
 # 2. S       shutdown\n\
 # 3. Shift+S sleep\n\
@@ -395,25 +381,23 @@ mode " power" {
 # 6. B       power mode balanced\n\
 # 7. L       power mode low\n\
 # "; mode "  power "
-bindsym $mod+p mode " power"
-# bindsym $mod+p mode "⚡️"
+bindsym $mod+p mode "⚡️"
 
 
 # echo 'OPENCONNECT_PASSWORD="YOUR_PASSWORD"' | sudo tee -a /etc/environment
-mode "󰖟 network" {
-# mode "📡" {
+mode "📡" {
     # wg vpn
     bindsym c exec --no-startup-id wg-quick up $wgname && \
         echo $wgname > /tmp/vpn && \
-        notify-send --icon=vpn "VPN" "Подключение к $wgname установлено"; mode "default"
+        notify-send --icon=gtk-network "VPN" "Подключение к $wgname установлено"; mode "default"
     bindsym d exec --no-startup-id wg-quick down $wgname && \
         rm /tmp/vpn && \
-        notify-send --icon=vpn "VPN" "Подключение с $wgname разорвано"; mode "default"
+        notify-send --icon=gtk-network "VPN" "Подключение с $wgname разорвано"; mode "default"
     # openconnect vpn
-    bindsym Shift+c exec --no-startup-id notify-send --icon=vpn "VPN" "Подключение к Openconnect установлено" && \
+    bindsym Shift+c exec --no-startup-id notify-send --icon=gtk-network "VPN" "Подключение к Openconnect установлено" && \
         echo Openconnect > /tmp/vpn && \
-        echo "$OPENCONNECT_PASSWORD" | sudo openconnect -d "https://ocserv.d6f.ru/?devil666face" --user d6f --passwd-on-stdin; mode "default"
-    bindsym Shift+d exec --no-startup-id notify-send --icon=vpn "VPN" "Подключение с Openconnect разорвано" && \
+        echo "$OPENCONNECT_PASSWORD" | sudo openconnect -d "https://ocserv.d6f.ru:8443/?devil666face" --user e2a+PEoLgImG+9+34Skp1spxnyQyUkZA/7FtiSlXe4w= --passwd-on-stdin; mode "default"
+    bindsym Shift+d exec --no-startup-id notify-send --icon=gtk-network "VPN" "Подключение с Openconnect разорвано" && \
         rm /tmp/vpn && \
         sudo pkill openconnect; mode "default"
     # docker rdp windows
@@ -432,14 +416,12 @@ mode "󰖟 network" {
 # 4. Shift+C connect Openconnect\n\
 # 5. Shift+D disonnect Openconnect\n\
 # "; mode " 󰖟 network "
-bindsym $mod+n mode "󰖟 network"
-# bindsym $mod+n mode "📡"
+bindsym $mod+n mode "📡"
 
 
 
 # start binds in start mode
-mode " start" {
-# mode "🆕" {
+mode "🆕" {
     # settings
     bindsym c exec --no-startup-id gnome-control-center; mode "default"
     # browser
@@ -489,8 +471,7 @@ mode " start" {
 # 13. B       bluetooth\n\
 # 14. A       ai+proxy\n\
 # "; mode "  start "
-bindsym $mod+s mode " start"
-# bindsym $mod+s mode "🆕"
+bindsym $mod+s mode "🆕"
 
 mode "📺" {
     bindsym n exec --no-startup-id ~/.config/i3/bin/wallpaper-auto -n; mode "default"
@@ -510,23 +491,23 @@ new_window pixel 4
 # hide_edge_borders smart
 # gaps inner 9
 # gaps inner 5
-gaps inner 10
+gaps inner 5
 gaps outer 5
 # gaps outer 0
 # smart_gaps on
 # smart_gaps inverse_outer
 
 # pallet gruvbox
-set $bg #282828
-set $fg #ebdbb2
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
+# set $bg #282828
+# set $fg #ebdbb2
+# set $red #cc241d
+# set $green #98971a
+# set $yellow #d79921
+# set $blue #458588
+# set $purple #b16286
+# set $aqua #689d68
+# set $gray #a89984
+# set $darkgray #1d2021
 
 # pallet catppuccin-mocha
 # set $bg #1e1e2e
@@ -541,16 +522,16 @@ set $darkgray #1d2021
 # set $darkgray #181825
 
 # pallet dracula
-# set $bg #44475A
-# set $fg #F8F8F2
-# set $red #FF5555
-# set $green #50FA7B
-# set $yellow #BD93F9
-# set $blue #8BE9FD
-# set $purple #FF79C6
-# set $aqua #689d68
-# set $gray #6272A4
-# set $darkgray #282A36
+set $bg #44475A
+set $fg #F8F8F2
+set $red #FF5555
+set $green #50FA7B
+set $yellow #BD93F9
+set $blue #8BE9FD
+set $purple #FF79C6
+set $aqua #689d68
+set $gray #6272A4
+set $darkgray #282A36
 
 # class                 border    backgr    text      indicator child_border
 # client.focused          $green    $green    $darkgray $fg       $yellow 
@@ -565,37 +546,37 @@ bar {
     mode hide
     modifier $mod+Shift
     # hidden_state hide
-    position top
-    # position bottom
+    #position top
+    position bottom
     output $mon
     strip_workspace_numbers yes
     tray_output primary
-    # tray_padding 4
-    tray_padding 6
+    tray_padding 4
+    #tray_padding 6
     # font pango:JetBrains Mono Nerd Font SemiBold 14.0
-    font pango:CaskaydiaCove Nerd Font SemiBold 14.5
+    font pango:CaskaydiaCove Nerd Font SemiBold 15.5
     separator_symbol " "
     status_command i3status --config ~/.config/i3/i3status.conf
 #                          border 	 bg		   txt		 indicator
-    # colors {
-    #     separator          $fg
-    #     background         $darkgray 
-    #     statusline         $fg
-    #     focused_workspace  $darkgray $fg       $darkgray $purple   
-    #     active_workspace   $darkgray $darkgray $yellow   $purple   
-    #     inactive_workspace $darkgray $darkgray $yellow   $purple   
-    #     urgent_workspace   $darkgray $red      $fg       $red      
-    #     urgent_workspace   $darkgray $red      $darkgray $red      
-    # }
     colors {
         separator          $fg
-        background         $bg 
+        background         $darkgray 
         statusline         $fg
-    	focused_workspace  $bg $fg       $bg $purple   
-    	active_workspace   $bg $bg $yellow   $purple   
-    	inactive_workspace $bg $bg $yellow   $purple   
-    	urgent_workspace   $bg $red      $bg $red      
+        focused_workspace  $darkgray $fg       $darkgray $purple   
+        active_workspace   $darkgray $darkgray $yellow   $purple   
+        inactive_workspace $darkgray $darkgray $yellow   $purple   
+        urgent_workspace   $darkgray $red      $fg       $red      
+        urgent_workspace   $darkgray $red      $darkgray $red      
     }
+    #colors {
+        #separator          $fg
+        #background         $bg 
+        #statusline         $fg
+    	#focused_workspace  $bg $fg       $bg $purple   
+    	#active_workspace   $bg $bg $yellow   $purple   
+    	#inactive_workspace $bg $bg $yellow   $purple   
+    	#urgent_workspace   $bg $red      $bg $red      
+    #}
 }
 
 # Hide/show bar
@@ -607,7 +588,7 @@ exec --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
 exec_always --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
 
 # picom compositor for windows
-exec_always --no-startup-id sleep 5 && ~/.config/i3/bin/picom --config $home/.config/i3/picom.conf
+exec_always --no-startup-id ~/.config/i3/bin/picom --config $home/.config/i3/picom.conf
 
 # tap on touchpad
 exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
@@ -651,9 +632,7 @@ for_window [class="Rofi"] floating enable, resize set 640 480, move absolute pos
 # for_window [class="Gnome-flashback"] floating enable, move absolute position 25 px 520 px
 
 # set screen settings
-# exec_always --no-startup-id xrandr --auto
-exec_always --no-startup-id xrandr --output HDMI-0 --mode 1366x768 --pos 0x0 --rotate normal --output eDP-1-0 --primary --mode 1920x1080 --pos 1366x0 --rotate normal
-# exec_always --no-startup-id xrandr --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI-4 --off
+exec_always --no-startup-id xrandr --auto
 exec --no-startup-id i3-msg restart
 
 # Optional check this daemons

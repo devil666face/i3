@@ -1,23 +1,23 @@
 configuration {
     show-icons:      true;
-    icon-theme:      "Gruvbox-Plus-Dark";
+    icon-theme:      "Dracula";
     // icon-theme:      "Catppuccin-Mocha-Alt2";
 	sidebar-mode:    true;
 }
 
 * {
     // font: "JetBrains Mono Nerd Font 14";
-    font: "CaskaydiaCove Nerd Font 16";
+    font: "CaskaydiaCove Nerd Font 18";
 	
     highlight: bold;
     scrollbar: false;
 
     // gruvbox
-    bg0:     #282828D0;
-    bg1:     #32302fD0;
-    bg2:     #665c54D0;
-    fg0:     #fbf1c7;
-    yellow:  #d79921;
+    // bg0:     #282828D0;
+    // bg1:     #32302fD0;
+    // bg2:     #665c54D0;
+    // fg0:     #fbf1c7;
+    // yellow:  #d79921;
 
     // cattpucin-latte
     // bg0:     #eff1f5D0;
@@ -34,12 +34,12 @@ configuration {
     // yellow:  #cba6f7;
 
     // dracula
-    // bg0:     #282A36D0;
-    // bg1:     #282A36D0;
-    // bg2:     #282A36D0;
-    // fg0:     #F8F8F2;
-	// yellow:  #BD93F9;
-    
+    bg0:     #282A36D0;
+    bg1:     #282A36D0;
+    bg2:     #282A36D0;
+    fg0:     #F8F8F2;
+    yellow:  #BD93F9;
+
 	// accent: @yellow;
 	accent: @fg0;
 
@@ -90,7 +90,7 @@ window {
 inputbar {
   spacing  : 8px;
   padding  : 4px 8px;
-  children : [ icon-search, entry ];
+  children : [ entry ];
   background-color: @bg0;
 }
 

@@ -2,7 +2,7 @@
 
 configuration {
     show-icons:      true;
-    icon-theme:      "Gruvbox-Plus-Dark";
+    icon-theme:      "Dracula";
     // icon-theme:      "Catppuccin-Mocha-Alt2";
 }
 
@@ -13,10 +13,10 @@ configuration {
     highlight: bold;
 
     // gruvbox
-    bg0:  #282828D0;
-    bg1:  #665c54E6;
-    fg0:  #f5f5f5;
-    fg1:  #f5f5f580;
+    // bg0:  #282828D0;
+    // bg1:  #665c54E6;
+    // fg0:  #f5f5f5;
+    // fg1:  #f5f5f580;
 
     // cattpucin-latte
     // bg0:  #eff1f5D0;
@@ -31,10 +31,10 @@ configuration {
     // fg1:  #cdd6f480;
     
     // dracula
-    // bg0:  #282A36D0;
-    // bg1:  #BD93F9E6;
-    // fg0:  #F8F8F2;
-    // fg1:  #F8F8F280;
+    bg0:  #282A36D0;
+    bg1:  #BD93F9E6;
+    fg0:  #F8F8F2;
+    fg1:  #F8F8F280;
 
     background-color: transparent;
     text-color:       @fg0;
@@ -64,7 +64,7 @@ prompt {
 }
 
 listview {
-  margin:   48px calc( 50% - 860px );
+  margin:   48px calc( 50% - 660px );
   spacing:  88px;
   columns:  6;
   fixed-columns: true;
