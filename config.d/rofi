@@ -1,0 +1,34 @@
+# dmenu for start apps
+# bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
+# bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --entry-type command --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
+
+bindsym $mod+d exec --no-startup-id \
+	"gsettings set org.gnome.desktop.input-sources current 0 && rofi \
+	-modi drun,run,ssh \
+	-show drun \
+	-drun-match-fields name,generic,exec,categories \
+	-drun-display-format {name} \
+	-window-match-fields title,class,name,desktop \
+	-matching normal \
+	-location 0 \
+	-display-drun 'app' \
+	-display-run 'bin' \
+	-display-ssh 'ssh' \
+	-kb-mode-next Tab \
+	-kb-row-tab Control+Tab \
+	-click-to-exit \
+	-theme ~/.config/i3/rofi.d/menu.rasi \
+	"
+
+bindsym $mod+a exec --no-startup-id \
+	"gsettings set org.gnome.desktop.input-sources current 0 && rofi \
+	-modi drun \
+	-show drun \
+	-drun-match-fields name,generic,exec,categories \
+	-drun-display-format {name} \
+	-window-match-fields title,class,name,desktop \
+	-matching normal \
+	-location 0 \
+	-click-to-exit \
+	-theme ~/.config/i3/rofi.d/launchpad.rasi \
+	"

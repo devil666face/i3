@@ -1,0 +1,25 @@
+# gnome alternative session
+exec --no-startup-id gnome-flashback
+
+# optional gnome-settings-daemons
+exec --no-startup-id /usr/libexec/gsd-a11y-settings
+exec --no-startup-id /usr/libexec/gsd-backlight-helper
+exec --no-startup-id /usr/libexec/gsd-color
+exec --no-startup-id /usr/libexec/gsd-datetime
+exec --no-startup-id /usr/libexec/gsd-disk-utility-notify
+exec --no-startup-id /usr/libexec/gsd-housekeeping
+exec --no-startup-id /usr/libexec/gsd-keyboard
+exec --no-startup-id /usr/libexec/gsd-media-keys
+exec --no-startup-id /usr/libexec/gsd-power
+exec --no-startup-id /usr/libexec/gsd-printer
+exec --no-startup-id /usr/libexec/gsd-print-notifications
+exec --no-startup-id /usr/libexec/gsd-rfkill
+exec --no-startup-id /usr/libexec/gsd-screensaver-proxy
+exec --no-startup-id /usr/libexec/gsd-sharing
+exec --no-startup-id /usr/libexec/gsd-smartcard
+exec --no-startup-id /usr/libexec/gsd-sound
+exec --no-startup-id /usr/libexec/gsd-usb-protection
+exec --no-startup-id /usr/libexec/gsd-wacom
+exec --no-startup-id /usr/libexec/gsd-wacom-oled-helper
+exec --no-startup-id /usr/libexec/gsd-wwan
+exec --no-startup-id /usr/libexec/gsd-xsettings

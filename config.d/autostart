@@ -1,0 +1,35 @@
+# language toggle
+exec --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
+exec_always --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
+
+# picom compositor for windows
+exec_always --no-startup-id ~/.config/i3/bin/picom --config $home/.config/i3/picom.conf
+
+# tap on touchpad
+exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+exec_always --no-startup-id xinput set-prop "ELAN1200:00 04F3:30BA Touchpad" "libinput Tapping Enabled" 1
+
+# alert daemon
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
+# exec --no-startup-id dunst -conf $home/.config/i3/dunstrc
+
+# clipboard daemon
+exec --no-startup-id diodon
+
+# kb layout on bar
+exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="⬆️" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
+
+# active window in /tmp/title
+exec --no-startup-id ~/.config/i3/bin/title
+
+# weather
+exec --no-startup-id ~/.config/i3/bin/weather
+
+# deprecated
+# applets: network; lock-screen; volume in bar; power and brightness; bluetooth
+# exec --no-startup-id nm-applet
+# exec --no-startup-id gnome-screensaver
+# exec --no-startup-id volumeicon
+# exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id blueman-applet
+

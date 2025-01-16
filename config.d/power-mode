@@ -1,0 +1,43 @@
+mode "⚡️" {
+    # exit to xsession
+    bindsym e exec --no-startup-id i3-msg exit; mode "default"
+    # shutdown
+    bindsym s exec --no-startup-id systemctl poweroff; mode "default"
+    # sleep
+    bindsym w exec --no-startup-id \
+        $lock_not_wait && systemctl suspend; mode "default"
+    # reboot
+    bindsym r exec --no-startup-id systemctl reboot; mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+p mode "default"
+
+	# # perfomance power
+	# bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
+    #     echo "󰓅" > /tmp/profile && \
+    #     notify-send --icon=gnome-power-manager "Power" "Производительный профиль"; mode "default"
+	# # balanced power
+	# bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced && \
+    #     rm /tmp/profile && \
+    #     notify-send --icon=gnome-power-manager "Power" "Сбалансированный профиль"; mode "default"
+	# # economy power
+	# bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
+    #     echo "󰾆" > /tmp/profile && \
+    #     notify-send --icon=gnome-power-manager "Power" "Экономичный профиль"; mode "default"
+
+	# perfomance power
+	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance || \
+        echo "💥" > /tmp/profile && \
+        notify-send --icon=gnome-power-manager "Power" "Производительный профиль"; mode "default"
+	# balanced power
+	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced || \
+        rm /tmp/profile && \
+        notify-send --icon=gnome-power-manager "Power" "Сбалансированный профиль"; mode "default"
+	# economy power
+	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery || \
+        echo "🐌" > /tmp/profile && \
+        notify-send --icon=gnome-power-manager "Power" "Экономичный профиль"; mode "default"
+}
+bindsym $mod+p mode "⚡️"

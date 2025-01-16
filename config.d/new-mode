@@ -1,0 +1,46 @@
+# start binds in start mode
+mode "🆕" {
+    # settings
+    bindsym c exec --no-startup-id gnome-control-center; mode "default"
+
+    # browser
+    bindsym w exec --no-startup-id $firefox; mode "default"
+
+    # another browser
+    bindsym h exec --no-startup-id $chrome; mode "default"
+
+    # another browser private
+    bindsym Shift+h exec --no-startup-id $chrome --incognito; mode "default"
+
+    # telegram
+    bindsym t exec --no-startup-id Telegram; mode "default"
+
+    # obsidian
+    bindsym o exec --no-startup-id obsidian; mode "default"
+
+    # keepass
+    bindsym k exec --no-startup-id keepassxc; mode "default"
+
+    # remmina
+    bindsym r exec --no-startup-id remmina; mode "default"
+
+    # calculator
+    bindsym l exec --no-startup-id gnome-calculator; mode "default"
+
+    # geany
+    bindsym g exec --no-startup-id geany; mode "default"
+
+    # virt-manager
+    bindsym v exec --no-startup-id virt-manager; mode "default"
+
+    # pulseaudio
+    bindsym p exec --no-startup-id pavucontrol; mode "default"
+
+    # bluetooth
+    bindsym b exec --no-startup-id blueman-manager; mode "default"
+    
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+s mode "default"
+}
+bindsym $mod+s mode "🆕"

@@ -1,0 +1,34 @@
+# echo 'OPENCONNECT_PASSWORD="YOUR_PASSWORD"' | sudo tee -a /etc/environment
+mode "📡" {
+    # wg vpn
+    bindsym c exec --no-startup-id wg-quick up $wgname && \
+        echo $wgname > /tmp/vpn && \
+        notify-send --icon=gtk-network "VPN" "Подключение к $wgname установлено"; mode "default"
+    bindsym d exec --no-startup-id wg-quick down $wgname && \
+        rm /tmp/vpn && \
+        notify-send --icon=gtk-network "VPN" "Подключение с $wgname разорвано"; mode "default"
+
+    # openconnect vpn
+    bindsym Shift+c exec --no-startup-id notify-send --icon=gtk-network "VPN" "Подключение к Openconnect установлено" && \
+        echo Openconnect > /tmp/vpn && \
+        echo "$OPENCONNECT_PASSWORD" | sudo openconnect -d "https://ocserv.d6f.ru:8443/?devil666face" --user e2a+PEoLgImG+9+34Skp1spxnyQyUkZA/7FtiSlXe4w= --passwd-on-stdin; mode "default"
+    bindsym Shift+d exec --no-startup-id notify-send --icon=gtk-network "VPN" "Подключение с Openconnect разорвано" && \
+        rm /tmp/vpn && \
+        sudo pkill openconnect; mode "default"
+
+    # docker rdp windows
+    bindsym r exec --no-startup-id notify-send --icon=remmina "RDP" "Подключение к windows" && \
+        xfreerdp /u:Docker /dynamic-resolution /v:172.17.0.2 /p:602488; mode "default"
+        
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+n mode "default"
+}
+# bindsym $mod+n exec --no-startup-id notify-send --icon=network "network" "\
+# 1. C       connect $wgname\n\
+# 2. D       disonnect $wgname\n\
+# 3. R       connect to docker windows\n\
+# 4. Shift+C connect Openconnect\n\
+# 5. Shift+D disonnect Openconnect\n\
+# "; mode " 󰖟 network "
+bindsym $mod+n mode "📡"

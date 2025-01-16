@@ -1,0 +1,23 @@
+# borders
+default_border pixel 4
+default_floating_border pixel 1
+new_window pixel 4
+
+# borders rules
+# smart_borders on
+# hide_edge_borders smart
+
+# gaps
+gaps inner 5
+gaps outer 5
+# gaps inner 9
+# gaps inner 5
+# gaps outer 0
+
+# gars rules
+# smart_gaps on
+# smart_gaps inverse_outer
+
+# for add borders in gtk apps
+for_window [class=.*] border pixel 0
+# for_window [class=.*] border pixel 5

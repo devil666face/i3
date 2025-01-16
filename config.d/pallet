@@ -1,0 +1,14 @@
+# for dracula
+# class                 border    backgr    text      indicator child_border
+client.focused          $green    $green    $darkgray $bg       $bg 
+client.focused_inactive $darkgray $darkgray $yellow   $fg       $gray
+client.unfocused        $darkgray $darkgray $yellow   $fg       $gray
+client.urgent           $red      $red      $white    $red      $red
+
+# for gruvbox
+# class                   border    backgr    text      indicator child_border
+# client.focused          $green    $green    $darkgray $fg       $yellow 
+# client.focused_inactive $darkgray $darkgray $yellow   $fg       $gray
+# client.unfocused        $darkgray $darkgray $yellow   $fg       $gray
+# client.urgent           $red      $red      $white    $red      $red
+

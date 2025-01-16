@@ -97,14 +97,6 @@ bindsym $mod+q kill
 # start binds in default layer
 # filebrowser
 bindsym $mod+f exec --no-startup-id nautilus -w
-# function y() {
-#   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-#   yazi "$@" --cwd-file="$tmp"
-#   if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-#     builtin cd -- "$cwd"
-#   fi
-#   rm -f -- "$tmp"
-# }
 bindsym $mod+y exec --no-startup-id $term zsh -c "source ~/.zshrc && y && zsh"
 
 # screenshot

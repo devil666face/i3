@@ -1,0 +1,30 @@
+# rules for apps and ws
+assign [class="(?i)firefox"] $ws2
+assign [class="mercury-default"] $ws2
+assign [class="TelegramDesktop"] $ws3
+assign [class="Element"] $ws3
+assign [class="obsidian"] $ws4
+assign [class="Thorium-browser"] $ws5
+assign [class="thunderbird"] $ws5
+assign [class="KeePassXC"] $ws6
+assign [class="Virt-manager"] $ws7
+assign [class="org.remmina.Remmina"] $ws8
+assign [class="Pidgin"] $ws8
+assign [class="xfreerdp"] $ws8
+assign [class="Gnome-control-center"] $ws10
+assign [class="Arandr"] $ws10
+assign [class="Nm-connection-editor"] $ws10
+# assign [title="Nitrogen"] $ws10
+# assign [class="Pavucontrol"] $ws10
+# assign [class="Blueman-manager"] $ws10
+# assign [class="Gnome-tweaks"] $ws10
+
+# application size rules
+for_window [class="floating"] floating enable, resize set 840 640, move position center
+for_window [class="Org.gnome.Nautilus"] floating enable, resize set 840 640, move position center
+for_window [title="Application Finder"] floating enable, resize set 640 480
+for_window [title="Nitrogen"] floating enable, resize set 640 480
+for_window [class="Arandr"] floating enable, resize set 640 480
+for_window [class="Pavucontrol"] floating enable, resize set 840 480
+for_window [class="Gnome-calculator"] floating enable, resize set 640 480
+for_window [class="Rofi"] floating enable, resize set 640 480, move absolute position 640 px 300 px
