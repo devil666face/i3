@@ -70,8 +70,9 @@ bindsym $mod+Tab restart
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Close i3 and go to X session' -B 'Yes' 'i3-msg exit'"
 
 # hide/show bar
-bindsym $mod+b bar mode toggle 
-# bindsym Menu bar mode toggle
+bindsym $mod+b bar mode toggle
+# use xev for get key code
+bindsym 0xffe2 bar mode toggle
 
 # auto off screen
 bindsym $mod+F5 exec --no-startup-id xset dpms 0 && echo "" > /tmp/light
