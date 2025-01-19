@@ -98,7 +98,7 @@ include ~/.config/i3/config.d/status-bar
 
 include ~/.config/i3/config.d/autostart
 
-exec --no-startup-id i3-msg restart
+exec --no-startup-id sleep 5 && i3-msg restart
 
 # wallpaper
 # exec --no-startup-id gsettings set org.gnome.desktop.background picture-uri ~/images/wallpaper.png
