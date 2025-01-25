@@ -10,6 +10,53 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# Add this to your ~/.zshrc
+gpge() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: gpge <file>"
+        return 1
+    fi
+
+    local input_file="$1"
+    local output_file="${input_file}.gpg"
+
+    if [[ ! -f "$input_file" ]]; then
+        echo "Error: File '$input_file' does not exist."
+        return 1
+    fi
+
+    gpg --encrypt --output "$output_file" "$input_file"
+
+    if [[ $? -eq 0 ]]; then
+        echo "File encrypted successfully: $output_file"
+    else
+        echo "Error: Failed to encrypt file."
+    fi
+}
+
+gpgd() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: gpgd <file.gpg>"
+        return 1
+    fi
+
+    local input_file="$1"
+    local output_file="${input_file%.gpg}"
+
+    if [[ ! -f "$input_file" ]]; then
+        echo "Error: File '$input_file' does not exist."
+        return 1
+    fi
+
+    gpg --decrypt --output "$output_file" "$input_file"
+
+    if [[ $? -eq 0 ]]; then
+        echo "File decrypted successfully: $output_file"
+    else
+        echo "Error: Failed to decrypt file."
+    fi
+}
+
 export GOPATH=~/.go
 export EDITOR=hx
 export PATH=$GOPATH/bin:\
