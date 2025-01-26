@@ -25,7 +25,8 @@ gpge() {
         return 1
     fi
 
-    gpg --encrypt --output "$output_file" "$input_file"
+    gpg --encrypt --output - "$input_file" | base64 > "$output_file"
+
 
     if [[ $? -eq 0 ]]; then
         echo "File encrypted successfully: $output_file"
@@ -48,7 +49,7 @@ gpgd() {
         return 1
     fi
 
-    gpg --decrypt --output "$output_file" "$input_file"
+    base64 --decode "$input_file" | gpg --decrypt --output "$output_file"
 
     if [[ $? -eq 0 ]]; then
         echo "File decrypted successfully: $output_file"
@@ -98,7 +99,7 @@ $PATH
 
 _start_gpg_agent() {
     pgrep -u "$USER" gpg-agent > /dev/null || gpgconf --launch gpg-agent
-    export GPG_TTY=$(tty)
+    # export GPG_TTY=$(tty)
     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 }
 _start_gpg_agent
