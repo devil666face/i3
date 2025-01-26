@@ -57,6 +57,19 @@ gpgd() {
     fi
 }
 
+ssh-copy-id-all() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: ssh-add-all config_host"
+        return 1
+    fi
+    echo "Add gpg key"
+    ssh-copy-id -f "$1"
+    echo "Add rsa key"
+    ssh-copy-id -f -i .ssh/id_rsa "$1"
+    echo "Add ed25519 key"
+    ssh-copy-id -f -i .ssh/id_ed25519_sk "$1"
+}
+
 export GOPATH=~/.go
 export EDITOR=hx
 export PATH=$GOPATH/bin:\
@@ -75,9 +88,20 @@ export PATH=\
 /opt/helix/go1.20.14/bin:\
 $PATH
 
-export GPG_TTY=$(tty)
-gpgconf --launch gpg-agent
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+# Add in /etc/profile and /etc/bash.bashrc
+# _start_gpg_agent() {
+#     pgrep -u "$USER" gpg-agent > /dev/null 2>&1 || gpgconf --launch gpg-agent > /dev/null 2>&1
+#     export GPG_TTY=$(tty)
+#     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+# }
+# _start_gpg_agent
+
+_start_gpg_agent() {
+    pgrep -u "$USER" gpg-agent > /dev/null || gpgconf --launch gpg-agent
+    export GPG_TTY=$(tty)
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+}
+_start_gpg_agent
 
 _gen_fzf_default_opts() {
   local theme=${1:-'default'}
@@ -97,4 +121,5 @@ _gen_fzf_default_opts() {
 _gen_fzf_default_opts 'dracula'
 
 eval "$(zoxide init zsh --cmd cd)"
+
 
