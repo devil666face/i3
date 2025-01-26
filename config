@@ -46,6 +46,11 @@ set $lock_not_wait \
 
 include ~/.config/i3/config.d/thinkpad
 # include ~/.config/i3/config.d/tuf
+set $gnome_lock \
+    gsettings set org.gnome.desktop.input-sources current 0 && \
+    xset dpms 10 && \
+    gnome-screensaver-command -l
+
 # include ~/.config/i3/config.d/work
 
 # font pango:JetBrains Mono Nerd Font SemiBold 13
