@@ -1,13 +1,26 @@
 alias ls='lsd'
 alias docker-compose='docker compose'
 
-function y() {
+y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
+}
+
+clip() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: clip <file>"
+        return 1
+    fi
+    cat "$1" | xclip -selection clipboard
+    if [[ $? -eq 0 ]]; then
+        echo "File in clipboard: $1"
+    else
+        echo "Error: Failed to clip."
+    fi
 }
 
 # Add this to your ~/.zshrc
