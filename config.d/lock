@@ -8,13 +8,11 @@ bindsym $mod+Shift+l exec --no-startup-id \
     $lock
 
 # lock screen
-# bindsym $mod+Escape exec --no-startup-id \
-#     gsettings set org.gnome.desktop.input-sources current 0 && \
-#     pkill -STOP i3bar && \
-#     gnome-screensaver-command -l && \
-#     pkill -CONT i3bar
+bindsym $mod+Escape exec --no-startup-id \
+    $gnome_lock
 
 # poweroff in 5 sec when screen is lock
 # exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') xset dpms 10;; *'\''boolean false'\'') xset dpms 0;; esac; sleep 1; done'
+exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') true;; *'\''boolean false'\'') xset dpms 0;; esac; sleep 1; done'
 
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- bin/i3lock --nofork
