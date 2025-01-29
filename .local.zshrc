@@ -1,5 +1,7 @@
 alias ls='lsd'
 alias docker-compose='docker compose'
+alias sshp='proxychains ssh'
+alias default-ssh-agent='eval "$(ssh-agent -s)"'
 
 y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
