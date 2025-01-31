@@ -4,8 +4,9 @@ mode "⚡️" {
     # shutdown
     bindsym s exec --no-startup-id systemctl poweroff; mode "default"
     # sleep
+    # $lock_not_wait && systemctl suspend; mode "default"
     bindsym w exec --no-startup-id \
-        $lock_not_wait && systemctl suspend; mode "default"
+        $gnome_lock && sleep 1 && systemctl suspend; mode "default"
     # reboot
     bindsym r exec --no-startup-id systemctl reboot; mode "default"
 
