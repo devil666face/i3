@@ -158,3 +158,4 @@ _gen_fzf_default_opts() {
 _gen_fzf_default_opts 'dracula'
 
 eval "$(zoxide init zsh --cmd cd)"
+source <(_YKMAN_COMPLETE=bash_source ykman | sudo tee /etc/bash_completion.d/ykman)
