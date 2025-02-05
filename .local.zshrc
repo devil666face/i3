@@ -54,7 +54,7 @@ o() {
 	if [[ -z $1 ]]; then
 		return 1
 	fi
-	nohup "$1" > /dev/null &
+	nohup "$@" > /dev/null &
 }
 _o_completion() {
 	_command_names
@@ -135,13 +135,14 @@ ssh-copy-id-all() {
 export GOPATH=~/.go
 export EDITOR=hx
 export PATH=$GOPATH/bin:/opt/helix/node/bin:/opt/helix/python/bin:/opt/helix/nim/bin:/opt/helix/zig:/opt/helix/cargo/bin:/opt/helix:/home/d6f/.nimble/bin:$PATH
-export PATH=/opt/helix/go1.20.14/bin:$PATH
+# export PATH=/opt/helix/go1.20.14/bin:$PATH
+export PATH=/opt/helix/go/bin:$PATH
 
 _start_gpg_agent() {
 	pgrep -u "$USER" gpg-agent > /dev/null || gpgconf --launch gpg-agent
 	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 }
-_start_gpg_agent
+(_start_gpg_agent &> /dev/null &)
 
 _gen_fzf_default_opts() {
 	local theme=${1:-'default'}
