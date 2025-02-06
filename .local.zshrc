@@ -12,12 +12,12 @@ _get_ssh_hosts() {
 ssh() {
 	local host args
 	if [[ -z $1 ]]; then
-		host=$(fzf --reverse <<< "$(_get_ssh_hosts)")
+		host=$(fzf --reverse <<<"$(_get_ssh_hosts)")
 		[[ -z $host ]] && return 1
+		/usr/bin/ssh $host
 	else
-		host="$@"
+		/usr/bin/ssh "$@"
 	fi
-	/usr/bin/ssh "$@"
 }
 
 _ssh_complete() {
@@ -31,12 +31,12 @@ complete -F _ssh_complete ssh
 sshp() {
 	local host args
 	if [[ -z $1 ]]; then
-		host=$(fzf --reverse <<< "$(_get_ssh_hosts)")
+		host=$(fzf --reverse <<<"$(_get_ssh_hosts)")
 		[[ -z $host ]] && return 1
+		proxychains /usr/bin/ssh $host
 	else
-		host="$@"
+		proxychains /usr/bin/ssh "$@"
 	fi
-	proxychains ssh "$@"
 }
 
 complete -F _ssh_complete sshp
@@ -54,7 +54,7 @@ o() {
 	if [[ -z $1 ]]; then
 		return 1
 	fi
-	nohup "$@" > /dev/null &
+	nohup "$@" >/dev/null &
 }
 _o_completion() {
 	_command_names
@@ -86,7 +86,7 @@ gpge() {
 		echo "Error: File '$input_file' does not exist."
 		return 1
 	fi
-	gpg --encrypt --output - "$input_file" | base64 > "$output_file"
+	gpg --encrypt --output - "$input_file" | base64 >"$output_file"
 	if [[ $? -eq 0 ]]; then
 		echo "File encrypted successfully: $output_file"
 	else
@@ -124,14 +124,21 @@ ssh-copy-id-all() {
 	if [[ -z $1 ]]; then
 		return 1
 	fi
-	echo "Add gpg key"
 	ssh-copy-id -f "$1"
-	echo "Add rsa key"
 	ssh-copy-id -f -i .ssh/id_rsa "$1"
-	echo "Add ed25519 key"
 	ssh-copy-id -f -i .ssh/id_ed25519_sk "$1"
 }
+complete -F _ssh_complete ssh-copy-id-all
 
+sshp-copy-id-all() {
+	if [[ -z $1 ]]; then
+		return 1
+	fi
+	proxychains ssh-copy-id -f "$1"
+	proxychains ssh-copy-id -f -i .ssh/id_rsa "$1"
+	proxychains ssh-copy-id -f -i .ssh/id_ed25519_sk "$1"
+}
+complete -F _ssh_complete sshp-copy-id-all
 export GOPATH=~/.go
 export EDITOR=hx
 export PATH=$GOPATH/bin:/opt/helix/node/bin:/opt/helix/python/bin:/opt/helix/nim/bin:/opt/helix/zig:/opt/helix/cargo/bin:/opt/helix:/home/d6f/.nimble/bin:$PATH
@@ -139,10 +146,10 @@ export PATH=$GOPATH/bin:/opt/helix/node/bin:/opt/helix/python/bin:/opt/helix/nim
 export PATH=/opt/helix/go/bin:$PATH
 
 _start_gpg_agent() {
-	pgrep -u "$USER" gpg-agent > /dev/null || gpgconf --launch gpg-agent
+	pgrep -u "$USER" gpg-agent >/dev/null || gpgconf --launch gpg-agent
 	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 }
-(_start_gpg_agent &> /dev/null &)
+_start_gpg_agent
 
 _gen_fzf_default_opts() {
 	local theme=${1:-'default'}
