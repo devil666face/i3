@@ -61,6 +61,11 @@ _o_completion() {
 }
 compdef _o_completion o
 
+n() {
+	o nautilus .
+}
+compdef _o_completion n
+
 clip() {
 	if [[ -z $1 ]]; then
 		return 1
@@ -166,5 +171,6 @@ _gen_fzf_default_opts() {
 _gen_fzf_default_opts 'dracula'
 
 eval "$(zoxide init zsh --cmd cd)"
+
 #source <(_YKMAN_COMPLETE=bash_source ykman | tee /etc/bash_completion.d/ykman)
 source /etc/bash_completion.d/ykman
