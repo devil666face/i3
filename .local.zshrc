@@ -125,6 +125,17 @@ _gpgd_completion() {
 }
 compdef _gpgd_completion gpgd
 
+yubi() {
+	if [[ -z $1 ]]; then
+		return 1
+	fi
+	local phrase="$1"
+	local password=$(echo $phrase | xxd -p | ykman otp calculate 1)
+	echo $password
+	echo $phrase
+	echo "$password" > "$phrase.pass"
+}
+
 ssh-copy-id-all() {
 	if [[ -z $1 ]]; then
 		return 1
