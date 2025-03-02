@@ -141,8 +141,8 @@ ssh-copy-id-all() {
 		return 1
 	fi
 	ssh-copy-id -f "$1"
-	ssh-copy-id -f -i .ssh/id_rsa "$1"
-	ssh-copy-id -f -i .ssh/id_ed25519_sk "$1"
+	ssh-copy-id -f -i ~/.ssh/id_rsa "$1"
+	ssh-copy-id -f -i ~/.ssh/id_ed25519_sk "$1"
 }
 complete -F _ssh_complete ssh-copy-id-all
 
@@ -151,8 +151,8 @@ sshp-copy-id-all() {
 		return 1
 	fi
 	proxychains ssh-copy-id -f "$1"
-	proxychains ssh-copy-id -f -i .ssh/id_rsa "$1"
-	proxychains ssh-copy-id -f -i .ssh/id_ed25519_sk "$1"
+	proxychains ssh-copy-id -f -i ~/.ssh/id_rsa "$1"
+	proxychains ssh-copy-id -f -i ~/.ssh/id_ed25519_sk "$1"
 }
 complete -F _ssh_complete sshp-copy-id-all
 export GOPATH=~/.go
