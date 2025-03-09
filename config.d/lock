@@ -13,6 +13,6 @@ bindsym $mod+Escape exec --no-startup-id \
 
 # poweroff in 5 sec when screen is lock
 # exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') xset dpms 10;; *'\''boolean false'\'') xset dpms 0;; esac; sleep 1; done'
-exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') true;; *'\''boolean false'\'') xset dpms 0;; esac; sleep 1; done'
+exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') true;; *'\''boolean false'\'') xset dpms 0 && pkill -CONT xfce4-notifyd && pkill -CONT i3bar;; esac; sleep 1; done'
 
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- bin/i3lock --nofork

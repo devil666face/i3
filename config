@@ -47,6 +47,8 @@ set $lock_not_wait \
 include ~/.config/i3/config.d/thinkpad
 # include ~/.config/i3/config.d/tuf
 set $gnome_lock \
+    pkill -STOP xfce4-notifyd && \
+    pkill -STOP i3bar && \
     gsettings set org.gnome.desktop.input-sources current 0 && \
     xset dpms 10 && \
     gnome-screensaver-command -l
