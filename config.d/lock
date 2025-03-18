@@ -16,4 +16,6 @@ bindsym $mod+Escape exec --no-startup-id \
 
 exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') true;; *'\''boolean false'\'') xset dpms 0 && pkill -CONT xfce4-notifyd && pkill -CONT i3bar;; esac; sleep 1; done'
 
+# gsettings set org.gnome.desktop.screensaver lock-enabled false
+# gsettings set org.gnome.desktop.screensaver ubuntu-lock-on-suspend false
 exec --no-startup-id ~/.config/i3/bin/suspend-loop
