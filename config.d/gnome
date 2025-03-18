@@ -1,5 +1,7 @@
 # gnome alternative session
 exec --no-startup-id gnome-flashback
+exec --no-startup-id gnome-screensaver
+# exec --no-startup-id /usr/libexec/gnome-screensaver-dialog
 
 # optional gnome-settings-daemons
 exec --no-startup-id /usr/libexec/gsd-a11y-settings
