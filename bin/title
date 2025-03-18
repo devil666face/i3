@@ -6,5 +6,5 @@ while true; do
     window_name_short=$(echo "$window_name" | iconv -f utf-8 -t utf-8//IGNORE)
     window_name_short=${window_name_short:0:40}
     echo "$window_name_short" > /tmp/title
-    sleep 0.1
+    sleep 0.5
 done
