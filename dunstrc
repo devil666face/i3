@@ -16,7 +16,7 @@ horizontal_padding = 15
 frame_width = 4
 sort = no
 idle_threshold = 120
-font = JetBrains Mono Nerd Font 14
+font = CaskaydiaCove Nerd Font 15
 line_height = 4
 # format = "<b>%s</b>\n%b"
 format = "<b><big>%s</big></b>\n<small>%b</small>"
@@ -27,7 +27,7 @@ show_age_threshold = 60
 word_wrap = yes
 ignore_newline = no
 stack_duplicates = true
-hide_duplicate_count = no
+hide_duplicate_count = yes
 show_indicators = yes
 dmenu = /usr/bin/dmenu -p dunst:
 browser = /usr/bin/mercury-browser -new-tab
@@ -41,47 +41,23 @@ always_run_script = true
 title = Dunst
 class = Dunst
 icon_position = left
-icon_folders = /usr/share/icons/Gruvbox-Plus-Dark:/usr/share/icons/Gruvbox-Plus-Dark/apps:/usr/share/icons/Gruvbox-Plus-Dark/apps/scalable:/usr/share/icons/Gruvbox-Plus-Dark/apps/symbolic:/usr/share/icons/Gruvbox-Plus-Dark/apps/16:/usr/share/icons/Gruvbox-Plus-Dark/stock:/usr/share/icons/Gruvbox-Plus-Dark/stock/io:/usr/share/icons/Gruvbox-Plus-Dark/stock/io/16:/usr/share/icons/Gruvbox-Plus-Dark/stock/16:/usr/share/icons/Gruvbox-Plus-Dark/intl:/usr/share/icons/Gruvbox-Plus-Dark/intl/scalable:/usr/share/icons/Gruvbox-Plus-Dark/devices:/usr/share/icons/Gruvbox-Plus-Dark/devices/scalable:/usr/share/icons/Gruvbox-Plus-Dark/devices/symbolic:/usr/share/icons/Gruvbox-Plus-Dark/devices/16:/usr/share/icons/Gruvbox-Plus-Dark/emblems:/usr/share/icons/Gruvbox-Plus-Dark/emblems/48:/usr/share/icons/Gruvbox-Plus-Dark/emblems/22:/usr/share/icons/Gruvbox-Plus-Dark/emblems/symbolic:/usr/share/icons/Gruvbox-Plus-Dark/emblems/24:/usr/share/icons/Gruvbox-Plus-Dark/emblems/32:/usr/share/icons/Gruvbox-Plus-Dark/emblems/16:/usr/share/icons/Gruvbox-Plus-Dark/panel:/usr/share/icons/Gruvbox-Plus-Dark/panel/22:/usr/share/icons/Gruvbox-Plus-Dark/panel/24:/usr/share/icons/Gruvbox-Plus-Dark/panel/16:/usr/share/icons/Gruvbox-Plus-Dark/mimetypes:/usr/share/icons/Gruvbox-Plus-Dark/mimetypes/scalable:/usr/share/icons/Gruvbox-Plus-Dark/mimetypes/symbolic:/usr/share/icons/Gruvbox-Plus-Dark/mimetypes/16:/usr/share/icons/Gruvbox-Plus-Dark/places:/usr/share/icons/Gruvbox-Plus-Dark/places/scalable:/usr/share/icons/Gruvbox-Plus-Dark/places/symbolic:/usr/share/icons/Gruvbox-Plus-Dark/places/16:/usr/share/icons/Gruvbox-Plus-Dark/emotes:/usr/share/icons/Gruvbox-Plus-Dark/emotes/48:/usr/share/icons/Gruvbox-Plus-Dark/emotes/symbolic:/usr/share/icons/Gruvbox-Plus-Dark/scalable-max-32:/usr/share/icons/Gruvbox-Plus-Dark/scalable-max-32/status:/usr/share/icons/Gruvbox-Plus-Dark/status:/usr/share/icons/Gruvbox-Plus-Dark/status/48:/usr/share/icons/Gruvbox-Plus-Dark/status/22:/usr/share/icons/Gruvbox-Plus-Dark/status/symbolic:/usr/share/icons/Gruvbox-Plus-Dark/status/24:/usr/share/icons/Gruvbox-Plus-Dark/status/32:/usr/share/icons/Gruvbox-Plus-Dark/status/16:/usr/share/icons/Gruvbox-Plus-Dark/animations:/usr/share/icons/Gruvbox-Plus-Dark/animations/22:/usr/share/icons/Gruvbox-Plus-Dark/animations/24:/usr/share/icons/Gruvbox-Plus-Dark/actions:/usr/share/icons/Gruvbox-Plus-Dark/actions/22:/usr/share/icons/Gruvbox-Plus-Dark/actions/symbolic:/usr/share/icons/Gruvbox-Plus-Dark/actions/24:/usr/share/icons/Gruvbox-Plus-Dark/actions/32:/usr/share/icons/Gruvbox-Plus-Dark/actions/16
+icon_path = /usr/share/icons/Dracula/apps/scalable
+# icon_path = /usr/share/icons/Dracula/16:/usr/share/icons/Dracula/apps:/usr/share/icons/Dracula/apps/scalable:/usr/share/icons/Dracula/Places:/usr/share/icons/Dracula/Places/16:/usr/share/icons/Dracula/Places/48:/usr/share/icons/Dracula/actions:/usr/share/icons/Dracula/actions/16:/usr/share/icons/Dracula/actions/24:/usr/share/icons/Dracula/actions/22:/usr/share/icons/Dracula/actions/symbolic
 
 [urgency_low]
 timeout = 2
-background = "#282828"
-foreground = "#ebdbb2"
-frame_color = "#fabd2f"
+background = "#282a36"
+foreground = "#f8f8f2"
+frame_color = "#50fa7b"
 
 [urgency_normal]
 timeout = 5
-background = "#282828"
-foreground = "#ebdbb2"
-frame_color = "#fabd2f"
+background = "#282a36"
+foreground = "#f8f8f2"
+frame_color = "#ff79c6"
 
 [urgency_critical]
 timeout = 0
-background = "#282828"
-foreground = "#ebdbb2"
-frame_color = "#fb4934"
-
-# [frame]
-# width = 1
-# color = "#83a598"
-
-# [shortcuts]
-# close = ctrl+space
-# close_all = ctrl+shift+space
-# history = ctrl+grave
-# context = ctrl+shift+period
-
-# [urgency_low]
-# background = "#282828"
-# foreground = "#ebdbb2"
-# timeout = 5
-
-# [urgency_normal]
-# background = "#282828"
-# foreground = "#ebdbb2"
-# timeout = 20
-
-# [urgency_critical]
-# background = "#282828"
-# foreground = "#ebdbb2"
-# timeout = 0
+background = "#282a36"
+foreground = "#f8f8f2"
+frame_color = "#ff5555"

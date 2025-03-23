@@ -25,7 +25,7 @@
 
 set $mod Mod4
 set $chrome thorium-browser
-set $firefox mercury-browser
+set $firefox firefox
 set $term ~/.local/kitty.app/bin/kitty
 # set $term gnome-terminal
 set $lock \
