@@ -40,9 +40,7 @@ set $lock_not_wait \
     pkill -STOP xfce4-notifyd && \
     pkill -STOP i3bar && \
     gsettings set org.gnome.desktop.input-sources current 0 && \
-    ~/.config/i3/bin/i3lock -i ~/images/lock.png -c '#BD93F9' -o '#50FA7B' -w '#FF5555' -l '#F8F8F2' --ignore-empty-password --show-failed-attempts --24 -t && \
-    pkill -CONT xfce4-notifyd && \
-    pkill -CONT i3bar
+    ~/.config/i3/bin/i3lock -i ~/images/lock.png -c '#BD93F9' -o '#50FA7B' -w '#FF5555' -l '#F8F8F2' --ignore-empty-password --show-failed-attempts --24 -t
 
 include ~/.config/i3/config.d/thinkpad
 # include ~/.config/i3/config.d/tuf

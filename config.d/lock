@@ -1,5 +1,6 @@
 # https://github.com/Lixxia/i3lock
 bindsym $mod+l exec --no-startup-id \
+    xset dpms force off && \
     xset dpms 10 && \
     $lock && \
     xset dpms 0
@@ -9,6 +10,8 @@ bindsym $mod+Shift+l exec --no-startup-id \
 
 # lock screen
 bindsym $mod+Escape exec --no-startup-id \
+    xset dpms force off && \
+    xset dpms 10 && \
     $gnome_lock
 
 # poweroff in 5 sec when screen is lock
@@ -16,6 +19,6 @@ bindsym $mod+Escape exec --no-startup-id \
 
 exec --no-startup-id bash -c 'dbus-monitor --session "type='\''signal'\'',interface='\''org.gnome.ScreenSaver'\''" | while read x; do case "$x" in *'\''boolean true'\'') true;; *'\''boolean false'\'') xset dpms 0 && pkill -CONT xfce4-notifyd && pkill -CONT i3bar;; esac; sleep 1; done'
 
-# gsettings set org.gnome.desktop.screensaver lock-enabled false
-# gsettings set org.gnome.desktop.screensaver ubuntu-lock-on-suspend false
+# gsettings set org.gnome.desktop.screensaver lock-enabled true
+# gsettings set org.gnome.desktop.screensaver ubuntu-lock-on-suspend true
 exec --no-startup-id ~/.config/i3/bin/suspend-loop
