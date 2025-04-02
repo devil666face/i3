@@ -3,7 +3,8 @@ exec --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
 exec_always --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
 
 # picom compositor for windows
-exec_always --no-startup-id ~/.config/i3/bin/picom --config $home/.config/i3/picom.conf
+# exec_always --no-startup-id ~/.config/i3/bin/picom --config $home/.config/i3/picom.conf
+exec_always --no-startup-id ~/.config/i3/bin/picom-smooth --config $home/.config/i3/picom.conf --experimental-backend
 
 # tap on touchpad
 exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
