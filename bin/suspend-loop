@@ -2,15 +2,17 @@
 dbus-monitor --system "type='signal',interface='org.freedesktop.login1.Manager'" |
 while read -r line; do
     if echo "$line" | grep -q "boolean true"; then
-        xset dpms force off && \
         xset dpms 10 && \
+        gsettings set org.gnome.desktop.input-sources current 0 && \
         pkill -STOP xfce4-notifyd && \
         pkill -STOP i3bar && \
-        gsettings set org.gnome.desktop.input-sources current 0 && \
-        gnome-screensaver-command -l
+        pkill -STOP gnome-flashback && \
+        gnome-screensaver-command -l && \
+        systemctl suspend
     elif echo "$line" | grep -q "boolean false"; then
-        pkill -CONT xfce4-notifyd && \
-        pkill -CONT i3bar
+        true
+        # pkill -CONT xfce4-notifyd && \
+        # pkill -CONT i3bar
     fi
 done
 
