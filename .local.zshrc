@@ -1,6 +1,8 @@
 alias ls='lsd'
 alias docker-compose='docker compose'
 alias default-ssh-agent='eval "$(ssh-agent -s)"'
+alias laz='lazygit'
+alias lad='lazydocker'
 
 _get_ssh_hosts() {
 	local opts history_hosts
@@ -158,8 +160,9 @@ complete -F _ssh_complete sshp-copy-id-all
 export GOPATH=~/.go
 export EDITOR=hx
 export PATH=$GOPATH/bin:/opt/helix/node/bin:/opt/helix/python/bin:/opt/helix/nim/bin:/opt/helix/zig:/opt/helix/cargo/bin:/opt/helix:/home/d6f/.nimble/bin:$PATH
+export PATH=/opt/helix/go1.24.1/bin:$PATH
 # export PATH=/opt/helix/go1.20.14/bin:$PATH
-export PATH=/opt/helix/go/bin:$PATH
+# export PATH=/opt/helix/go/bin:$PATH
 
 _start_gpg_agent() {
 	pgrep -u "$USER" gpg-agent >/dev/null || gpgconf --launch gpg-agent
