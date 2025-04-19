@@ -109,17 +109,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH=/opt/helix/node/bin:/opt/helix/python/bin:/opt/helix/go/bin:/opt/helix:~/.go/bin:$PATH
-export GOPATH=~/.go
-export EDITOR=hx
-# export FZF_DEFAULT_OPTS="--color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 --color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
-export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
+# Scheme name: Gruvbox dark, medium
+# Scheme system: base16
+# Scheme author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+# Template author: Tinted Theming (https://github.com/tinted-theming)
 
-alias fcd='cd "$( find . -maxdepth 5 -type d | sort -n -r | grep -v venv | fzf -i --exact --reverse --border=rounded --preview="ls -lth {}" --preview-window=down )"'
-alias fcdh='cd ~ && cd "$( find . -maxdepth 5 -type d | sort -n -r | grep -v venv | fzf -i --exact --reverse --border=rounded --preview="ls -lth {}" --preview-window=down )"'
-alias zcd='DIR=$( find . -maxdepth 5 -type d  | sort -n -r | grep -v venv | fzf -i --exact --reverse --border=rounded --preview="ls -lth {}" --preview-window=down ) && zellij action new-tab --name $DIR --cwd $DIR --layout default'
-alias zcdh='cd ~ && DIR=$( find . -maxdepth 5 -type d | sort -n -r | grep -v venv | fzf -i --exact --reverse --border=rounded --preview="ls -lth {}" --preview-window=down ) && zellij action new-tab --name $DIR --cwd $DIR --layout default'
-alias update='sudo apt list --installed > ~/apt.bak && sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove && sudo apt-get autoclean'
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+source ~/.local.zshrc
+
+. "$HOME/.local/bin/env"
