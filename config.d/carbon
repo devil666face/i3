@@ -1,0 +1,9 @@
+set $wgname kalinkin-ru
+set $home /home/d6f
+set $mon eDP-1
+
+# brightness in status bar
+exec --no-startup-id bash -c 'while true; do echo "$(( ($(cat /sys/class/backlight/*/brightness) - 193) * 100 / (19393 - 193) ))%" > /tmp/bright; sleep 1; done'
+
+# xranrd
+exec --no-startup-id xrandr --auto
