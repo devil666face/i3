@@ -1,8 +1,8 @@
 # dmenu for start apps
-# bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
-# bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --entry-type command --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
+# bindsym $mod+Shift+v exec --no-startup-id i3-dmenu-desktop --entry-type command --dmenu="dmenu -nb '#1d2021' -sf '#1d2021' -sb '#ebdbb2' -nf '#d79921' -fn 'JetBrains Mono Nerd Font:size=13:style:Bold:antialias=true:autohint=true'"
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --entry-type=filename --dmenu="dmenu -nb '$darkgray' -sf '$darkgray' -sb '$yellow' -nf '$fg' -fn 'CaskaydiaCove Nerd Font:size=17:style:SemiBold:antialias=true:autohint=true'"
 
-bindsym $mod+d exec --no-startup-id \
+bindsym $mod+c exec --no-startup-id \
 	"gsettings set org.gnome.desktop.input-sources current 0 && rofi \
 	-modi drun,run,ssh \
 	-show drun \
