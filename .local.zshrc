@@ -138,6 +138,18 @@ yubi() {
 	echo "$password" > "$phrase.pass"
 }
 
+yubi-zip() {
+	if [[ -z $1 ]]; then
+		return 1
+	fi
+	local phrase="$1"
+	local password=$(echo $phrase | xxd -p | ykman otp calculate 1)
+	echo $password
+	echo $phrase
+	echo "$password" > "$phrase.pass"
+	zip -r9 -P "$password" "$1.zip" "$1"
+}
+
 ssh-copy-id-all() {
 	if [[ -z $1 ]]; then
 		return 1
@@ -159,10 +171,10 @@ sshp-copy-id-all() {
 complete -F _ssh_complete sshp-copy-id-all
 export GOPATH=~/.go
 export EDITOR=hx
+# export VIRTUAL_ENV=venv
 export PATH=$GOPATH/bin:/opt/helix/node/bin:/opt/helix/python/bin:/opt/helix/nim/bin:/opt/helix/zig:/opt/helix/cargo/bin:/opt/helix:/home/d6f/.nimble/bin:$PATH
-export PATH=/opt/helix/go1.24.1/bin:$PATH
+export PATH=/opt/helix/go1.24.2/bin:$PATH
 # export PATH=/opt/helix/go1.20.14/bin:$PATH
-# export PATH=/opt/helix/go/bin:$PATH
 
 _start_gpg_agent() {
 	pgrep -u "$USER" gpg-agent >/dev/null || gpgconf --launch gpg-agent
@@ -188,3 +200,4 @@ eval "$(zoxide init zsh --cmd cd)"
 
 #source <(_YKMAN_COMPLETE=bash_source ykman | tee /etc/bash_completion.d/ykman)
 source /etc/bash_completion.d/ykman
+source $HOME/.local/bin/env
