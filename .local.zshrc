@@ -85,19 +85,39 @@ compdef _clip_completion clip
 
 gpge() {
 	if [[ -z $1 ]]; then
+		echo "Usage: gpge <file_or_directory>"
 		return 1
 	fi
-	local input_file="$1"
+
+	local input="$1"
+	local input_file=""
+	local cleanup=0
+
+	if [[ -d $input ]]; then
+		input_file="${input%/}.zip"
+		zip -r "$input_file" "$input" >/dev/null
+		if [[ $? -ne 0 ]]; then
+			echo "Error: Failed to zip directory '$input'."
+			return 1
+		fi
+		cleanup=1
+	elif [[ -f $input ]]; then
+		input_file="$input"
+	else
+		echo "Error: '$input' is neither a file nor a directory."
+		return 1
+	fi
+
 	local output_file="$input_file.gpg"
-	if [[ ! -f $input_file ]]; then
-		echo "Error: File '$input_file' does not exist."
-		return 1
-	fi
 	gpg --encrypt --output - "$input_file" | base64 >"$output_file"
+
 	if [[ $? -eq 0 ]]; then
 		echo "File encrypted successfully: $output_file"
+		[[ $cleanup -eq 1 ]] && rm -f "$input_file"
 	else
 		echo "Error: Failed to encrypt file."
+		[[ $cleanup -eq 1 ]] && rm -f "$input_file"
+		return 1
 	fi
 }
 _gpge_completion() {
