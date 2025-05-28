@@ -5,10 +5,14 @@ alias laz='lazygit'
 alias lad='lazydocker'
 
 _get_ssh_hosts() {
-	local opts history_hosts
-	opts=$(awk '/^Host / {for (i=2; i<=NF; i++) print $i}' ~/.ssh/config | grep -v '*' | sort -u)
-	history_hosts=$(history | tail -n 1000 | grep -oP 'ssh \K[^\s]+' | sort -u)
-	echo -e "$opts\n$history_hosts" | sort -u
+    local opts history_hosts
+    opts=$(
+        awk '/^Host / {
+            for (i=2; i<=NF; i++) print $i
+        }' ~/.ssh/config ~/.ssh/config.d/*.conf 2>/dev/null | grep -v '\*' | sort -u
+    )
+    history_hosts=$(history | tail -n 1000 | grep -oP 'ssh \K[^\s]+' | sort -u)
+    echo -e "$opts\n$history_hosts" | sort -u
 }
 
 ssh() {
