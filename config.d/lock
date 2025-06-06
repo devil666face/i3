@@ -1,14 +1,16 @@
 # https://github.com/Lixxia/i3lock
 bindsym $mod+l exec --no-startup-id \
+    $lock
+
+bindsym $mod+Shift+l exec --no-startup-id \
     xset dpms 10 && \
     $lock && \
     xset dpms 0
 
-bindsym $mod+Shift+l exec --no-startup-id \
-    $lock
-
-# lock screen
 bindsym $mod+Escape exec --no-startup-id \
+    $gnome_lock
+
+bindsym $mod+Shift+Escape exec --no-startup-id \
     xset dpms 10 && \
     $gnome_lock
 
