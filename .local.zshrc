@@ -193,12 +193,6 @@ sshp-copy-id-all() {
 	proxychains ssh-copy-id -f -i ~/.ssh/id_ed25519_sk "$1"
 }
 complete -F _ssh_complete sshp-copy-id-all
-export GOPATH=~/.go
-export EDITOR=hx
-# export VIRTUAL_ENV=venv
-export PATH=$GOPATH/bin:/opt/helix/node/bin:/opt/helix/python/bin:/opt/helix/nim/bin:/opt/helix/zig:/opt/helix/cargo/bin:/opt/helix:/home/d6f/.nimble/bin:$PATH
-export PATH=/opt/helix/go1.24.2/bin:$PATH
-# export PATH=/opt/helix/go1.20.14/bin:$PATH
 
 _start_gpg_agent() {
 	pgrep -u "$USER" gpg-agent >/dev/null || gpgconf --launch gpg-agent
@@ -225,3 +219,25 @@ eval "$(zoxide init zsh --cmd cd)"
 #source <(_YKMAN_COMPLETE=bash_source ykman | tee /etc/bash_completion.d/ykman)
 source /etc/bash_completion.d/ykman
 source $HOME/.local/bin/env
+
+
+export GOPATH=~/.go
+
+export EDITOR=hx
+
+# export VIRTUAL_ENV=venv
+ 
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/opt/helix
+export PATH=$PATH:/opt/lsp
+export PATH=$PATH:/opt/helix/node/bin
+export PATH=$PATH:/opt/helix/python/bin
+export PATH=$PATH:/opt/helix/go1.24.2/bin
+# export PATH=$PATH:/opt/helix/go1.20.14/bin
+
+export AIDER_WATCH_FILES=True
+export AIDER_DRY_RUN=True
+export AIDER_EDITOR=hx
+export AIDER_GUI=True
+export AIDER_AUTO_COMMITS=False
+export AIDER_MODEL=o3
