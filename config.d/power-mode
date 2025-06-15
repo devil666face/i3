@@ -2,7 +2,7 @@ set $brightness_default gdbus call --session \
     --dest org.gnome.SettingsDaemon.Power \
     --object-path /org/gnome/SettingsDaemon/Power \
     --method org.freedesktop.DBus.Properties.Set \
-    "org.gnome.SettingsDaemon.Power.Screen" "Brightness" "<int32 70>"
+    "org.gnome.SettingsDaemon.Power.Screen" "Brightness" "<int32 50>"
 
 mode "⚡️" {
     # exit to xsession
