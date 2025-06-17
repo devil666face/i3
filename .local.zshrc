@@ -4,8 +4,7 @@ alias default-ssh-agent='eval "$(ssh-agent -s)"'
 alias laz='lazygit'
 alias lad='lazydocker'
 alias aider='proxychains aider'
-alias gpt='cd ~/gpt && aider --no-dry-run --gui'
-alias add="find . -type f -not -path '*/.git*/*' -not -path '*/.aider*/*' -not -path '*/bin/*' -not -path '*/.venv/*' -not -path '*/.cache/*' -not -path '*/__pycache__/*' -not -name '.git*' -not -name '.aider*' -not -name 'bin' -not -name '.venv' -not -name '.cache' -not -name '*__pycache__*' -printf '/add %P\n' | tee add"
+alias gpt='cd ~/.gpt && aider --no-dry-run'
 
 _get_ssh_hosts() {
     local opts history_hosts
@@ -243,4 +242,7 @@ export AIDER_DRY_RUN=False
 export AIDER_EDITOR=hx
 export AIDER_GUI=False
 export AIDER_AUTO_COMMITS=False
-export AIDER_MODEL=gpt-4.1
+# export AIDER_MODEL=gpt-4.1
+export AIDER_MODEL=gpt-4-turbo
+export AIDER_CODE_THEME=dracula
+export AIDER_CHAT_LANGUAGE=ru_RU
