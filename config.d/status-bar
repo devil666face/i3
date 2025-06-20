@@ -2,8 +2,8 @@ bar {
     id bar-0
     output $mon
 
-    position top
-    # position bottom
+    # position top
+    position bottom
 
     # font pango:JetBrains Mono Nerd Font SemiBold 14.0
     font pango:CaskaydiaCove Nerd Font SemiBold 15.5

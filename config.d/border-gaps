@@ -18,7 +18,7 @@ gaps outer 5
 # gaps outer 0
 
 # gars rules
-smart_gaps on
+# smart_gaps on
 # smart_gaps inverse_outer
 
 # for add borders in gtk apps
