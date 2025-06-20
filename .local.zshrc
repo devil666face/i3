@@ -161,7 +161,7 @@ yubi() {
 	local password=$(echo $phrase | xxd -p | ykman otp calculate 1)
 	echo $password
 	echo $phrase
-	echo "$password" > "$phrase.pass"
+	echo -n "$password" > "$phrase.pass"
 }
 
 yubi-zip() {
