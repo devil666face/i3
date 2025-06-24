@@ -246,3 +246,4 @@ export AIDER_AUTO_COMMITS=False
 export AIDER_MODEL=gpt-4-turbo
 export AIDER_CODE_THEME=dracula
 export AIDER_CHAT_LANGUAGE=ru_RU
+export AIDER_ANALYTICS_DISABLE=True
