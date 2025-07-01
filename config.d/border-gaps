@@ -22,7 +22,7 @@ gaps outer 5
 # smart_gaps inverse_outer
 
 # for add borders in gtk apps
-for_window [class=.*] border pixel 0
+for_window [class=.*] border pixel 4
 # for_window [class=.*] border pixel 5
 
 # set $mode_gaps Gaps: (o) outer, (i) inner
