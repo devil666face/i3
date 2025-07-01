@@ -9,6 +9,7 @@ exec_always --no-startup-id ~/.config/i3/bin/picom-smooth --config $home/.config
 # tap on touchpad
 exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 exec_always --no-startup-id xinput set-prop "ELAN1200:00 04F3:30BA Touchpad" "libinput Tapping Enabled" 1
+exec_always --no-startup-id xinput set-prop "SYNA8009:00 06CB:CE57 Touchpad" "libinput Tapping Enabled" 1
 
 # alert daemon
 exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
@@ -25,6 +26,9 @@ exec --no-startup-id ~/.config/i3/bin/title
 
 # weather
 exec --no-startup-id ~/.config/i3/bin/weather
+
+# update dbus
+exec_always --no-startup-id dbus-update-activation-environment --all
 
 # deprecated
 # applets: network; lock-screen; volume in bar; power and brightness; bluetooth
