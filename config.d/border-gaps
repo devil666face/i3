@@ -7,7 +7,7 @@ default_floating_border pixel 1
 new_window pixel 4
 
 # borders rules
-# smart_borders on
+smart_borders on
 # hide_edge_borders smart
 
 # gaps
