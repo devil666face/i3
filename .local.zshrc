@@ -5,16 +5,17 @@ alias laz='lazygit'
 alias lad='lazydocker'
 alias aider='proxychains aider'
 alias gpt='cd ~/.gpt && aider --no-dry-run'
+alias pr='proxychains'
 
 _get_ssh_hosts() {
-    local opts history_hosts
-    opts=$(
-        awk '/^Host / {
+	local opts history_hosts
+	opts=$(
+		awk '/^Host / {
             for (i=2; i<=NF; i++) print $i
         }' ~/.ssh/config ~/.ssh/config.d/*.conf 2>/dev/null | grep -v '\*' | sort -u
-    )
-    history_hosts=$(history | tail -n 1000 | grep -oP 'ssh \K[^\s]+' | sort -u)
-    echo -e "$opts\n$history_hosts" | sort -u
+	)
+	history_hosts=$(history | tail -n 1000 | grep -oP 'ssh \K[^\s]+' | sort -u)
+	echo -e "$opts\n$history_hosts" | sort -u
 }
 
 ssh() {
@@ -89,6 +90,31 @@ _clip_completion() {
 }
 compdef _clip_completion clip
 
+share() {
+	if [[ -z $1 ]]; then
+		echo "Usage: share <file_or_directory>"
+		return 1
+	fi
+
+	local input="$1"
+	local zip_file="$input".zip
+	local pass=$(openssl rand 32 | base64)
+	zip -e -rq9 $zip_file $input -P "$pass"
+
+	local url=$(curl --silent -F "file=@${zip_file}" https://temp.sh/upload | sed 's/http:/https:/')
+
+	echo "Password: $pass"
+	echo "Download:
+curl -X POST -o $zip_file $url
+wget --method=POST -O $zip_file $url
+Invoke-WebRequest -Uri \"$url\" -Method \"POST\" -OutFile $zip_file
+"
+}
+_share_completion() {
+	_files
+}
+compdef _share_completion share
+
 gpge() {
 	if [[ -z $1 ]]; then
 		echo "Usage: gpge <file_or_directory>"
@@ -161,7 +187,7 @@ yubi() {
 	local password=$(echo $phrase | xxd -p | ykman otp calculate 1)
 	echo $password
 	echo $phrase
-	echo -n "$password" > "$phrase.pass"
+	echo "$password" >"$phrase.pass"
 }
 
 yubi-zip() {
@@ -172,7 +198,7 @@ yubi-zip() {
 	local password=$(echo $phrase | xxd -p | ykman otp calculate 1)
 	echo $password
 	echo $phrase
-	echo "$password" > "$phrase.pass"
+	echo "$password" >"$phrase.pass"
 	zip -r9 -P "$password" "$1.zip" "$1"
 }
 
@@ -222,16 +248,15 @@ eval "$(zoxide init zsh --cmd cd)"
 source /etc/bash_completion.d/ykman
 source $HOME/.local/bin/env
 
-
 export GOPATH=~/.go
 
 export EDITOR=hx
 
 # export VIRTUAL_ENV=venv
- 
+
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/opt/helix
-export PATH=$PATH:/opt/lsp
+export PATH=$PATH:/opt/helix/lsp
 export PATH=$PATH:/opt/helix/node/bin
 export PATH=$PATH:/opt/helix/python/bin
 export PATH=$PATH:/opt/helix/go1.24.2/bin
@@ -242,8 +267,8 @@ export AIDER_DRY_RUN=False
 export AIDER_EDITOR=hx
 export AIDER_GUI=False
 export AIDER_AUTO_COMMITS=False
-# export AIDER_MODEL=gpt-4.1
-export AIDER_MODEL=gpt-4-turbo
+export AIDER_MODEL=gpt-4o
+# export AIDER_MODEL=gpt-4-turbo
 export AIDER_CODE_THEME=dracula
 export AIDER_CHAT_LANGUAGE=ru_RU
 export AIDER_ANALYTICS_DISABLE=True
