@@ -3,9 +3,15 @@ alias docker-compose='docker compose'
 alias default-ssh-agent='eval "$(ssh-agent -s)"'
 alias laz='lazygit'
 alias lad='lazydocker'
-alias aider='proxychains aider'
-alias gpt='cd ~/.gpt && aider --no-dry-run'
 alias pr='proxychains'
+
+export PROXY="socks5h://"
+
+alias crush="HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY crush"
+alias aichat="HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY aichat"
+alias aider="HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY aider"
+
+alias gpt='cd ~/.gpt && aider --no-dry-run'
 
 _get_ssh_hosts() {
 	local opts history_hosts
@@ -259,7 +265,7 @@ export PATH=$PATH:/opt/helix
 export PATH=$PATH:/opt/helix/lsp
 export PATH=$PATH:/opt/helix/node/bin
 export PATH=$PATH:/opt/helix/python/bin
-export PATH=$PATH:/opt/helix/go1.24.2/bin
+export PATH=$PATH:/opt/helix/go1.24.1/bin
 # export PATH=$PATH:/opt/helix/go1.20.14/bin
 
 export AIDER_WATCH_FILES=True
