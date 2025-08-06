@@ -5,11 +5,11 @@ alias laz='lazygit'
 alias lad='lazydocker'
 alias pr='proxychains'
 
-export PROXY="socks5h://"
+export PROXY="socks5h://proxy"
 
 alias crush="HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY crush"
 alias aichat="HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY aichat"
-alias aider="HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY aider"
+alias aider="proxychains aider"
 
 alias gpt='cd ~/.gpt && aider --no-dry-run'
 
@@ -277,4 +277,6 @@ export AIDER_MODEL=gpt-4o
 # export AIDER_MODEL=gpt-4-turbo
 export AIDER_CODE_THEME=dracula
 export AIDER_CHAT_LANGUAGE=ru_RU
+export AIDER_OPENAI_API_KEY=key
 export AIDER_ANALYTICS_DISABLE=True
+export AIDER_PRETTY=False
