@@ -5,13 +5,14 @@ alias laz='lazygit'
 alias lad='lazydocker'
 alias pr='proxychains'
 
-export PROXY="socks5h://proxy"
+export PROXY="socks5h://"
 
 alias crush="HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY crush"
 alias aichat="HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY aichat"
 alias aider="proxychains aider"
 
-alias gpt='cd ~/.gpt && aider --no-dry-run'
+alias ai='cd ~/.gpt && aider --no-dry-run'
+alias cr='cd ~/.gpt && crush'
 
 _get_ssh_hosts() {
 	local opts history_hosts
@@ -276,9 +277,8 @@ export AIDER_EDITOR=hx
 export AIDER_GUI=False
 export AIDER_AUTO_COMMITS=False
 export AIDER_MODEL=gpt-4o
-# export AIDER_MODEL=gpt-4-turbo
 export AIDER_CODE_THEME=dracula
 export AIDER_CHAT_LANGUAGE=ru_RU
-export AIDER_OPENAI_API_KEY=key
+export AIDER_OPENAI_API_KEY=sk-***
 export AIDER_ANALYTICS_DISABLE=True
 export AIDER_PRETTY=False
