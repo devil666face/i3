@@ -1,0 +1,8 @@
+[tools]
+lsd = "latest"
+yazi = "latest"
+lazygit = "latest"
+zoxide = "latest"
+lazydocker = "latest"
+jq = "latest"
+terraform = "latest"
