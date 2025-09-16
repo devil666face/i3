@@ -258,6 +258,10 @@ source /etc/bash_completion.d/ykman
 source /etc/bash_completion.d/task
 source $HOME/.local/bin/env
 
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
 export GOPATH=~/.go
 
 export EDITOR=hx
