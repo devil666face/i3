@@ -16,7 +16,6 @@ zellij = "latest"
 mc = "latest"
 cloudflared = "latest"
 typst = "latest"
-carapace = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["python"]
