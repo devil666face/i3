@@ -9,7 +9,8 @@ export PROXY="socks5h://"
 
 alias crush="HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY crush"
 alias aichat="HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY aichat"
-alias aider="proxychains aider"
+alias aider="HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY aider"
+# alias aider="proxychains aider"
 
 alias ai='cd ~/.ai && aider'
 alias ai-pro='cd ~/.ai && aider --model o3-pro'
