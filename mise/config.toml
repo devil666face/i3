@@ -18,4 +18,4 @@ cloudflared = "latest"
 typst = "latest"
 
 [settings]
-idiomatic_version_file_enable_tools = ["python"]
+idiomatic_version_file_enable_tools = []
