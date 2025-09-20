@@ -9,7 +9,7 @@ export PROXY="socks5h://"
 export NO_PROXY="127.0.0.1,127.0.0.0/8,localhost"
 
 proxy_run() {
-  HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY NO_PROXY=$NO_PROXY "$@"
+	HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY NO_PROXY=$NO_PROXY "$@"
 }
 
 alias crush='proxy_run crush'
@@ -269,15 +269,11 @@ export GOPATH=~/.go
 
 export EDITOR=hx
 
-# export VIRTUAL_ENV=venv
-
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/opt/helix
 export PATH=$PATH:/opt/helix/lsp
 export PATH=$PATH:/opt/helix/node/bin
 export PATH=$PATH:/opt/helix/python/bin
-export PATH=$PATH:/opt/helix/go1.24.1/bin
-# export PATH=$PATH:/opt/helix/go1.20.14/bin
 
 export AIDER_WATCH_FILES=True
 export AIDER_DRY_RUN=False
@@ -287,6 +283,9 @@ export AIDER_AUTO_COMMITS=False
 export AIDER_MODEL=gpt-4.1
 export AIDER_CODE_THEME=dracula
 export AIDER_CHAT_LANGUAGE=ru_RU
-export AIDER_OPENAI_API_KEY=sk-***
 export AIDER_ANALYTICS_DISABLE=True
 export AIDER_PRETTY=False
+# export AIDER_STREAM=False
+
+export OPENAI_API_KEY=***************************************************
+export GEMINI_API_KEY=***************************************
