@@ -6,10 +6,15 @@ alias lad='lazydocker'
 alias pr='proxychains'
 
 export PROXY="socks5h://"
+export NO_PROXY="127.0.0.1,127.0.0.0/8,localhost"
 
-alias crush="HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY crush"
-alias aichat="HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY aichat"
-alias aider="HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY aider"
+proxy_run() {
+  HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY NO_PROXY=$NO_PROXY "$@"
+}
+
+alias crush='proxy_run crush'
+alias aichat='proxy_run aichat'
+alias aider='proxy_run aider'
 # alias aider="proxychains aider"
 
 alias ai='cd ~/.ai && aider'
