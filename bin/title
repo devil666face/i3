@@ -1,10 +1,11 @@
 #!/bin/bash
 
 while true; do
-    window_id=$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')
-    window_name=$(xprop -id "$window_id" | awk '/_NET_WM_NAME/{ $1=$2=""; print }' | cut -d\" -f2)
-    window_name_short=$(echo "$window_name" | iconv -f utf-8 -t utf-8//IGNORE)
-    window_name_short=${window_name_short:0:40}
-    echo "$window_name_short" > /tmp/title
-    sleep 0.5
+	# window_id=$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')
+	# window_name=$(xprop -id "$window_id" | awk '/_NET_WM_NAME/{ $1=$2=""; print }' | cut -d\" -f2)
+	window_name=$(xdotool getactivewindow getwindowname)
+	window_name_short=$(echo "$window_name" | iconv -f utf-8 -t utf-8//IGNORE)
+	window_name_short=${window_name_short:0:40}
+	echo "$window_name_short" >/tmp/title
+	sleep 0.5
 done
