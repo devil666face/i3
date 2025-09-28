@@ -1,0 +1,6 @@
+pysocks
+aider-chat
+ruff
+ruff-lsp
+black
+clang-format

@@ -272,8 +272,8 @@ export EDITOR=hx
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/opt/helix
 export PATH=$PATH:/opt/helix/lsp
-export PATH=$PATH:/opt/helix/node/bin
-export PATH=$PATH:/opt/helix/python/bin
+# export PATH=$PATH:/opt/helix/node/bin
+# export PATH=$PATH:/opt/helix/python/bin
 
 export AIDER_WATCH_FILES=True
 export AIDER_DRY_RUN=False
