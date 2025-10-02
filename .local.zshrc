@@ -285,6 +285,7 @@ export AIDER_CODE_THEME=dracula
 export AIDER_CHAT_LANGUAGE=ru_RU
 export AIDER_ANALYTICS_DISABLE=True
 export AIDER_PRETTY=False
+export AIDER_VOICE_LANGUAGE=ru
 # export AIDER_STREAM=False
 
 export OPENAI_API_KEY=***************************************************
