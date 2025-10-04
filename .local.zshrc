@@ -63,7 +63,10 @@ o() {
 	if [[ -z $1 ]]; then
 		return 1
 	fi
-	nohup "$@" >/dev/null &
+	set +m
+	nohup setsid "$@" >/dev/null 2>&1 </dev/null &
+	disown
+	set -m
 }
 _o_completion() {
 	_command_names
@@ -74,6 +77,11 @@ n() {
 	o nautilus .
 }
 compdef _o_completion n
+
+k() {
+	local session=$(find ~/ -maxdepth 4 -type f -name "*.kitty-session" | fzf --reverse)
+	o kitty --session "$session"
+}
 
 clip() {
 	if [[ -z $1 ]]; then
