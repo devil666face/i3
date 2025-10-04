@@ -33,11 +33,10 @@ _get_ssh_hosts() {
 }
 
 ssh() {
-	local host args
 	if [[ -z $1 ]]; then
 		host=$(fzf --reverse <<<"$(_get_ssh_hosts)")
 		[[ -z $host ]] && return 1
-		/usr/bin/ssh $host
+		/usr/bin/ssh "$host"
 	else
 		/usr/bin/ssh "$@"
 	fi
@@ -50,19 +49,6 @@ _ssh_complete() {
 }
 
 complete -F _ssh_complete ssh
-
-sshp() {
-	local host args
-	if [[ -z $1 ]]; then
-		host=$(fzf --reverse <<<"$(_get_ssh_hosts)")
-		[[ -z $host ]] && return 1
-		proxychains /usr/bin/ssh $host
-	else
-		proxychains /usr/bin/ssh "$@"
-	fi
-}
-
-complete -F _ssh_complete sshp
 
 y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -93,9 +79,7 @@ clip() {
 	if [[ -z $1 ]]; then
 		return 1
 	fi
-	cat "$1" | xclip -selection clipboard
-	if [[ $? -eq 0 ]]; then
-	else
+	if ! cat "$1" | xclip -selection clipboard; then
 		echo "Error: Failed to clip."
 	fi
 }
@@ -113,7 +97,7 @@ share() {
 	local input="$1"
 	local zip_file="$input".zip
 	local pass=$(openssl rand 32 | base64)
-	zip -e -rq9 $zip_file $input -P "$pass"
+	zip -e -rq9 "$zip_file" "$input" -P "$pass"
 
 	local url=$(curl --silent -F "file=@${zip_file}" https://temp.sh/upload | sed 's/http:/https:/')
 
@@ -141,8 +125,7 @@ gpge() {
 
 	if [[ -d $input ]]; then
 		input_file="${input%/}.zip"
-		zip -r "$input_file" "$input" >/dev/null
-		if [[ $? -ne 0 ]]; then
+		if ! zip -r "$input_file" "$input" >/dev/null; then
 			echo "Error: Failed to zip directory '$input'."
 			return 1
 		fi
@@ -155,9 +138,8 @@ gpge() {
 	fi
 
 	local output_file="$input_file.gpg"
-	gpg --encrypt --output - "$input_file" | base64 >"$output_file"
 
-	if [[ $? -eq 0 ]]; then
+	if gpg --encrypt --output - "$input_file" | base64 >"$output_file"; then
 		echo "File encrypted successfully: $output_file"
 		[[ $cleanup -eq 1 ]] && rm -f "$input_file"
 	else
@@ -181,8 +163,7 @@ gpgd() {
 		echo "Error: File '$input_file' does not exist."
 		return 1
 	fi
-	base64 --decode "$input_file" | gpg --decrypt --output "$output_file"
-	if [[ $? -eq 0 ]]; then
+	if base64 --decode "$input_file" | gpg --decrypt --output "$output_file"; then
 		echo "File decrypted successfully: $output_file"
 	else
 		echo "Error: Failed to decrypt file."
@@ -198,9 +179,9 @@ yubi() {
 		return 1
 	fi
 	local phrase="$1"
-	local password=$(echo $phrase | xxd -p | ykman otp calculate 1)
-	echo $password
-	echo $phrase
+	local password=$(echo "$phrase" | xxd -p | ykman otp calculate 1)
+	echo "$password"
+	echo "$phrase"
 	echo "$password" >"$phrase.pass"
 }
 
@@ -209,9 +190,9 @@ yubi-zip() {
 		return 1
 	fi
 	local phrase="$1"
-	local password=$(echo $phrase | xxd -p | ykman otp calculate 1)
-	echo $password
-	echo $phrase
+	local password=$(echo "$phrase" | xxd -p | ykman otp calculate 1)
+	echo "$password"
+	echo "$phrase"
 	echo "$password" >"$phrase.pass"
 	zip -r9 -P "$password" "$1.zip" "$1"
 }
@@ -263,7 +244,7 @@ eval "$(zoxide init zsh --cmd cd)"
 source /etc/bash_completion.d/ykman
 # task --completion zsh > task
 source /etc/bash_completion.d/task
-source $HOME/.local/bin/env
+source "$HOME/.local/bin/env"
 
 export GOPATH=~/.go
 
@@ -272,8 +253,6 @@ export EDITOR=hx
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/opt/helix
 export PATH=$PATH:/opt/helix/lsp
-# export PATH=$PATH:/opt/helix/node/bin
-# export PATH=$PATH:/opt/helix/python/bin
 
 export AIDER_WATCH_FILES=True
 export AIDER_DRY_RUN=False
