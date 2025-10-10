@@ -31,6 +31,7 @@ node = "latest"
 "npm:typescript" = "latest"
 "npm:vscode-langservers-extracted" = "latest"
 "npm:yaml-language-server" = "latest"
+"npm:chrome-devtools-mcp" = "latest"
 shellcheck = "latest"
 
 [settings]
