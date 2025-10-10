@@ -1,0 +1,13 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "mcp": {
+    "chrome": {
+      "type": "stdio",
+      "command": "chrome-devtools-mcp",
+      "args": [
+        "-e",
+        "/opt/chromium/chrome"
+      ]
+    }
+  }
+}
