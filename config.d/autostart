@@ -1,6 +1,7 @@
 # language toggle
 exec --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
 exec_always --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
+exec --no-startup-id gsettings set org.gnome.desktop.input-sources current 0
 
 # picom compositor for windows
 # exec_always --no-startup-id ~/.config/i3/bin/picom --config $home/.config/i3/picom.conf
