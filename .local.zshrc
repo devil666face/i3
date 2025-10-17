@@ -270,10 +270,13 @@ export AIDER_AUTO_COMMITS=False
 export AIDER_MODEL=gpt-4.1
 export AIDER_CODE_THEME=dracula
 export AIDER_CHAT_LANGUAGE=ru_RU
-export AIDER_ANALYTICS_DISABLE=True
 export AIDER_PRETTY=False
 export AIDER_VOICE_LANGUAGE=ru
 # export AIDER_STREAM=False
+
+export AIDER_ANALYTICS_DISABLE=True
+export CRUSH_DISABLE_METRICS=1
+export DO_NOT_TRACK=1
 
 export OPENAI_API_KEY=***************************************************
 export GEMINI_API_KEY=***************************************
