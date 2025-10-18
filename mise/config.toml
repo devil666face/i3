@@ -33,6 +33,8 @@ node = "latest"
 "npm:yaml-language-server" = "latest"
 "npm:chrome-devtools-mcp" = "latest"
 shellcheck = "latest"
+aichat = "latest"
+dust = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
