@@ -8,6 +8,13 @@
         "-e",
         "/opt/chromium/chrome"
       ]
+    },
+    "perplexity": {
+      "type": "stdio",
+      "command": "perplexity-mcp",
+      "env": {
+        "PERPLEXITY_TIMEOUT_MS": "600000"
+      }
     }
   }
 }
