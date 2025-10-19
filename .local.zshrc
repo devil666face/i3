@@ -281,3 +281,4 @@ export DO_NOT_TRACK=1
 export OPENAI_API_KEY=***************************************************
 export GEMINI_API_KEY=***************************************
 export PERPLEXITY_API_KEY=*****************************************************
+export YANDEX_CLOUD_API_KEY=****************************************
