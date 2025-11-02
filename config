@@ -56,7 +56,7 @@ set $gnome_lock \
     gnome-screensaver-command -l
 
 # font pango:JetBrains Mono Nerd Font SemiBold 13
-font pango:CaskaydiaCove Nerd Font Bold 16
+font pango:CaskaydiaCove Nerd Font SemiBold 16
 
 # start i3
 exec --no-startup-id dex --autostart --environment i3
