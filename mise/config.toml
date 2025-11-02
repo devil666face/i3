@@ -20,7 +20,7 @@ marksman = "latest"
 shfmt = "latest"
 taplo = "latest"
 terraform-ls = "latest"
-node = "latest"
+node = "24.11"
 "npm:ansible-language-server" = "latest"
 "npm:@microsoft/compose-language-service" = "latest"
 "npm:bash-language-server" = "latest"
@@ -36,6 +36,7 @@ node = "latest"
 shellcheck = "latest"
 aichat = "latest"
 dust = "latest"
+starship = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
