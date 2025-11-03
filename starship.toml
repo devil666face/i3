@@ -1,8 +1,7 @@
 palette = "dracula"
 add_newline = false
 format = """\
-$fill $cmd_duration $time
-$all
+$directory $fill $cmd_duration $time $all 
 """
 
 [fill]
