@@ -1,7 +1,6 @@
 # language toggle
 exec --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
 exec_always --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
-exec --no-startup-id gsettings set org.gnome.desktop.input-sources current 0
 
 # picom compositor for windows
 # exec_always --no-startup-id ~/.config/i3/bin/picom --config $home/.config/i3/picom.conf
@@ -31,11 +30,11 @@ exec --no-startup-id ~/.config/i3/bin/weather
 # update dbus
 exec_always --no-startup-id dbus-update-activation-environment --all
 
-# applets: network; lock-screen; volume in bar; power and brightness; bluetooth
 exec --no-startup-id gtk4-launch org.keepassxc.KeePassXC
 exec --no-startup-id gtk4-launch firefox
 exec --no-startup-id gtk4-launch org.telegram.desktop._4e452d0fb0cb7b22a12f5b4b43da8f48
 exec --no-startup-id gtk4-launch obsidian
+exec_always --no-startup-id gsettings set org.gnome.desktop.input-sources current 0
 
 # deprecated
 # exec --no-startup-id nm-applet
@@ -43,4 +42,3 @@ exec --no-startup-id gtk4-launch obsidian
 # exec --no-startup-id volumeicon
 # exec --no-startup-id xfce4-power-manager
 # exec --no-startup-id blueman-applet
-
