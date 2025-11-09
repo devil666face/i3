@@ -37,6 +37,7 @@ shellcheck = "latest"
 aichat = "latest"
 dust = "latest"
 starship = "latest"
+helix = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
