@@ -1,5 +1,14 @@
 {
   "$schema": "https://charm.land/crush.json",
+  "permissions": {
+    "allowed_tools": [
+      "view",
+      "ls",
+      "grep",
+      "chrome",
+      "mcp_perplexity_create_search"
+    ]
+  },
   "providers": {
     "Yandex": {
       "type": "openai",
@@ -12,8 +21,21 @@
           "context_window": 32000,
           "default_max_tokens": 5000,
           "can_reason": true,
-          "has_reasoning_efforts": true,
           "supports_attachments": true
+        }
+      ]
+    },
+    "ollama": {
+      "name": "Ollama",
+      "base_url": "http://localhost:11434/v1/",
+      "type": "openai-compat",
+      "models": [
+        {
+          "name": "Granite4",
+          "id": "ibm/granite4:350m-h",
+          "context_window": 32000,
+          "default_max_tokens": 5000,
+          "can_reason": false
         }
       ]
     }
@@ -29,7 +51,7 @@
     },
     "perplexity": {
       "type": "stdio",
-      "command": "perplexity-mcp",
+      "command": "mcp-server",
       "env": {
         "PERPLEXITY_TIMEOUT_MS": "600000"
       }
