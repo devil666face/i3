@@ -38,6 +38,7 @@ aichat = "latest"
 dust = "latest"
 starship = "latest"
 helix = "latest"
+"npm:eslint" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
