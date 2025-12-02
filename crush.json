@@ -6,7 +6,7 @@
       "ls",
       "grep",
       "chrome",
-      "mcp_perplexity_create_search"
+      "mcp_perplexity_perplexity_reasoning"
     ]
   },
   "providers": {
@@ -51,9 +51,9 @@
     },
     "perplexity": {
       "type": "stdio",
-      "command": "mcp-server",
+      "command": "perplexity-mcp-server",
       "env": {
-        "PERPLEXITY_TIMEOUT_MS": "600000"
+        "PERPLEXITY_MODEL": "sonar-reasoning"
       }
     }
   }
