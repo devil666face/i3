@@ -2,9 +2,9 @@ set $brightness_default gdbus call --session \
     --dest org.gnome.SettingsDaemon.Power \
     --object-path /org/gnome/SettingsDaemon/Power \
     --method org.freedesktop.DBus.Properties.Set \
-    "org.gnome.SettingsDaemon.Power.Screen" "Brightness" "<int32 50>"
+    "org.gnome.SettingsDaemon.Power.Screen" "Brightness" "<int32 75>"
 
-mode "⚡️" {
+mode "💪" {
     # exit to xsession
     bindsym e exec --no-startup-id i3-msg exit; mode "default"
     # shutdown
@@ -27,35 +27,25 @@ mode "⚡️" {
     bindsym $mod+p mode "default"
 
 	# perfomance power
-	bindsym f exec --no-startup-id /usr/bin/system76-power profile performance && \
+	bindsym f exec --no-startup-id \
+        /usr/bin/system76-power profile performance || true && \
+        /usr/bin/system76-power profile performance && \
         $brightness_default && \
-        echo "💥" > /tmp/profile && \
+        echo "💪" > /tmp/profile && \
         notify-send --icon=gnome-power-manager "Power" "Производительный профиль"; mode "default"
 	# balanced power
-	bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced && \
+	bindsym b exec --no-startup-id \
+        /usr/bin/system76-power profile balanced || true && \
+        /usr/bin/system76-power profile balanced && \
         $brightness_default && \
         rm /tmp/profile && \
         notify-send --icon=gnome-power-manager "Power" "Сбалансированный профиль"; mode "default"
 	# economy power
-	bindsym l exec --no-startup-id /usr/bin/system76-power profile battery && \
+	bindsym l exec --no-startup-id \
+        /usr/bin/system76-power profile battery || true && \
+        /usr/bin/system76-power profile battery && \
         $brightness_default && \
         echo "🐌" > /tmp/profile && \
         notify-send --icon=gnome-power-manager "Power" "Экономичный профиль"; mode "default"
-
-	# perfomance power
-	# bindsym f exec --no-startup-id /usr/bin/system76-power profile performance || \
-    #     $brightness_default && \
-    #     echo "💥" > /tmp/profile && \
-    #     notify-send --icon=gnome-power-manager "Power" "Производительный профиль"; mode "default"
-	# # balanced power
-	# bindsym b exec --no-startup-id /usr/bin/system76-power profile balanced || \
-    #     $brightness_default && \
-    #     rm /tmp/profile && \
-    #     notify-send --icon=gnome-power-manager "Power" "Сбалансированный профиль"; mode "default"
-	# # economy power
-	# bindsym l exec --no-startup-id /usr/bin/system76-power profile battery || \
-    #     $brightness_default && \
-    #     echo "🐌" > /tmp/profile && \
-    #     notify-send --icon=gnome-power-manager "Power" "Экономичный профиль"; mode "default"
 }
-bindsym $mod+p mode "⚡️"
+bindsym $mod+p mode "💪"

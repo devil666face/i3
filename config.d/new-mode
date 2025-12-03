@@ -1,5 +1,5 @@
 # start binds in start mode
-mode "🆕" {
+mode "▶️" {
     # settings
     bindsym c exec --no-startup-id gnome-control-center; mode "default"
 
@@ -43,4 +43,4 @@ mode "🆕" {
     bindsym Escape mode "default"
     bindsym $mod+s mode "default"
 }
-bindsym $mod+s mode "🆕"
+bindsym $mod+s mode "▶️"
