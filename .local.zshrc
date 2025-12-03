@@ -85,11 +85,17 @@ k() {
 
 clip() {
 	if [[ -z $1 ]]; then
-		return 1
+		if ! xclip -selection clipboard; then
+			echo "Failed: copy from stdin."
+			return 1
+		fi
+	else
+		if ! cat "$1" | xclip -selection clipboard; then
+			echo "Failed: copy file \"$1\"."
+			return 1
+		fi
 	fi
-	if ! cat "$1" | xclip -selection clipboard; then
-		echo "Error: Failed to clip."
-	fi
+	return 0
 }
 _clip_completion() {
 	_files
