@@ -1,7 +1,9 @@
 [Desktop Entry]
 Name=I3
 Comment=improved dynamic tiling window manager
-Exec=env QT_STYLE_OVERRIDE=kvantum i3
+# Exec=env QT_STYLE_OVERRIDE=kvantum i3
+# __GLX_VENDOR_LIBRARY_NAME=nvidia 
+Exec=env QT_STYLE_OVERRIDE=kvantum LIBVA_DRIVER_NAME=nvidia KWIN_USE_BUFFER_AGE=0 ELECTRON_OZONE_PLATFORM_HINT=auto i3
 TryExec=i3
 Type=Application
 X-LightDM-DesktopName=i3
