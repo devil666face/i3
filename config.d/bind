@@ -16,7 +16,10 @@ bindsym $mod+q kill
 
 # filebrowser
 bindsym $mod+f exec --no-startup-id nautilus -w
+# fast run terminals
 bindsym $mod+y exec --no-startup-id $term zsh -c "source ~/.zshrc && y && zsh"
+bindsym $mod+i exec --no-startup-id $term zsh -i -c ai
+bindsym $mod+u exec --no-startup-id $term zsh -i -c cr
 
 # screenshot
 bindsym Print exec --no-startup-id flameshot gui
