@@ -3,7 +3,7 @@ alias docker-compose='docker compose'
 alias default-ssh-agent='eval "$(ssh-agent -s)"'
 alias laz='lazygit'
 alias lad='lazydocker'
-alias pr='proxychains'
+alias pr='proxychains4 -q'
 
 export PROXY="socks5h://"
 export NO_PROXY="127.0.0.1,127.0.0.0/8,localhost"
@@ -11,11 +11,14 @@ export NO_PROXY="127.0.0.1,127.0.0.0/8,localhost"
 proxy_run() {
 	HTTP_PROXY=$PROXY HTTPS_PROXY=$PROXY ALL_PROXY=$PROXY NO_PROXY=$NO_PROXY "$@"
 }
+proxychains_run() {
+	pr "$@"
+}
 
 alias crush='proxy_run crush'
 alias aichat='proxy_run aichat'
-alias aider='proxy_run aider'
-# alias aider="proxychains aider"
+# alias aider='proxy_run aider-ce'
+alias aider='proxychains_run aider-ce'
 
 alias ai='cd ~/.ai && aider'
 alias ai-pro='cd ~/.ai && aider --model o3-pro'
@@ -221,16 +224,6 @@ ssh-copy-id-all() {
 }
 complete -F _ssh_complete ssh-copy-id-all
 
-sshp-copy-id-all() {
-	if [[ -z $1 ]]; then
-		return 1
-	fi
-	proxychains ssh-copy-id -f "$1"
-	proxychains ssh-copy-id -f -i ~/.ssh/id_rsa "$1"
-	proxychains ssh-copy-id -f -i ~/.ssh/id_ed25519_sk "$1"
-}
-complete -F _ssh_complete sshp-copy-id-all
-
 _start_gpg_agent() {
 	pgrep -u "$USER" gpg-agent >/dev/null || gpgconf --launch gpg-agent
 	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
@@ -265,6 +258,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/opt/helix
 export PATH=$PATH:/opt/helix/lsp
 
+# Aider conf
 export AIDER_WATCH_FILES=True
 export AIDER_DRY_RUN=False
 export AIDER_EDITOR=hx
@@ -273,9 +267,14 @@ export AIDER_AUTO_COMMITS=False
 export AIDER_MODEL=gpt-4.1
 export AIDER_CODE_THEME=dracula
 export AIDER_CHAT_LANGUAGE=ru_RU
-export AIDER_PRETTY=False
+export AIDER_PRETTY=True
 export AIDER_VOICE_LANGUAGE=ru
-# export AIDER_STREAM=False
+export AIDER_STREAM=True
+# Aider-ce conf
+export AIDER_AGENT=False
+export AIDER_CACHE_PROMPTS=False
+export AIDER_PRESERVE_TODO_LIST=True
+export AIDER_ENABLE_CONTEXT_COMPACTION=True
 
 export AIDER_ANALYTICS_DISABLE=True
 export CRUSH_DISABLE_METRICS=1
