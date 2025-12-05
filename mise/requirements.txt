@@ -1,5 +1,6 @@
 pysocks
-aider-chat
+# aider-chat
+aider-ce
 ruff
 ruff-lsp
 black

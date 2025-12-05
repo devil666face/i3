@@ -37,6 +37,8 @@ node = "24.11"
 "npm:chrome-devtools-mcp" = "latest"
 # "npm:@perplexity-ai/mcp-server" = "latest"
 "npm:eslint" = "latest"
+chisel = "latest"
+crush = "latest"
 # "npm:typescript-language-server" = "latest"
 # "npm:typescript" = "latest"
 
