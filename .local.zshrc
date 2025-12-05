@@ -270,6 +270,7 @@ export AIDER_CHAT_LANGUAGE=ru_RU
 export AIDER_PRETTY=True
 export AIDER_VOICE_LANGUAGE=ru
 export AIDER_STREAM=True
+export AIDER_CHECK_UPDATE=False
 # Aider-ce conf
 export AIDER_AGENT=False
 export AIDER_CACHE_PROMPTS=False
