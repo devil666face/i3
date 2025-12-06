@@ -1,0 +1,14 @@
+[user]
+	email = in@d6f.ru
+	name = devil666face
+[credential]
+	helper = store
+[core]
+	autocrlf = false
+	editor = /opt/helix/hx
+[http]
+	sslVerify = false
+[diff]
+	algorithm = histogram
+[color]
+    ui = true
