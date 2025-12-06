@@ -5,7 +5,7 @@ mcp-servers: |
     "mcpServers": {
       "perplexity": {
         "type": "stdio",
-        "command": "perplexity-mcp-server",
+        "command": "perplexity-mcp",
         "args": [],
         "env": {
           "PERPLEXITY_MODEL": "sonar-reasoning"
