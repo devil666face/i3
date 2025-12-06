@@ -14,8 +14,6 @@ eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 
-[[ ! -f ~/.env ]] || source ~/.env
-
 alias ls='lsd'
 alias docker-compose='docker compose'
 alias default-ssh-agent='eval "$(ssh-agent -s)"'
@@ -277,7 +275,7 @@ export AIDER_DRY_RUN=False
 export AIDER_EDITOR=hx
 export AIDER_GUI=False
 export AIDER_AUTO_COMMITS=False
-export AIDER_MODEL=gpt-4.1
+export AIDER_MODEL=openai/gpt-4.1
 export AIDER_CODE_THEME=dracula
 export AIDER_CHAT_LANGUAGE=ru_RU
 export AIDER_PRETTY=True
@@ -294,3 +292,5 @@ export AIDER_ENABLE_CONTEXT_COMPACTION=True
 export AIDER_ANALYTICS_DISABLE=True
 export CRUSH_DISABLE_METRICS=1
 export DO_NOT_TRACK=1
+
+[[ ! -f ~/.env ]] || source ~/.env
