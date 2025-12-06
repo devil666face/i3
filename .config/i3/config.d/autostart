@@ -1,0 +1,45 @@
+# language toggle
+exec_always --no-startup-id gsettings set org.gnome.desktop.input-sources current 0
+
+exec --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
+exec_always --no-startup-id setxkbmap -layout us,ru -option 'grp:lalt_lshift_toggle'
+
+# picom compositor for windows
+# exec_always --no-startup-id ~/.config/i3/bin/picom --config $home/.config/i3/picom.conf
+exec_always --no-startup-id ~/.config/i3/bin/picom-smooth --config $home/.config/i3/picom.conf --experimental-backend
+
+# tap on touchpad
+exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+exec_always --no-startup-id xinput set-prop "ELAN1200:00 04F3:30BA Touchpad" "libinput Tapping Enabled" 1
+exec_always --no-startup-id xinput set-prop "SYNA8009:00 06CB:CE57 Touchpad" "libinput Tapping Enabled" 1
+
+# alert daemon
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
+# exec --no-startup-id dunst -conf $home/.config/i3/dunstrc
+
+# clipboard daemon
+exec --no-startup-id diodon
+
+# kb layout on bar
+exec --no-startup-id bash -c 'while true; do case "$(xset -q|grep LED|awk '\''{print $10}'\'')" in "00000000") KBD="en" ;; "00001000") KBD="ru" ;; *) KBD="⬆️" ;; esac; echo "$KBD" > /tmp/lay; sleep 1; done'
+
+# active window in /tmp/title
+exec --no-startup-id ~/.config/i3/bin/title
+
+# weather
+exec --no-startup-id ~/.config/i3/bin/weather
+
+# update dbus
+exec_always --no-startup-id dbus-update-activation-environment --all
+
+exec --no-startup-id gtk4-launch org.keepassxc.KeePassXC
+exec --no-startup-id gtk4-launch firefox
+exec --no-startup-id gtk4-launch org.telegram.desktop._4e452d0fb0cb7b22a12f5b4b43da8f48
+exec --no-startup-id gtk4-launch obsidian
+
+# deprecated
+# exec --no-startup-id nm-applet
+# exec --no-startup-id gnome-screensaver
+# exec --no-startup-id volumeicon
+# exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id blueman-applet

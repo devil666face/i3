@@ -1,0 +1,4 @@
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+
+GPG_TTY=/dev/pts/0
+SSH_AUTH_SOCK=/run/user/1000/gnupg/S.gpg-agent.ssh

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "permissions": {
+    "allowed_tools": [
+      "view",
+      "ls",
+      "grep",
+      "chrome",
+      "mcp_perplexity_perplexity_reasoning"
+    ]
+  },
+  "providers": {
+    "Yandex": {
+      "type": "openai",
+      "base_url": "https://llm.api.cloud.yandex.net/v1",
+      "api_key": "$YANDEX_CLOUD_API_KEY",
+      "models": [
+        {
+          "id": "gpt://b1gld74v6db0qabj545m/yandexgpt/rc",
+          "name": "Yandex GPT 5.1 Pro",
+          "context_window": 32000,
+          "default_max_tokens": 5000,
+          "can_reason": true,
+          "supports_attachments": true
+        }
+      ]
+    },
+    "ollama": {
+      "name": "Ollama",
+      "base_url": "http://localhost:11434/v1/",
+      "type": "openai-compat",
+      "models": [
+        {
+          "name": "Granite4",
+          "id": "ibm/granite4:350m-h",
+          "context_window": 32000,
+          "default_max_tokens": 5000,
+          "can_reason": false
+        }
+      ]
+    }
+  },
+  "mcp": {
+    "chrome": {
+      "type": "stdio",
+      "command": "chrome-devtools-mcp",
+      "args": [
+        "-e",
+        "/opt/chromium/chrome"
+      ]
+    },
+    "perplexity": {
+      "type": "stdio",
+      "command": "perplexity-mcp-server",
+      "env": {
+        "PERPLEXITY_MODEL": "sonar-reasoning"
+      }
+    }
+  }
+}

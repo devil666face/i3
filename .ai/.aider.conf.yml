@@ -1,0 +1,15 @@
+read:
+  - CRUSH.md
+mcp-servers: |
+  {
+    "mcpServers": {
+      "perplexity": {
+        "type": "stdio",
+        "command": "perplexity-mcp-server",
+        "args": [],
+        "env": {
+          "PERPLEXITY_MODEL": "sonar-reasoning"
+        }
+      }
+    }
+  }

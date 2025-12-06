@@ -1,0 +1,159 @@
+[[language]]
+name = "python"
+roots = [
+  "pyproject.toml",
+  "setup.py",
+  "Poetry.lock",
+  ".git",
+  "main.py",
+  ".venv",
+]
+language-servers = ["pyright", "ruff"]
+# language-servers = ["basedpyright", "ruff"]
+auto-format = true
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+# [language-server.pylyzer]
+# command = "pylyzer"
+# args = ["--server"]
+[language.formatter]
+command = "sh"
+args = ["-c", "ruff check --fix - | ruff format --line-length 88 -"]
+# command = "black"
+# args = ["--line-length", "88", "--quiet", "-"]
+
+[[language]]
+name = "nim"
+auto-format = true
+language-servers = ["nimlsp", "nimlangserver"]
+[language-server.nimlsp]
+command = "nimlsp"
+[language-server.nimlangserver]
+command = "nimlangserver"
+[language.formatter]
+command = "nph"
+args = ["-"]
+
+[[language]]
+name = "go"
+auto-format = true
+formatter = { command = "goimports" }
+[language-server.gopls.config]
+gofumpt = true
+# [language-server.golangci-lint-langserver]
+# command = "golangci-lint-langserver"
+# [language-server.gopls]
+# command = "gopls"
+
+[[language]]
+name = "yaml"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "yaml"] }
+# [language-server.yaml-language-server.config.yaml]
+# format = { enable = true }
+# validation = true
+
+[[language]]
+name = "markdown"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "markdown"] }
+
+[[language]]
+name = "javascript"
+language-servers = [
+  "typescript-language-server",
+  "vscode-eslint-language-server",
+]
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "jsx"
+language-servers = [
+  "typescript-language-server",
+  "vscode-eslint-language-server",
+]
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "typescript"
+language-servers = [
+  "typescript-language-server",
+  "vscode-eslint-language-server",
+]
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = [
+  "typescript-language-server",
+  "vscode-eslint-language-server",
+]
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "toml"
+auto-format = true
+formatter = { command = "taplo", args = ["fmt", "-"] }
+
+[[language]]
+name = "templ"
+auto-format = true
+formatter = { command = "templ", args = ["fmt"] }
+
+[[language]]
+name = "html"
+language-servers = [
+  { name = "superhtml", except-features = [
+    "format",
+  ] },
+  "vscode-html-language-server",
+]
+auto-format = true
+
+[[language]]
+name = "c"
+auto-format = true
+formatter = { command = "clang-format", args = [
+  "--style",
+  "{ColumnLimit: 256}",
+] }
+
+[[language]]
+name = "cpp"
+auto-format = true
+formatter = { command = "clang-format", args = [
+  "--style",
+  "{ColumnLimit: 256}",
+] }
+
+[[language]]
+name = "protobuf"
+auto-format = true
+formatter = { command = "clang-format", args = [] }
+
+[[language]]
+name = "bash"
+auto-format = true
+formatter = { command = "shfmt", args = [] }
+
+[[language]]
+name = "docker-compose"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "yaml"] }
+
+[[language]]
+name = "hcl"
+auto-format = true
+formatter = { command = "terraform", args = ["fmt", "-"] }
+
+[[language]]
+name = "tfvars"
+auto-format = true
+formatter = { command = "terraform", args = ["fmt", "-"] }
