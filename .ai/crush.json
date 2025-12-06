@@ -6,11 +6,17 @@
       "ls",
       "grep",
       "chrome",
-      "mcp_perplexity_perplexity_reasoning"
+      "mcp_perplexity_perplexity_reasoning",
+      "mcp_perplexity_perplexity_search",
+      "mcp_perplexity_perplexity_ask",
+      "mcp_perplexity_perplexity_research",
+      "mcp_perplexity_perplexity_reason"
     ]
   },
   "providers": {
-    "Yandex": {
+    "yandex": {
+      "name": "Yandex",
+      "id": "yandex",
       "type": "openai",
       "base_url": "https://llm.api.cloud.yandex.net/v1",
       "api_key": "$YANDEX_CLOUD_API_KEY",
@@ -18,40 +24,57 @@
         {
           "id": "gpt://b1gld74v6db0qabj545m/yandexgpt/rc",
           "name": "Yandex GPT 5.1 Pro",
+          "can_reason": true,
           "context_window": 32000,
           "default_max_tokens": 5000,
-          "can_reason": true,
-          "supports_attachments": true
+          "options": {},
+          "supports_attachments": true,
+          "cost_per_1m_in": 0,
+          "cost_per_1m_in_cached": 0,
+          "cost_per_1m_out": 0,
+          "cost_per_1m_out_cached": 0
         }
       ]
     },
     "ollama": {
       "name": "Ollama",
+      "id": "ollama",
       "base_url": "http://localhost:11434/v1/",
       "type": "openai-compat",
       "models": [
         {
-          "name": "Granite4",
           "id": "ibm/granite4:350m-h",
+          "name": "Granite4",
+          "can_reason": false,
           "context_window": 32000,
           "default_max_tokens": 5000,
-          "can_reason": false
+          "options": {},
+          "supports_attachments": false,
+          "cost_per_1m_in": 0,
+          "cost_per_1m_in_cached": 0,
+          "cost_per_1m_out": 0,
+          "cost_per_1m_out_cached": 0
         }
       ]
     },
-    "polza.ai": {
-      "name": "Polza.ai",
+    "polza": {
+      "name": "Polza",
+      "id": "polza",
       "base_url": "https://api.polza.ai/api/v1/",
-      "type": "openai",
+      "type": "openai-compat",
       "api_key": "$POLZA_AI_API_KEY",
       "models": [
         {
-          "name": "GPT-5.1",
-          "id": "openai/gpt-5.1",
+          "id": "z-ai/glm-4.6",
+          "name": "GLM-4.6",
+          "cost_per_1m_in": 0.6,
+          "cost_per_1m_out": 2.2,
+          "cost_per_1m_in_cached": 0.11,
+          "cost_per_1m_out_cached": 0,
+          "context_window": 204800,
+          "default_max_tokens": 131072,
           "can_reason": true,
-          "supports_attachments": true,
-          "default_max_tokens": 128000,
-          "context_window": 400000,
+          "supports_attachments": false,
           "options": {}
         }
       ]

@@ -275,13 +275,17 @@ export AIDER_DRY_RUN=False
 export AIDER_EDITOR=hx
 export AIDER_GUI=False
 export AIDER_AUTO_COMMITS=False
-export AIDER_MODEL=openai/gpt-4.1
+export AIDER_MODEL=openai/gpt-5.1
 export AIDER_CODE_THEME=dracula
 export AIDER_CHAT_LANGUAGE=ru_RU
 export AIDER_PRETTY=True
 export AIDER_VOICE_LANGUAGE=ru
 export AIDER_STREAM=True
 export AIDER_CHECK_UPDATE=False
+export AIDER_SHOW_RELEASE_NOTES=False
+export AIDER_SHOW_DIFFS=True
+export AIDER_ENV_FILE=.env.aider
+export AIDER_RESTORE_CHAT_HISTORY=True
 
 # Aider-ce conf
 export AIDER_AGENT=False
@@ -289,7 +293,8 @@ export AIDER_CACHE_PROMPTS=False
 export AIDER_PRESERVE_TODO_LIST=True
 export AIDER_ENABLE_CONTEXT_COMPACTION=True
 
-export AIDER_ANALYTICS_DISABLE=True
+export AIDER_ANALYTICS=False
+# export AIDER_ANALYTICS_DISABLE=True
 export CRUSH_DISABLE_METRICS=1
 export DO_NOT_TRACK=1
 
