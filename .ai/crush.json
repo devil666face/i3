@@ -6,7 +6,11 @@
       "ls",
       "grep",
       "chrome",
-      "mcp_perplexity_perplexity_reasoning"
+      "mcp_perplexity_perplexity_reasoning",
+      "mcp_perplexity_perplexity_search",
+      "mcp_perplexity_perplexity_ask",
+      "mcp_perplexity_perplexity_research",
+      "mcp_perplexity_perplexity_reason"
     ]
   },
   "providers": {

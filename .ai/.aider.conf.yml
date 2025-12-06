@@ -1,5 +1,5 @@
 read:
-  - CRUSH.md
+  - aider.json
 mcp-servers: |
   {
     "mcpServers": {
