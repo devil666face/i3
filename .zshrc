@@ -30,11 +30,11 @@ proxychains_run() {
 
 alias crush='proxy_run crush'
 alias aichat='proxy_run aichat'
-# alias aider='proxy_run aider-ce'
-alias aider='proxychains_run aider-ce'
+# alias aider='proxychains_run aider-ce'
+alias aider='proxy_run aider'
+alias aider-no-git='proxy_run aider --no-git'
 
-alias ai='cd ~/.ai && aider'
-alias ai-pro='cd ~/.ai && aider --model o3-pro'
+alias ai='cd ~/.ai && aider-no-git'
 alias cr='cd ~/.ai && crush'
 
 _get_ssh_hosts() {
@@ -270,31 +270,34 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/opt/helix/lsp
 
 # Aider conf
-export AIDER_WATCH_FILES=True
-export AIDER_DRY_RUN=False
-export AIDER_EDITOR=hx
-export AIDER_GUI=False
 export AIDER_AUTO_COMMITS=False
-export AIDER_MODEL=openai/gpt-5.1
-export AIDER_CODE_THEME=dracula
+export AIDER_DIRTY_COMMITS=True
 export AIDER_CHAT_LANGUAGE=ru_RU
-export AIDER_PRETTY=True
-export AIDER_VOICE_LANGUAGE=ru
-export AIDER_STREAM=True
 export AIDER_CHECK_UPDATE=False
-export AIDER_SHOW_RELEASE_NOTES=False
-export AIDER_SHOW_DIFFS=True
+export AIDER_CODE_THEME=dracula
+export AIDER_COMMIT_LANGUAGE=en_EN
+export AIDER_DRY_RUN=False
+# export AIDER_EDIT_FORMAT=diff # https://aider.chat/docs/more/edit-formats.html#diff
+export AIDER_EDITOR=hx
 export AIDER_ENV_FILE=.env.aider
+export AIDER_GUI=False
+export AIDER_MODEL=openai/gpt-5.1
+export AIDER_PRETTY=True
 export AIDER_RESTORE_CHAT_HISTORY=True
+export AIDER_SHOW_RELEASE_NOTES=False
+export AIDER_STREAM=True
+export AIDER_VOICE_LANGUAGE=ru
+export AIDER_WATCH_FILES=True
+export AIDER_WEAK_MODEL=openai/gpt-5-nano
 
 # Aider-ce conf
 export AIDER_AGENT=False
 export AIDER_CACHE_PROMPTS=False
-export AIDER_PRESERVE_TODO_LIST=True
 export AIDER_ENABLE_CONTEXT_COMPACTION=True
+export AIDER_PRESERVE_TODO_LIST=True
 
-export AIDER_ANALYTICS=False
 # export AIDER_ANALYTICS_DISABLE=True
+export AIDER_ANALYTICS=False
 export CRUSH_DISABLE_METRICS=1
 export DO_NOT_TRACK=1
 

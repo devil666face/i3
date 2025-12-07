@@ -1,5 +1,6 @@
 \.git
 \.env
+\.env\.aider
 dist
 gnome-remove-unused\.sh
 README\.md

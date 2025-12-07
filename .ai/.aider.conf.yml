@@ -1,15 +1,15 @@
 read:
   - aider.json
-mcp-servers: |
-  {
-    "mcpServers": {
-      "perplexity": {
-        "type": "stdio",
-        "command": "perplexity-mcp",
-        "args": [],
-        "env": {
-          "PERPLEXITY_MODEL": "sonar-reasoning"
-        }
-      }
-    }
-  }
+# mcp-servers: |
+#   {
+#     "mcpServers": {
+#       "perplexity": {
+#         "type": "stdio",
+#         "command": "perplexity-mcp",
+#         "args": [],
+#         "env": {
+#           "PERPLEXITY_MODEL": "sonar-reasoning"
+#         }
+#       }
+#     }
+#   }
