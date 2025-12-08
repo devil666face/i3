@@ -111,7 +111,9 @@
       "command": "chrome-devtools-mcp",
       "args": [
         "-e",
-        "/opt/chromium/chrome"
+        "/opt/chromium/chrome",
+        "--proxyServer",
+        "socks5://127.0.0.1:1080"
       ]
     },
     "perplexity": {
