@@ -1,0 +1,23 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "perplexity": {
+      "type": "local",
+      "command": [
+        "perplexity-mcp",
+      ],
+      "enabled": true,
+      "environment": {},
+    },
+    "chrome": {
+      "type": "local",
+      "command": [
+        "chrome-devtools-mcp",
+        "-e",
+        "/opt/chromium/chrome",
+        "--proxyServer",
+        "socks5://127.0.0.1:1080"
+      ],
+    },
+  },
+}

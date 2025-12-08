@@ -29,13 +29,12 @@ proxychains_run() {
 }
 
 alias crush='proxy_run crush'
-alias aichat='proxy_run aichat'
-# alias aider='proxychains_run aider-ce'
 alias aider='proxy_run aider'
+alias opencode='proxychains_run opencode'
 alias aider-no-git='proxy_run aider --no-git'
 
 alias ai='cd ~/.ai && aider-no-git'
-alias cr='cd ~/.ai && crush'
+alias cr='cd ~/.ai && opencode'
 
 _get_ssh_hosts() {
 	local opts history_hosts
