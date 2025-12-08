@@ -21,7 +21,7 @@ assign [class="ws10"] $ws10
 
 # application size rules
 for_window [class="floating"] floating enable, resize set 840 640, move position center
-for_window [class="Org.gnome.Nautilus"] floating enable, resize set 840 640, move position center
+for_window [class="Org.gnome.Nautilus"] floating enable, resize set 1040 540, move position center
 for_window [title="Application Finder"] floating enable, resize set 640 480
 for_window [title="Nitrogen"] floating enable, resize set 640 480
 for_window [class="Arandr"] floating enable, resize set 640 480
