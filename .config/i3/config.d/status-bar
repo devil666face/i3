@@ -6,7 +6,7 @@ bar {
     # position bottom
 
     # font pango:JetBrains Mono Nerd Font SemiBold 14.0
-    font pango:CaskaydiaCove Nerd Font Bold 16.0
+    font pango:CaskaydiaCove Nerd Font Bold 15.5
 
     mode hide
     modifier $mod+Shift
