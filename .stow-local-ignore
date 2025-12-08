@@ -4,3 +4,7 @@
 dist
 gnome-remove-unused\.sh
 README\.md
+\.aider\.chat\.history\.md
+\.aider\.input\.history
+\.aider\.tags\.cache\.v4
+\.gitignore

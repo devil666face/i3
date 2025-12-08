@@ -5,5 +5,5 @@ ruff
 ruff-lsp
 black
 clang-format
-# git+https://github.com/Pennyw0rth/NetExec
+git+https://github.com/Pennyw0rth/NetExec
 perplexity-mcp-server
