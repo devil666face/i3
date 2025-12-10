@@ -17,7 +17,7 @@ assign [class="xfreerdp"] $ws8
 assign [class="Gnome-control-center"] $ws10
 assign [class="Arandr"] $ws10
 assign [class="Nm-connection-editor"] $ws10
-assign [class="ws10"] $ws10
+assign [class="ws9"] $ws9
 
 # application size rules
 for_window [class="floating"] floating enable, resize set 840 640, move position center
